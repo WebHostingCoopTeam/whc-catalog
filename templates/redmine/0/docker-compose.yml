@@ -12,8 +12,6 @@ postgresql:
 
 redmine:
   image: sameersbn/redmine:latest
-  depends_on:
-  - postgresql
   labels:
     io.rancher.sidekicks: postgresql,redmine-datavolume
     io.rancher.container.hostname_override: container_name
