@@ -1,0 +1,37 @@
+version: '2'
+
+services:
+
+  hostbill:
+    image: drupal:8.2-apache
+    labels:
+      io.rancher.sidekicks: mariadb,hostbill-datavolume
+      io.rancher.container.pull_image: always
+    ports:
+      - ${public_port}:80
+    links:
+      - mariadb:mysql
+    volumes_from:
+      - hostbill-datavolume
+    restart: always
+
+  mariadb:
+    labels:
+      io.rancher.sidekicks: hostbill-datavolume
+      io.rancher.container.pull_image: always
+    volumes_from:
+      - hostbill-datavolume
+    image: mariadb
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_PASS}
+    restart: always
+
+  hostbill-datavolume:
+    image: "busybox"
+    volume_driver: ${VOLUME_DRIVER}
+    volumes:
+      - ${VOLUME_NAME}:/var/www/hostbill
+      - ${DB_VOLUME_NAME}:/var/lib/mysql
+    labels:
+      io.rancher.container.start_once: true
+    entrypoint: ["/bin/true"]

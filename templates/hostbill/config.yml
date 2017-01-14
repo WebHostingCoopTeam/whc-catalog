@@ -1,0 +1,5 @@
+name: Hostbill
+description: |
+ Run Hostbill in a rancher container
+version: 0.0.0
+category: Webhosting
