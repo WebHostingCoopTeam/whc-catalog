@@ -3,6 +3,7 @@ letsencrypt:
     io.rancher.container.create_agent: 'true'
     io.rancher.container.agent.role: 'environment'
   image: bringnow/nginx-letsencrypt
+  volume_driver: ${VOLUME_DRIVER}
   volumes:
     - LE_NGINX:/etc/nginx
     - LE_ETC:/etc/letsencrypt
