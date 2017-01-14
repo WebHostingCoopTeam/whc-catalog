@@ -1,0 +1,16 @@
+letsencrypt:
+  labels:
+    io.rancher.container.create_agent: 'true'
+    io.rancher.container.agent.role: 'environment'
+  image: bringnow/nginx-letsencrypt
+  volumes:
+    - LE_NGINX:/etc/nginx
+    - LE_ETC:/etc/letsencrypt
+    - LE_ACME:/var/acme-webroot
+    - LE_DHPARAM:/etc/nginx/dhparam
+  ports:
+    - "80:80"
+    - "443:443"
+  net: "host"
+  dns_search:
+    - "webhosting.coop"
