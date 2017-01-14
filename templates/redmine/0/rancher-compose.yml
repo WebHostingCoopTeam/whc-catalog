@@ -1,0 +1,48 @@
+.catalog:
+  name: Redmine
+  version: 2.19.4-rancher1
+  description: |
+    Redmine
+  questions:
+  - variable: "PORT"
+    type: "int"
+    label: "Port Number"
+    description: "Which port should Redmine listen on?"
+    default: 10083
+    required: true
+  - variable: "VOLUME_NAME"
+    description: "Work volume to save redmine data"
+    label: "Work volume:"
+    required: true
+    default: "REDMINE"
+    type: "string"
+  - variable: "VOLUME_DRIVER"
+    description: "The VOLUME driver to associate with this server (convoy-nfs,convoy-efs,convoy-ebs)"
+    label: "VOLUME Driver"
+    required: true
+    default: "convoy-nfs"
+    type: "string"
+  - variable: "DB_PASS"
+    description: "Database Password to use for the server"
+    label: "DB Password"
+    required: true
+    default: ""
+    type: "password"
+  - variable: "SMTP_USER"
+    description: "SMTP User to use for the server"
+    label: "SMTP User"
+    required: true
+    default: ""
+    type: "string"
+  - variable: "SMTP_PASS"
+    description: "SMTP Password to use for the server"
+    label: "SMTP Password"
+    required: true
+    default: ""
+    type: "password"
+  - variable: "TZ"
+    description: "Timezone to use for the server"
+    label: "Timezone"
+    required: true
+    default: "America/Chicago"
+    type: "string"
