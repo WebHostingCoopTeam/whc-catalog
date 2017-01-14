@@ -1,6 +1,6 @@
 .catalog:
   name: Redmine
-  version: 2.19.4-rancher1
+  version: 0.1.0
   description: |
     Redmine
   questions:
