@@ -3,7 +3,7 @@ letsencrypt:
     io.rancher.container.create_agent: 'true'
     io.rancher.container.agent.role: 'environment'
     io.rancher.container.hostname_override: container_name
-    io.rancher.sidekicks: letsencrypt-datavolume
+    io.rancher.sidekicks: cli,cron,letsencrypt-datavolume
     io.rancher.container.pull_image: always
   image: bringnow/nginx-letsencrypt
   ports:
@@ -14,6 +14,20 @@ letsencrypt:
     - "webhosting.coop"
   volumes_from:
     - letsencrypt-datavolume
+cli:
+  image: bringnow/letsencrypt-manager:latest
+  labels:
+    io.rancher.sidekicks: letsencrypt-datavolume
+  volumes_from:
+    - letsencrypt-datavolume
+cron:
+  image: bringnow/letsencrypt-manager:latest
+  labels:
+    io.rancher.sidekicks: letsencrypt-datavolume
+  volumes_from:
+    - letsencrypt-datavolume
+  command: cron-auto-renewal
+  restart: always
 letsencrypt-datavolume:
   labels:
     io.rancher.container.hostname_override: container_name
