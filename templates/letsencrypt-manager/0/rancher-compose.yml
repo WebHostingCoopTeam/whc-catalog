@@ -1,6 +1,6 @@
 .catalog:
   name: Let's Encrypt - Manager
-  version: 0.1.3
+  version: 0.1.4
   description: Trusted SSL certificates at zero cost
   minimum_rancher_version: v0.63.0
   questions:
