@@ -65,8 +65,8 @@
     default: ""
     type: "string"
   - variable: "SMTP_AUTHENTICATION"
-    description: "SMTP Authentication to use for the server"
-    label: "SMTP User"
+    description: "SMTP Authentication to use for the server[:login,nil,:plain,:cram_md5]"
+    label: "SMTP Authentication"
     required: true
     default: ":login"
     type: "string"
