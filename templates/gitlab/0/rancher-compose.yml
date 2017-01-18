@@ -4,7 +4,7 @@
   description: |
     Gitlab CE is a free GitHub alternative with additions by the Webhosting.coop Team
   minimum_rancher_version: v0.56.0-whc
-  maintainer: "Alexis Ducastel <alexis@ducastel.net>"
+  maintainer: "Josh Cox <josh@webhosting.coop>"
   uuid: gitlab-whc-0
   questions:
     - variable: "gitlab_hostname"
@@ -51,7 +51,7 @@
       description: "The VOLUME name to associate with this server"
       label: "VOLUME Name"
       required: true
-      default: "ARMA3"
+      default: "GITLAB"
       type: "string"
 
 gitlab-server:
