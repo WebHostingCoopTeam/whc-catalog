@@ -1,0 +1,57 @@
+.catalog:
+  name: "Mattermost"
+  version: "v0.1-educaas"
+  description: "Mattermost"
+  uuid: mattermost-0
+  minimum_rancher_version: v0.51.0
+  questions:
+      - variable: "PORT"
+        description: "main PORT to associate with this server"
+        label: "PORT"
+        required: true
+        default: "2302"
+        type: "string"
+      - variable: "VOLUME_DRIVER"
+        description: "The VOLUME driver to associate with this server (convoy-nfs,convoy-efs,convoy-ebs)"
+        label: "VOLUME Driver"
+        required: true
+        default: "convoy-nfs"
+        type: "string"
+      - variable: "VOLUME_NAME"
+        description: "The VOLUME name to associate with this server"
+        label: "VOLUME Name"
+        required: true
+        default: "MATTERMOST"
+        type: "string"
+      - variable: "DB_VOLUME_NAME"
+        description: "The VOLUME name to associate with the DB of this server"
+        label: "DB VOLUME Name"
+        required: true
+        default: "MATTERMOST_DB"
+        type: "string"
+      - varable: MATTERMOST_SECRET_KEY=${MATTERMOST_SECRET_KEY}
+        description: "MATTERMOST_SECRET_KEY to use for the server"
+        label: "MATTERMOST_SECRET_KEY"
+        required: true
+        default: ""
+        type: "password"
+      - varable: MATTERMOST_LINK_SALT=${MATTERMOST_LINK_SALT}
+        description: "MATTERMOST_LINK_SALT to use for the server"
+        label: "MATTERMOST_LINK_SALT"
+        required: true
+        default: ""
+        type: "password"
+      - varable: MATTERMOST_RESET_SALT=${MATTERMOST_RESET_SALT}
+        description: "MATTERMOST_RESET_SALT to use for the server"
+        label: "MATTERMOST_RESET_SALT"
+        required: true
+        default: ""
+        type: "password"
+      - varable: MATTERMOST_INVITE_SALT=${MATTERMOST_INVITE_SALT}
+        description: "MATTERMOST_INVITE_SALT to use for the server"
+        label: "MATTERMOST_INVITE_SALT"
+        required: true
+        default: ""
+        type: "password"
+
+mattermost:
