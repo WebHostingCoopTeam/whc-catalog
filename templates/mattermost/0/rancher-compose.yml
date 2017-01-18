@@ -35,25 +35,31 @@
         required: true
         default: "MATTERMOST_DB"
         type: "string"
-      - varable: MATTERMOST_SECRET_KEY=${MATTERMOST_SECRET_KEY}
+      - variable: "MYSQL_PASSWD"
+        description: "MYSQL password to use for the server"
+        label: "MYSQL_PASSWD"
+        required: true
+        default: ""
+        type: "password"
+      - variable: "MATTERMOST_SECRET_KEY"
         description: "MATTERMOST_SECRET_KEY to use for the server"
         label: "MATTERMOST_SECRET_KEY"
         required: true
         default: ""
         type: "password"
-      - varable: MATTERMOST_LINK_SALT=${MATTERMOST_LINK_SALT}
+      - variable: "MATTERMOST_LINK_SALT"
         description: "MATTERMOST_LINK_SALT to use for the server"
         label: "MATTERMOST_LINK_SALT"
         required: true
         default: ""
         type: "password"
-      - varable: MATTERMOST_RESET_SALT=${MATTERMOST_RESET_SALT}
+      - variable: "MATTERMOST_RESET_SALT"
         description: "MATTERMOST_RESET_SALT to use for the server"
         label: "MATTERMOST_RESET_SALT"
         required: true
         default: ""
         type: "password"
-      - varable: MATTERMOST_INVITE_SALT=${MATTERMOST_INVITE_SALT}
+      - variable: "MATTERMOST_INVITE_SALT"
         description: "MATTERMOST_INVITE_SALT to use for the server"
         label: "MATTERMOST_INVITE_SALT"
         required: true

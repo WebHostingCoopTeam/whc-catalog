@@ -35,5 +35,11 @@
         required: true
         default: "OWNCLOUD_DB"
         type: "string"
+      - variable: "MYSQL_PASSWD"
+        description: "MYSQL password to use for the server"
+        label: "MYSQL_PASSWD"
+        required: true
+        default: ""
+        type: "password"
 
 owncloud:
