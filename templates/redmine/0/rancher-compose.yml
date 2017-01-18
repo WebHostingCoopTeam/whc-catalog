@@ -2,7 +2,7 @@
   name: Redmine
   version: 0.1.3
   description: |
-    Redmine
+    Redmine for email settings see the docs here http://www.redmine.org/projects/redmine/wiki/EmailConfiguration
   questions:
   - variable: "REDMINE_HOST"
     description: "Hostname to use for the redmine server"
@@ -63,6 +63,12 @@
     label: "SMTP User"
     required: true
     default: ""
+    type: "string"
+  - variable: "SMTP_AUTHENTICATION"
+    description: "SMTP Authentication to use for the server"
+    label: "SMTP User"
+    required: true
+    default: ":login"
     type: "string"
   - variable: "SMTP_PASS"
     description: "SMTP Password to use for the server"
