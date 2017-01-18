@@ -5,6 +5,9 @@ gitlab-server:
   - ${https_port}:443/tcp
   labels:
     io.rancher.sidekicks: gitlab-data
+    traefik.enable: true
+    traefik.domain: ${gitlab_hostname}
+    traefik.port: ${PORT}
   hostname: ${gitlab_hostname}
   image: gitlab/gitlab-ce:latest
   volumes_from:

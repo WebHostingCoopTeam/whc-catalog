@@ -5,6 +5,12 @@
   uuid: owncloud-0
   minimum_rancher_version: v0.51.0
   questions:
+      - variable: "OWNCLOUD_HOST"
+        description: "Hostname to use for the OWNCLOUD server"
+        label: "OWNCLOUD Hostname"
+        required: true
+        default: ""
+        type: "string"
       - variable: "PORT"
         description: "main PORT to associate with this server"
         label: "PORT"

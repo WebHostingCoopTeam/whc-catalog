@@ -5,6 +5,12 @@
   uuid: mattermost-0
   minimum_rancher_version: v0.51.0
   questions:
+      - variable: "MATTERMOST_HOST"
+        description: "Hostname to use for the MATTERMOST server"
+        label: "MATTERMOST Hostname"
+        required: true
+        default: ""
+        type: "string"
       - variable: "PORT"
         description: "main PORT to associate with this server"
         label: "PORT"

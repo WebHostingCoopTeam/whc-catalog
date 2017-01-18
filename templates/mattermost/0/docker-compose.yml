@@ -8,6 +8,9 @@ mattermost:
     io.rancher.container.hostname_override: container_name
     io.rancher.sidekicks: db,mattermost-datavolume
     io.rancher.container.pull_image: always
+    traefik.enable: true
+    traefik.domain: ${MATTERMOST_HOST}
+    traefik.port: ${PORT}
   environment:
     - MATTERMOST_SECRET_KEY=${MATTERMOST_SECRET_KEY}
     - MATTERMOST_LINK_SALT=${MATTERMOST_LINK_SALT}

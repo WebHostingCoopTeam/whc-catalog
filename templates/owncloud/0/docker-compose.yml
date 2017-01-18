@@ -8,6 +8,9 @@ owncloud:
     io.rancher.container.hostname_override: container_name
     io.rancher.sidekicks: db,owncloud-datavolume
     io.rancher.container.pull_image: always
+    traefik.enable: true
+    traefik.domain: ${OWNCLOUD_HOST}
+    traefik.port: ${PORT}
   volumes_from:
     - owncloud-datavolume
 
