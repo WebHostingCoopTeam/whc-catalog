@@ -1,0 +1,69 @@
+postgresql:
+  image: sameersbn/postgresql:9.6
+  labels:
+    io.rancher.sidekicks: redmine-datavolume
+    io.rancher.container.pull_image: always
+  environment:
+  - DB_USER=redmine
+  - DB_PASS=${DB_PASS}
+  - DB_NAME=redmine_production
+  volumes_from:
+    - redmine-datavolume
+
+redmine:
+  image: sameersbn/redmine:latest
+  labels:
+    io.rancher.sidekicks: postgresql,redmine-datavolume
+    io.rancher.container.hostname_override: container_name
+    io.rancher.container.pull_image: always
+    traefik.enable: true
+    traefik.domain: ${REDMINE_HOST}
+    traefik.port: ${PORT}
+  environment:
+  - TZ=${TZ}
+
+  - DB_ADAPTER=postgresql
+  - DB_HOST=postgresql
+  - DB_PORT=5432
+  - DB_USER=redmine
+  - DB_PASS=${DB_PASS}
+  - DB_NAME=redmine_production
+
+  - REDMINE_PORT=${PORT}
+  - REDMINE_HTTPS=false
+  - REDMINE_RELATIVE_URL_ROOT=
+  - REDMINE_SECRET_TOKEN=
+
+  - REDMINE_SUDO_MODE_ENABLED=false
+  - REDMINE_SUDO_MODE_TIMEOUT=15
+
+  - REDMINE_CONCURRENT_UPLOADS=2
+
+  - REDMINE_BACKUP_SCHEDULE=
+  - REDMINE_BACKUP_EXPIRY=
+  - REDMINE_BACKUP_TIME=
+
+  - SMTP_ENABLED=${SMTP_ENABLED}
+  - SMTP_METHOD=smtp
+  - SMTP_DOMAIN=${SMTP_DOMAIN}
+  - SMTP_HOST=${SMTP_HOST}
+  - SMTP_PORT=587
+  - SMTP_USER=${SMTP_USER}
+  - SMTP_PASS=${SMTP_PASS}
+  - SMTP_STARTTLS=true
+  - SMTP_AUTHENTICATION=:login
+
+  ports:
+    - "${PORT}:80"
+  volumes_from:
+    - redmine-datavolume
+
+redmine-datavolume:
+  image: "busybox"
+  volume_driver: ${VOLUME_DRIVER}
+  volumes:
+    - ${VOLUME_NAME}:/home/redmine/data
+    - ${PG_VOLUME_NAME}:/var/lib/postgresql
+  labels:
+    io.rancher.container.start_once: true
+  entrypoint: ["/bin/true"]
