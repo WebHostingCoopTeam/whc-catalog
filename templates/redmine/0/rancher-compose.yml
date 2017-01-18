@@ -1,9 +1,15 @@
 .catalog:
   name: Redmine
-  version: 0.1.2
+  version: 0.1.3
   description: |
     Redmine
   questions:
+  - variable: "REDMINE_HOST"
+    description: "Hostname to use for the redmine server"
+    label: "REDMINE Hostname"
+    required: true
+    default: ""
+    type: "string"
   - variable: "PORT"
     type: "int"
     label: "Port Number"
@@ -34,6 +40,24 @@
     required: true
     default: ""
     type: "password"
+  - variable: "SMTP_HOST"
+    description: "SMTP Host to use for the server"
+    label: "SMTP Host"
+    required: true
+    default: ""
+    type: "string"
+  - variable: "SMTP_DOMAIN"
+    description: "SMTP DOMAIN to use for the server"
+    label: "SMTP DOMAIN"
+    required: true
+    default: ""
+    type: "string"
+  - variable: "SMTP_ENABLED"
+    description: "SMTP ENABLED"
+    label: "SMTP ENABLED"
+    required: true
+    default: ""
+    type: "boolean"
   - variable: "SMTP_USER"
     description: "SMTP User to use for the server"
     label: "SMTP User"

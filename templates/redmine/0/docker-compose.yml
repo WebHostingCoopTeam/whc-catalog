@@ -16,6 +16,9 @@ redmine:
     io.rancher.sidekicks: postgresql,redmine-datavolume
     io.rancher.container.hostname_override: container_name
     io.rancher.container.pull_image: always
+    traefik.enable: true
+    traefik.domain: ${REDMINE_HOST}
+    traefik.port: ${PORT}
   environment:
   - TZ=${TZ}
 
@@ -40,23 +43,15 @@ redmine:
   - REDMINE_BACKUP_EXPIRY=
   - REDMINE_BACKUP_TIME=
 
-  - SMTP_ENABLED=false
+  - SMTP_ENABLED=${SMTP_ENABLED}
   - SMTP_METHOD=smtp
-  - SMTP_DOMAIN=www.example.com
-  - SMTP_HOST=smtp.gmail.com
+  - SMTP_DOMAIN=${SMTP_DOMAIN}
+  - SMTP_HOST=${SMTP_HOST}
   - SMTP_PORT=587
   - SMTP_USER=${SMTP_USER}
   - SMTP_PASS=${SMTP_PASS}
   - SMTP_STARTTLS=true
   - SMTP_AUTHENTICATION=:login
-
-  - IMAP_ENABLED=false
-  - IMAP_HOST=imap.gmail.com
-  - IMAP_PORT=993
-  - IMAP_USER=mailer@example.com
-  - IMAP_PASS=password
-  - IMAP_SSL=true
-  - IMAP_INTERVAL=30
 
   ports:
     - "${PORT}:80"
