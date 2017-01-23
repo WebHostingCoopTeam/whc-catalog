@@ -43,8 +43,9 @@ services:
     - redis
     - postgresql
     ports:
-    - "10080:80"
-    - "10022:22"
+    - "${http_port}:80"
+    - "${https_port}:443"
+    - "${ssh_port}:22"
     volumes_from:
     - gitlab-data
     labels:
