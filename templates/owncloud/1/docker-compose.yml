@@ -1,0 +1,36 @@
+owncloud:
+  image: owncloud
+  ports:
+   - "${PORT}:80"
+  links:
+    - db
+  labels:
+    io.rancher.container.hostname_override: container_name
+    io.rancher.sidekicks: db,owncloud-datavolume
+    io.rancher.container.pull_image: always
+    traefik.enable: true
+    traefik.domain: ${OWNCLOUD_HOST}
+    traefik.port: ${PORT}
+  volumes_from:
+    - owncloud-datavolume
+
+db:
+  image: mysql
+  environment:
+    - MYSQL_ROOT_PASSWORD=${MYSQL_PASSWD}
+  volumes_from:
+    - owncloud-datavolume
+  labels:
+    io.rancher.sidekicks: owncloud-datavolume
+    io.rancher.container.pull_image: always
+
+owncloud-datavolume:
+  labels:
+    io.rancher.container.start_once: true
+    io.rancher.container.pull_image: always
+  volume_driver: ${VOLUME_DRIVER}
+  volumes:
+    - ${VOLUME_NAME}:/var/www/html
+    - ${DB_VOLUME_NAME}:/var/lib/mysql
+  image: busybox
+  command: /bin/true
