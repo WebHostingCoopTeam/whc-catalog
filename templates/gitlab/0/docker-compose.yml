@@ -1,6 +1,7 @@
 version: '2'
 
 services:
+
   gitlab-data:
     labels:
       io.rancher.container.start_once: 'true'
@@ -13,6 +14,7 @@ services:
     - ${VOLUME_NAME}:/home/git/data:Z
     - ${DB_VOLUME_NAME}:/var/lib/postgresql:Z
     - ${REDIS_VOLUME_NAME}:/var/lib/redis:Z
+
   redis:
     restart: always
     image: sameersbn/redis:latest
