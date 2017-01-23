@@ -68,7 +68,7 @@ services:
     - GITLAB_HTTPS=${GITLAB_HTTPS}
     - SSL_SELF_SIGNED=${SSL_SELF_SIGNED}
 
-    - GITLAB_HOST=${GITLAB_HOST}
+    - GITLAB_HOST=${gitlab_hostname}
     - GITLAB_PORT=${http_port}
     - GITLAB_SSH_PORT=${ssh_port}
     - GITLAB_RELATIVE_URL_ROOT=${GITLAB_RELATIVE_URL_ROOT}

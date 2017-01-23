@@ -137,12 +137,6 @@
       default: "false"
       type: "string"
 
-    - variable: "GITLAB_HOST"
-      description: "GITLAB_HOST"
-      label: "GITLAB_HOST"
-      required: false
-      default: "localhost"
-      type: "string"
     - variable: "GITLAB_RELATIVE_URL_ROOT"
       description: "GITLAB_RELATIVE_URL_ROOT"
       label: "GITLAB_RELATIVE_URL_ROOT"
@@ -153,19 +147,19 @@
       description: "GITLAB_SECRETS_DB_KEY_BASE"
       label: "GITLAB_SECRETS_DB_KEY_BASE"
       required: false
-      default: "long-and-random-alphanumeric-string"
+      default: ""
       type: "password"
     - variable: "GITLAB_SECRETS_SECRET_KEY_BASE"
       description: "GITLAB_SECRETS_SECRET_KEY_BASE"
       label: "GITLAB_SECRETS_SECRET_KEY_BASE"
       required: false
-      default: "long-and-random-alphanumeric-string"
+      default: ""
       type: "password"
     - variable: "GITLAB_SECRETS_OTP_KEY_BASE"
       description: "GITLAB_SECRETS_OTP_KEY_BASE"
       label: "GITLAB_SECRETS_OTP_KEY_BASE"
       required: false
-      default: "long-and-random-alphanumeric-string"
+      default: ""
       type: "password"
 
     - variable: "GITLAB_ROOT_PASSWORD"
