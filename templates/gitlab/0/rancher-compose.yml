@@ -134,13 +134,13 @@
       label: "GITLAB_HTTPS"
       required: false
       default: "false"
-      type: "string"
+      type: "boolean"
     - variable: "SSL_SELF_SIGNED"
       description: "SSL_SELF_SIGNED"
       label: "SSL_SELF_SIGNED"
       required: false
       default: "false"
-      type: "string"
+      type: "boolean"
 
     - variable: "GITLAB_RELATIVE_URL_ROOT"
       description: "GITLAB_RELATIVE_URL_ROOT"
@@ -185,13 +185,13 @@
       label: "GITLAB_NOTIFY_ON_BROKEN_BUILDS"
       required: false
       default: "true"
-      type: "string"
+      type: "boolean"
     - variable: "GITLAB_NOTIFY_PUSHER"
       description: "GITLAB_NOTIFY_PUSHER"
       label: "GITLAB_NOTIFY_PUSHER"
       required: false
       default: "false"
-      type: "string"
+      type: "boolean"
 
     - variable: "GITLAB_EMAIL"
       description: "GITLAB_EMAIL"
@@ -248,7 +248,7 @@
       label: "SMTP_PORT"
       required: false
       default: "587"
-      type: "string"
+      type: "integer"
     - variable: "SMTP_USER"
       description: "SMTP_USER"
       label: "SMTP_USER"
@@ -266,13 +266,13 @@
       label: "SMTP_STARTTLS"
       required: false
       default: "true"
-      type: "string"
+      type: "boolean"
     - variable: "SMTP_AUTHENTICATION"
       description: "SMTP_AUTHENTICATION login nil cram_md5"
       label: "SMTP_AUTHENTICATION"
       required: false
       default: "login"
-      type: "string"
+      type: "boolean"
 
     - variable: "IMAP_ENABLED"
       description: "IMAP_ENABLED"
@@ -291,7 +291,7 @@
       label: "IMAP_PORT"
       required: false
       default: "993"
-      type: "string"
+      type: "integer"
     - variable: "IMAP_USER"
       description: "IMAP_USER"
       label: "IMAP_USER"
@@ -309,13 +309,13 @@
       label: "IMAP_SSL"
       required: false
       default: "true"
-      type: "string"
+      type: "boolean"
     - variable: "IMAP_STARTTLS"
       description: "IMAP_STARTTLS"
       label: "IMAP_STARTTLS"
       required: false
       default: "false"
-      type: "string"
+      type: "boolean"
 
     - variable: "OAUTH_ENABLED"
       description: "OAUTH_ENABLED"
@@ -328,31 +328,31 @@
       label: "OAUTH_AUTO_SIGN_IN_WITH_PROVIDER"
       required: false
       default: ""
-      type: "string"
+      type: "boolean"
     - variable: "OAUTH_ALLOW_SSO"
       description: "OAUTH_ALLOW_SSO"
       label: "OAUTH_ALLOW_SSO"
       required: false
       default: ""
-      type: "string"
+      type: "boolean"
     - variable: "OAUTH_BLOCK_AUTO_CREATED_USERS"
       description: "OAUTH_BLOCK_AUTO_CREATED_USERS"
       label: "OAUTH_BLOCK_AUTO_CREATED_USERS"
       required: false
       default: "true"
-      type: "string"
+      type: "boolean"
     - variable: "OAUTH_AUTO_LINK_LDAP_USER"
       description: "OAUTH_AUTO_LINK_LDAP_USER"
       label: "OAUTH_AUTO_LINK_LDAP_USER"
       required: false
       default: "false"
-      type: "string"
+      type: "boolean"
     - variable: "OAUTH_AUTO_LINK_SAML_USER"
       description: "OAUTH_AUTO_LINK_SAML_USER"
       label: "OAUTH_AUTO_LINK_SAML_USER"
       required: false
       default: "false"
-      type: "string"
+      type: "boolean"
     - variable: "OAUTH_EXTERNAL_PROVIDERS"
       description: "OAUTH_EXTERNAL_PROVIDERS"
       label: "OAUTH_EXTERNAL_PROVIDERS"
@@ -377,7 +377,7 @@
       label: "OAUTH_CAS3_DISABLE_SSL_VERIFICATION"
       required: false
       default: "false"
-      type: "string"
+      type: "boolean"
     - variable: "OAUTH_CAS3_LOGIN_URL"
       description: "OAUTH_CAS3_LOGIN_URL"
       label: "OAUTH_CAS3_LOGIN_URL"
