@@ -66,13 +66,6 @@
       default: "GITLAB_REDIS"
       type: "string"
 
-    - variable: "DEBUG"
-      description: "DEBUG"
-      label: "DEBUG"
-      required: false
-      default: "false"
-      type: "string"
-
     - variable: "DB_ADAPTER"
       description: "DB_ADAPTER"
       label: "DB_ADAPTER"
@@ -629,6 +622,13 @@
       required: false
       default: ""
       type: "string"
+
+    - variable: "DEBUG"
+      description: "DEBUG"
+      label: "DEBUG"
+      required: false
+      default: "false"
+      type: "boolean"
 
 gitlab-data:
   scale: 1
