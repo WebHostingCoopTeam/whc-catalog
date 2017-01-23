@@ -7,7 +7,7 @@ services:
     entrypoint:
     - /bin/true
     hostname: gitdata
-    image: gitlab/gitlab-ce:latest
+    image: busybox
     volume_driver: ${VOLUME_DRIVER}
     volumes:
     - ${VOLUME_NAME}:/home/git/data:Z
@@ -16,6 +16,8 @@ services:
   redis:
     restart: always
     image: sameersbn/redis:latest
+    labels:
+      io.rancher.sidekicks: gitlab-data
     command:
     - --loglevel warning
     volumes_from:
@@ -26,6 +28,8 @@ services:
     image: sameersbn/postgresql:9.6-1
     volumes_from:
     - gitlab-data
+    labels:
+      io.rancher.sidekicks: gitlab-data
     environment:
     - DB_USER=gitlab
     - DB_PASS=password

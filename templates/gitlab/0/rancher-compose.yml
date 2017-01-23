@@ -1,6 +1,6 @@
 .catalog:
   name: Gitlab WHC
-  version: 0.1.1
+  version: 0.1.2
   description: |
     Gitlab CE is a free GitHub alternative with additions by the Webhosting.coop Team
   minimum_rancher_version: v0.56.0
