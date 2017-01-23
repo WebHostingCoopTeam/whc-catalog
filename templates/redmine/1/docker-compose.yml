@@ -1,16 +1,16 @@
-  postgresql:
-    restart: always
-    image: postgres:9.6-alpine
-    volumes_from:
-    - redmine-datavolume
-    labels:
-      io.rancher.sidekicks: redmine-datavolume
-      io.rancher.container.pull_image: always
-    environment:
-    - POSTGRES_USER=redmine
-    - POSTGRES_PASSWORD=${DB_PASS}
-    - POSTGRES_DB=redmine_production
-    - PGDATA='/var/lib/postgresql/data/pgdata'
+postgresql:
+  restart: always
+  image: postgres:9.6-alpine
+  volumes_from:
+  - redmine-datavolume
+  labels:
+    io.rancher.sidekicks: redmine-datavolume
+    io.rancher.container.pull_image: always
+  environment:
+  - POSTGRES_USER=redmine
+  - POSTGRES_PASSWORD=${DB_PASS}
+  - POSTGRES_DB=redmine_production
+  - PGDATA='/var/lib/postgresql/data/pgdata'
 
 redmine:
   image: sameersbn/redmine:latest
