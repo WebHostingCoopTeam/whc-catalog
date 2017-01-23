@@ -1,6 +1,6 @@
 .catalog:
   name: Gitlab WHC
-  version: 0.1.8
+  version: 0.1.9
   description: |
     Gitlab CE is a free GitHub alternative with additions by the Webhosting.coop Team
   minimum_rancher_version: v0.56.0
@@ -272,7 +272,7 @@
       label: "SMTP_AUTHENTICATION"
       required: false
       default: "login"
-      type: "boolean"
+      type: "string"
 
     - variable: "IMAP_ENABLED"
       description: "IMAP_ENABLED"
