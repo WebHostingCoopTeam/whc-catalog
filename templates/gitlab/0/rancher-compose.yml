@@ -1,6 +1,6 @@
 .catalog:
   name: Gitlab WHC
-  version: 0.1.10
+  version: 0.2.1
   description: |
     Gitlab CE is a free GitHub alternative with additions by the Webhosting.coop Team
   minimum_rancher_version: v0.56.0
@@ -56,89 +56,83 @@
     - variable: "DB_VOLUME_NAME"
       description: "DB_VOLUME_NAME"
       label: "DB_VOLUME_NAME"
-      required: false
+      required: true
       default: "GITLAB_DB"
       type: "string"
     - variable: "REDIS_VOLUME_NAME"
       description: "REDIS_VOLUME_NAME"
       label: "REDIS_VOLUME_NAME"
-      required: false
+      required: true
       default: "GITLAB_REDIS"
       type: "string"
 
     - variable: "DB_ADAPTER"
       description: "DB_ADAPTER"
       label: "DB_ADAPTER"
-      required: false
+      required: true
       default: "postgresql"
       type: "string"
     - variable: "DB_HOST"
       description: "DB_HOST"
       label: "DB_HOST"
-      required: false
+      required: true
       default: "postgresql"
       type: "string"
     - variable: "DB_PORT"
       description: "DB_PORT"
       label: "DB_PORT"
-      required: false
+      required: true
       default: "5432"
       type: "int"
     - variable: "DB_USER"
       description: "DB_USER"
       label: "DB_USER"
-      required: false
+      required: true
       default: "gitlab"
       type: "string"
     - variable: "DB_PASS"
       description: "DB_PASS"
       label: "DB_PASS"
-      required: false
+      required: true
       default: ""
       type: "password"
     - variable: "DB_NAME"
       description: "DB_NAME"
       label: "DB_NAME"
-      required: false
+      required: true
       default: "gitlabhq_production"
       type: "string"
 
     - variable: "REDIS_HOST"
       description: "REDIS_HOST"
       label: "REDIS_HOST"
-      required: false
+      required: true
       default: "redis"
       type: "string"
     - variable: "REDIS_PORT"
       description: "REDIS_PORT"
       label: "REDIS_PORT"
-      required: false
+      required: true
       default: "6379"
       type: "string"
 
     - variable: "TZ"
       description: "TZ"
       label: "TZ"
-      required: false
+      required: true
       default: "America/Chicago"
-      type: "string"
-    - variable: "GITLAB_TIMEZONE"
-      description: "GITLAB_TIMEZONE"
-      label: "GITLAB_TIMEZONE"
-      required: false
-      default: "Chicago"
       type: "string"
 
     - variable: "GITLAB_HTTPS"
       description: "GITLAB_HTTPS"
       label: "GITLAB_HTTPS"
-      required: false
+      required: true
       default: "false"
       type: "boolean"
     - variable: "SSL_SELF_SIGNED"
       description: "SSL_SELF_SIGNED"
       label: "SSL_SELF_SIGNED"
-      required: false
+      required: true
       default: "false"
       type: "boolean"
 
@@ -151,33 +145,33 @@
     - variable: "GITLAB_SECRETS_DB_KEY_BASE"
       description: "GITLAB_SECRETS_DB_KEY_BASE"
       label: "GITLAB_SECRETS_DB_KEY_BASE"
-      required: false
+      required: true
       default: ""
       type: "password"
     - variable: "GITLAB_SECRETS_SECRET_KEY_BASE"
       description: "GITLAB_SECRETS_SECRET_KEY_BASE"
       label: "GITLAB_SECRETS_SECRET_KEY_BASE"
-      required: false
+      required: true
       default: ""
       type: "password"
     - variable: "GITLAB_SECRETS_OTP_KEY_BASE"
       description: "GITLAB_SECRETS_OTP_KEY_BASE"
       label: "GITLAB_SECRETS_OTP_KEY_BASE"
-      required: false
+      required: true
       default: ""
       type: "password"
 
     - variable: "GITLAB_ROOT_PASSWORD"
       description: "GITLAB_ROOT_PASSWORD"
       label: "GITLAB_ROOT_PASSWORD"
-      required: false
+      required: true
       default: ""
       type: "password"
     - variable: "GITLAB_ROOT_EMAIL"
       description: "GITLAB_ROOT_EMAIL"
       label: "GITLAB_ROOT_EMAIL"
-      required: false
-      default: ""
+      required: true
+      default: "gitlab@example.com"
       type: "string"
 
     - variable: "GITLAB_NOTIFY_ON_BROKEN_BUILDS"
@@ -196,32 +190,32 @@
     - variable: "GITLAB_EMAIL"
       description: "GITLAB_EMAIL"
       label: "GITLAB_EMAIL"
-      required: false
+      required: true
       default: "notifications@example.com"
       type: "string"
     - variable: "GITLAB_EMAIL_REPLY_TO"
       description: "GITLAB_EMAIL_REPLY_TO"
       label: "GITLAB_EMAIL_REPLY_TO"
-      required: false
+      required: true
       default: "noreply@example.com"
       type: "string"
     - variable: "GITLAB_INCOMING_EMAIL_ADDRESS"
       description: "GITLAB_INCOMING_EMAIL_ADDRESS"
       label: "GITLAB_INCOMING_EMAIL_ADDRESS"
-      required: false
+      required: true
       default: "reply@example.com"
       type: "string"
 
     - variable: "GITLAB_BACKUP_SCHEDULE"
       description: "GITLAB_BACKUP_SCHEDULE"
       label: "GITLAB_BACKUP_SCHEDULE"
-      required: false
+      required: true
       default: "daily"
       type: "string"
     - variable: "GITLAB_BACKUP_TIME"
       description: "GITLAB_BACKUP_TIME"
       label: "GITLAB_BACKUP_TIME"
-      required: false
+      required: true
       default: "01:00"
       type: "string"
 
