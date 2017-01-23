@@ -33,10 +33,10 @@ services:
     labels:
       io.rancher.sidekicks: gitlab-data
     environment:
-    - DB_USER=gitlab
-    - DB_PASS=password
-    - DB_NAME=gitlabhq_production
-    - DB_EXTENSION=pg_trgm
+    - DB_USER=${DB_USER}
+    - DB_PASS=${DB_PASS}
+    - DB_NAME=${DB_NAME}
+    - DB_EXTENSION=${DB_EXTENSION}
 
   gitlab:
     restart: always
