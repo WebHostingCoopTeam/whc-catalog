@@ -27,7 +27,7 @@ services:
 
   postgresql:
     restart: always
-    image: postgresql:9.6-alpine
+    image: postgres:9.6-alpine
     volumes_from:
     - gitlab-data
     labels:
