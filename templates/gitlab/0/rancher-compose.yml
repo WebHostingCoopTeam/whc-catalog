@@ -115,13 +115,13 @@
       description: "TZ"
       label: "TZ"
       required: false
-      default: "Asia/Kolkata"
+      default: "America/Chicago"
       type: "string"
     - variable: "GITLAB_TIMEZONE"
       description: "GITLAB_TIMEZONE"
       label: "GITLAB_TIMEZONE"
       required: false
-      default: "Kolkata"
+      default: "Chicago"
       type: "string"
 
     - variable: "GITLAB_HTTPS"
