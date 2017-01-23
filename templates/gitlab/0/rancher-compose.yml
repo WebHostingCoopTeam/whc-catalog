@@ -1,6 +1,6 @@
 .catalog:
   name: Gitlab WHC
-  version: 0.1.7
+  version: 0.1.8
   description: |
     Gitlab CE is a free GitHub alternative with additions by the Webhosting.coop Team
   minimum_rancher_version: v0.56.0
@@ -28,19 +28,19 @@
       label: "HTTP port:"
       required: true
       default: 2080
-      type: "integer"
+      type: "int"
     - variable: "https_port"
       description: "HTTPS port to expose on host. Will be used to bind TCP"
       label: "HTTPS port:"
       required: true
       default: 2443
-      type: "integer"
+      type: "int"
     - variable: "ssh_port"
       description: "SSH port to expose on host. Will be used to bind TCP"
       label: "SSH port:"
       required: true
       default: 2222
-      type: "integer"
+      type: "int"
     - variable: "VOLUME_DRIVER"
       description: "The VOLUME driver to associate with this server (convoy-nfs,convoy-efs,convoy-ebs)"
       label: "VOLUME Driver"
@@ -83,7 +83,7 @@
       label: "DB_PORT"
       required: false
       default: "5432"
-      type: "integer"
+      type: "int"
     - variable: "DB_USER"
       description: "DB_USER"
       label: "DB_USER"
@@ -248,7 +248,7 @@
       label: "SMTP_PORT"
       required: false
       default: "587"
-      type: "integer"
+      type: "int"
     - variable: "SMTP_USER"
       description: "SMTP_USER"
       label: "SMTP_USER"
@@ -291,7 +291,7 @@
       label: "IMAP_PORT"
       required: false
       default: "993"
-      type: "integer"
+      type: "int"
     - variable: "IMAP_USER"
       description: "IMAP_USER"
       label: "IMAP_USER"
