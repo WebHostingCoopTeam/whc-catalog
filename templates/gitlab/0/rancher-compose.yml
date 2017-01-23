@@ -237,7 +237,7 @@
       label: "SMTP_ENABLED"
       required: false
       default: "false"
-      type: "string"
+      type: "boolean"
     - variable: "SMTP_DOMAIN"
       description: "SMTP_DOMAIN"
       label: "SMTP_DOMAIN"
@@ -286,7 +286,7 @@
       label: "IMAP_ENABLED"
       required: false
       default: "false"
-      type: "string"
+      type: "boolean"
     - variable: "IMAP_HOST"
       description: "IMAP_HOST"
       label: "IMAP_HOST"
@@ -329,7 +329,7 @@
       label: "OAUTH_ENABLED"
       required: false
       default: "false"
-      type: "string"
+      type: "boolean"
     - variable: "OAUTH_AUTO_SIGN_IN_WITH_PROVIDER"
       description: "OAUTH_AUTO_SIGN_IN_WITH_PROVIDER"
       label: "OAUTH_AUTO_SIGN_IN_WITH_PROVIDER"
