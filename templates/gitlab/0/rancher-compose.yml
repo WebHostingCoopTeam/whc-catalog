@@ -28,19 +28,19 @@
       label: "HTTP port:"
       required: true
       default: 2080
-      type: "string"
+      type: "integer"
     - variable: "https_port"
       description: "HTTPS port to expose on host. Will be used to bind TCP"
       label: "HTTPS port:"
       required: true
       default: 2443
-      type: "string"
+      type: "integer"
     - variable: "ssh_port"
       description: "SSH port to expose on host. Will be used to bind TCP"
       label: "SSH port:"
       required: true
       default: 2222
-      type: "string"
+      type: "integer"
     - variable: "VOLUME_DRIVER"
       description: "The VOLUME driver to associate with this server (convoy-nfs,convoy-efs,convoy-ebs)"
       label: "VOLUME Driver"
@@ -83,7 +83,7 @@
       label: "DB_PORT"
       required: false
       default: "5432"
-      type: "string"
+      type: "integer"
     - variable: "DB_USER"
       description: "DB_USER"
       label: "DB_USER"
