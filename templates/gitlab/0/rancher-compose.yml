@@ -89,8 +89,8 @@
       description: "DB_PASS"
       label: "DB_PASS"
       required: false
-      default: "password"
-      type: "string"
+      default: ""
+      type: "password"
     - variable: "DB_NAME"
       description: "DB_NAME"
       label: "DB_NAME"
@@ -303,7 +303,7 @@
       description: "IMAP_PASS"
       label: "IMAP_PASS"
       required: false
-      default: "password"
+      default: ""
       type: "password"
     - variable: "IMAP_SSL"
       description: "IMAP_SSL"
