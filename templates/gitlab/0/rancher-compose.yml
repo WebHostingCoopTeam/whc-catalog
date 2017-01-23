@@ -1,6 +1,6 @@
 .catalog:
   name: Gitlab WHC
-  version: 0.2.1
+  version: 0.2.2
   description: |
     Gitlab CE is a free GitHub alternative with additions by the Webhosting.coop Team
   minimum_rancher_version: v0.56.0
@@ -142,6 +142,37 @@
       required: false
       default: ""
       type: "string"
+    - variable: "GITLAB_ROOT_EMAIL"
+      description: "GITLAB_ROOT_EMAIL"
+      label: "GITLAB_ROOT_EMAIL"
+      required: true
+      default: "gitlab@example.com"
+      type: "string"
+    - variable: "GITLAB_EMAIL"
+      description: "GITLAB_EMAIL"
+      label: "GITLAB_EMAIL"
+      required: true
+      default: "notifications@example.com"
+      type: "string"
+    - variable: "GITLAB_EMAIL_REPLY_TO"
+      description: "GITLAB_EMAIL_REPLY_TO"
+      label: "GITLAB_EMAIL_REPLY_TO"
+      required: true
+      default: "noreply@example.com"
+      type: "string"
+    - variable: "GITLAB_INCOMING_EMAIL_ADDRESS"
+      description: "GITLAB_INCOMING_EMAIL_ADDRESS"
+      label: "GITLAB_INCOMING_EMAIL_ADDRESS"
+      required: true
+      default: "reply@example.com"
+      type: "string"
+
+    - variable: "GITLAB_ROOT_PASSWORD"
+      description: "GITLAB_ROOT_PASSWORD"
+      label: "GITLAB_ROOT_PASSWORD"
+      required: true
+      default: ""
+      type: "password"
     - variable: "GITLAB_SECRETS_DB_KEY_BASE"
       description: "GITLAB_SECRETS_DB_KEY_BASE"
       label: "GITLAB_SECRETS_DB_KEY_BASE"
@@ -161,19 +192,6 @@
       default: ""
       type: "password"
 
-    - variable: "GITLAB_ROOT_PASSWORD"
-      description: "GITLAB_ROOT_PASSWORD"
-      label: "GITLAB_ROOT_PASSWORD"
-      required: true
-      default: ""
-      type: "password"
-    - variable: "GITLAB_ROOT_EMAIL"
-      description: "GITLAB_ROOT_EMAIL"
-      label: "GITLAB_ROOT_EMAIL"
-      required: true
-      default: "gitlab@example.com"
-      type: "string"
-
     - variable: "GITLAB_NOTIFY_ON_BROKEN_BUILDS"
       description: "GITLAB_NOTIFY_ON_BROKEN_BUILDS"
       label: "GITLAB_NOTIFY_ON_BROKEN_BUILDS"
@@ -187,24 +205,6 @@
       default: "false"
       type: "boolean"
 
-    - variable: "GITLAB_EMAIL"
-      description: "GITLAB_EMAIL"
-      label: "GITLAB_EMAIL"
-      required: true
-      default: "notifications@example.com"
-      type: "string"
-    - variable: "GITLAB_EMAIL_REPLY_TO"
-      description: "GITLAB_EMAIL_REPLY_TO"
-      label: "GITLAB_EMAIL_REPLY_TO"
-      required: true
-      default: "noreply@example.com"
-      type: "string"
-    - variable: "GITLAB_INCOMING_EMAIL_ADDRESS"
-      description: "GITLAB_INCOMING_EMAIL_ADDRESS"
-      label: "GITLAB_INCOMING_EMAIL_ADDRESS"
-      required: true
-      default: "reply@example.com"
-      type: "string"
 
     - variable: "GITLAB_BACKUP_SCHEDULE"
       description: "GITLAB_BACKUP_SCHEDULE"
