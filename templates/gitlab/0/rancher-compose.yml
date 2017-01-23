@@ -630,19 +630,6 @@
       default: ""
       type: "string"
 
-
-
-gitlab:
-  scale: 1
-  retain_ip: true
-  health_check:
-    port: 80
-    interval: 30000
-    unhealthy_threshold: 3
-    strategy: recreate
-    response_timeout: 2000
-    healthy_threshold: 2
-
 gitlab-data:
   scale: 1
   retain_ip: true
@@ -654,3 +641,14 @@ redis:
 postgresql:
   scale: 1
   retain_ip: true
+
+gitlab:
+  scale: 1
+  retain_ip: true
+  health_check:
+    port: 80
+    interval: 30000
+    unhealthy_threshold: 3
+    strategy: recreate
+    response_timeout: 2000
+    healthy_threshold: 2
