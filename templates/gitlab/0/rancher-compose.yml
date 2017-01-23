@@ -102,6 +102,12 @@
       required: true
       default: "gitlabhq_production"
       type: "string"
+    - variable: "DB_EXTENSION"
+      description: "DB_EXTENSION"
+      label: "DB_EXTENSION"
+      required: true
+      default: "pg_trgm"
+      type: "string"
 
     - variable: "REDIS_HOST"
       description: "REDIS_HOST"

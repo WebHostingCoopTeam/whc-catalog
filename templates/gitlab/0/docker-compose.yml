@@ -65,6 +65,7 @@ services:
     - DB_USER=${DB_USER}
     - DB_PASS=${DB_PASS}
     - DB_NAME=${DB_NAME}
+    - DB_EXTENSION=${DB_EXTENSION}
 
     - REDIS_HOST=${REDIS_HOST}
     - REDIS_PORT=${REDIS_PORT}
