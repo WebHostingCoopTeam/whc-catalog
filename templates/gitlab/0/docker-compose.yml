@@ -8,7 +8,6 @@ services:
       io.rancher.container.hostname_override: container_name
       io.rancher.container.pull_image: always
     command: /bin/true
-    hostname: gitdata
     image: busybox
     volume_driver: ${VOLUME_DRIVER}
     volumes:
