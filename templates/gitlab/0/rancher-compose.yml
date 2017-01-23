@@ -178,7 +178,7 @@
       label: "GITLAB_ROOT_EMAIL"
       required: false
       default: ""
-      type: "password"
+      type: "string"
 
     - variable: "GITLAB_NOTIFY_ON_BROKEN_BUILDS"
       description: "GITLAB_NOTIFY_ON_BROKEN_BUILDS"
