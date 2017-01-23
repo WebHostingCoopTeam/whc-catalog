@@ -1,6 +1,6 @@
 .catalog:
   name: Redmine
-  version: 0.1.6
+  version: 0.1.7
   description: |
     Redmine for email settings see the docs here http://www.redmine.org/projects/redmine/wiki/EmailConfiguration
   questions:
@@ -34,33 +34,117 @@
     required: true
     default: "convoy-nfs"
     type: "string"
+  - variable: "TZ"
+    description: "Timezone to use for the server"
+    label: "Timezone"
+    required: true
+    default: "America/Chicago"
+    type: "string"
+
   - variable: "DB_PASS"
     description: "Database Password to use for the server"
     label: "DB Password"
     required: true
     default: ""
     type: "password"
-  - variable: "SMTP_HOST"
-    description: "SMTP Host to use for the server"
-    label: "SMTP Host"
+  - variablle: "DB_ADAPTER"
+    description: "DB_ADAPTER"
+    label: "DB_ADAPTER"
     required: true
+    default: "postgresql"
+    type: "string"
+  - variablle: "DB_HOST"
+    description: "DB_HOST"
+    label: "DB_HOST"
+    required: true
+    default: "postgresql"
+    type: "string"
+  - variablle: "DB_PORT"
+    description: "DB_PORT"
+    label: "DB_PORT"
+    required: true
+    default: "5432"
+    type: "string"
+  - variablle: "DB_USER"
+    description: "DB_USER"
+    label: "DB_USER"
+    required: true
+    default: "redmine"
+    type: "string"
+  - variablle: "DB_NAME"
+    description: "DB_NAME"
+    label: "DB_NAME"
+    required: true
+    default: "redmine_production"
+    type: "string"
+
+  - variablle: "REDMINE_HTTPS"
+    description: "REDMINE_HTTPS"
+    label: "REDMINE_HTTPS"
+    required: false
+    default: "false"
+    type: "string"
+  - variablle: "REDMINE_RELATIVE_URL_ROOT"
+    description: "REDMINE_RELATIVE_URL_ROOT"
+    label: "REDMINE_RELATIVE_URL_ROOT"
+    required: false
     default: ""
     type: "string"
-  - variable: "SMTP_DOMAIN"
-    description: "SMTP DOMAIN to use for the server"
-    label: "SMTP DOMAIN"
-    required: true
+  - variablle: "REDMINE_SECRET_TOKEN"
+    description: "REDMINE_SECRET_TOKEN"
+    label: "REDMINE_SECRET_TOKEN"
+    required: false
     default: ""
     type: "string"
+
+  - variablle: "REDMINE_SUDO_MODE_ENABLED"
+    description: "REDMINE_SUDO_MODE_ENABLED"
+    label: "REDMINE_SUDO_MODE_ENABLED"
+    required: false
+    default: "false"
+    type: "string"
+  - variablle: "REDMINE_SUDO_MODE_TIMEOUT"
+    description: "REDMINE_SUDO_MODE_TIMEOUT"
+    label: "REDMINE_SUDO_MODE_TIMEOUT"
+    required: false
+    default: "15"
+    type: "string"
+
+  - variablle: "REDMINE_CONCURRENT_UPLOADS"
+    description: "REDMINE_CONCURRENT_UPLOADS"
+    label: "REDMINE_CONCURRENT_UPLOADS"
+    required: false
+    default: "2"
+    type: "string"
+
+  - variablle: "REDMINE_BACKUP_SCHEDULE"
+    description: "REDMINE_BACKUP_SCHEDULE"
+    label: "REDMINE_BACKUP_SCHEDULE"
+    required: false
+    default: ""
+    type: "string"
+  - variablle: "REDMINE_BACKUP_EXPIRY"
+    description: "REDMINE_BACKUP_EXPIRY"
+    label: "REDMINE_BACKUP_EXPIRY"
+    required: false
+    default: ""
+    type: "string"
+  - variablle: "REDMINE_BACKUP_TIME"
+    description: "REDMINE_BACKUP_TIME"
+    label: "REDMINE_BACKUP_TIME"
+    required: false
+    default: ""
+    type: "string"
+
   - variable: "SMTP_ENABLED"
     description: "SMTP ENABLED"
     label: "SMTP ENABLED"
     required: true
     default: ""
     type: "boolean"
-  - variable: "SMTP_USER"
-    description: "SMTP User to use for the server"
-    label: "SMTP User"
+  - variable: "SMTP_HOST"
+    description: "SMTP Host to use for the server"
+    label: "SMTP Host"
     required: true
     default: ""
     type: "string"
@@ -70,15 +154,82 @@
     required: true
     default: ":login"
     type: "string"
-  - variable: "SMTP_PASS"
-    description: "SMTP Password to use for the server"
-    label: "SMTP Password"
-    required: true
-    default: ""
-    type: "password"
-  - variable: "TZ"
-    description: "Timezone to use for the server"
-    label: "Timezone"
-    required: true
-    default: "America/Chicago"
+  - variablle: "SMTP_METHOD"
+    description: "SMTP_METHOD"
+    label: "SMTP_METHOD"
+    required: false
+    default: "smtp"
+    type: "string"
+  - variablle: "SMTP_DOMAIN"
+    description: "SMTP_DOMAIN"
+    label: "SMTP_DOMAIN"
+    required: false
+    default: "www.example.com"
+    type: "string"
+  - variablle: "SMTP_PORT"
+    description: "SMTP_PORT"
+    label: "SMTP_PORT"
+    required: false
+    default: "587"
+    type: "string"
+  - variablle: "SMTP_USER"
+    description: "SMTP_USER"
+    label: "SMTP_USER"
+    required: false
+    default: "mailer@example.com"
+    type: "string"
+  - variablle: "SMTP_PASS"
+    description: "SMTP_PASS"
+    label: "SMTP_PASS"
+    required:
+    default: "password"
+    type: "string"
+  - variablle: "SMTP_STARTTLS"
+    description: "SMTP_STARTTLS"
+    label: "SMTP_STARTTLS"
+    required: false
+    default: "true"
+    type: "boolean"
+
+  - variablle: "IMAP_ENABLED"
+    description: "IMAP_ENABLED"
+    label: "IMAP_ENABLED"
+    required: false
+    default: "false"
+    type: "string"
+  - variablle: "IMAP_HOST"
+    description: "IMAP_HOST"
+    label: "IMAP_HOST"
+    required: false
+    default: "imap.gmail.com"
+    type: "string"
+  - variablle: "IMAP_PORT"
+    description: "IMAP_PORT"
+    label: "IMAP_PORT"
+    required: false
+    default: "993"
+    type: "string"
+  - variablle: "IMAP_USER"
+    description: "IMAP_USER"
+    label: "IMAP_USER"
+    required: false
+    default: "mailer@example.com"
+    type: "string"
+  - variablle: "IMAP_PASS"
+    description: "IMAP_PASS"
+    label: "IMAP_PASS"
+    required: false
+    default: "password"
+    type: "string"
+  - variablle: "IMAP_SSL"
+    description: "IMAP_SSL"
+    label: "IMAP_SSL"
+    required: false
+    default: "true"
+    type: "string"
+  - variablle: "IMAP_INTERVAL"
+    description: "IMAP_INTERVAL"
+    label: "IMAP_INTERVAL"
+    required: false
+    default: "30"
     type: "string"
