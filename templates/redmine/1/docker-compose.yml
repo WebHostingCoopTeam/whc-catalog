@@ -1,14 +1,3 @@
-
-redmine:
-  image: sameersbn/redmine:latest
-  environment:
-
-  ports:
-    - "${PORT}:80"
-  volumes_from:
-    - redmine-datavolume
-
-
 version: '2'
 
 services:
