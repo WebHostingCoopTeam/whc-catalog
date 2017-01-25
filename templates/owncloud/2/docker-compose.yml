@@ -11,7 +11,11 @@ owncloud:
     traefik.enable: true
     traefik.acme: true
     traefik.alias: ${OWNCLOUD_HOST}
+    traefik.domain: ${OWNCLOUD_DOMAIN}
     traefik.port: ${PORT}
+    traefik.frontend.rule: Host:${OWNCLOUD_HOST}
+    traefik.frontend.passHostHeader: 'true'
+traefik.frontend.entryPoints: https
   volumes_from:
     - owncloud-datavolume
 
