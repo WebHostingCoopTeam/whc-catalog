@@ -1,0 +1,40 @@
+owncloud:
+  image: owncloud
+  ports:
+   - "${PORT}:80"
+  links:
+    - db
+  labels:
+    io.rancher.container.hostname_override: container_name
+    io.rancher.sidekicks: db,owncloud-datavolume
+    io.rancher.container.pull_image: always
+    traefik.enable: true
+    traefik.domain: ${OWNCLOUD_HOST}
+    traefik.port: ${PORT}
+  volumes_from:
+    - owncloud-datavolume
+
+db:
+  image: postgres:9.6-alpine
+  restart: always
+  environment:
+    - POSTGRES_USER=owncloud
+    - POSTGRES_DB=owncloud
+    - POSTGRES_PASSWORD=${DB_PASS}
+    - PGDATA='/var/lib/postgresql/data/pgdata'
+  volumes_from:
+    - owncloud-datavolume
+  labels:
+    io.rancher.sidekicks: owncloud-datavolume
+    io.rancher.container.pull_image: always
+
+owncloud-datavolume:
+  labels:
+    io.rancher.container.start_once: true
+    io.rancher.container.pull_image: always
+  volume_driver: ${VOLUME_DRIVER}
+  volumes:
+    - ${VOLUME_NAME}:/var/www/html
+    - ${DB_VOLUME_NAME}:/var/lib/postgresql/data
+  image: busybox
+  command: /bin/true
