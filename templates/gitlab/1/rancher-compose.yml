@@ -1,17 +1,23 @@
 .catalog:
   name: Gitlab WHC
-  version: 0.2.6
+  version: 0.2.7
   description: |
     Gitlab CE is a free GitHub alternative with additions by the Webhosting.coop Team
   minimum_rancher_version: v0.56.0
   maintainer: "Josh Cox <josh@webhosting.coop>"
   uuid: gitlab-whc-0
   questions:
-    - variable: "gitlab_hostname"
+    - variable: "gitlab_host"
       description: "Gitlab hostname (without uri scheme http:// or https://)"
       label: "Hostname:"
       required: true
-      default: "git.example.com"
+      default: "gitlab"
+      type: "string"
+    - variable: "gitlab_domain"
+      description: "Gitlab hostname (without uri scheme http:// or https://)"
+      label: "Hostname:"
+      required: true
+      default: "example.com"
       type: "string"
     - variable: "gitlab_omnipus_prefix"
       label: "Gitlab external_url prefix:"
