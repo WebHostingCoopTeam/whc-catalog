@@ -1,6 +1,6 @@
 .catalog:
   name: "Owncloud"
-  version: "0.1.8-postgres"
+  version: "0.1.9-postgres"
   description: "Library service powered by Owncloud"
   uuid: owncloud-0
   minimum_rancher_version: v0.51.0
@@ -41,9 +41,9 @@
         required: true
         default: "OWNCLOUD_DB"
         type: "string"
-      - variable: "DB_PASSWD"
+      - variable: "DB_PASS"
         description: "DB password to use for the server"
-        label: "DB_PASSWD"
+        label: "DB_PASS"
         required: true
         default: ""
         type: "password"
