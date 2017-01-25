@@ -32,8 +32,10 @@ services:
       io.rancher.container.hostname_override: container_name
       io.rancher.container.pull_image: always
       traefik.enable: true
-      traefik.domain: ${REDMINE_HOST}
-      traefik.port: ${PORT}
+      traefik.alias: ${REDMINE_HOST}
+      traefik.domain: ${REDMINE_DOMAIN}
+      traefik.acme: true
+      traefik.port: 80
     environment:
 
     - TZ=${TZ}
