@@ -1,6 +1,6 @@
 .catalog:
   name: "Owncloud"
-  version: "0.1.3-postgres"
+  version: "0.1.4-postgres"
   description: "Library service powered by Owncloud"
   uuid: owncloud-0
   minimum_rancher_version: v0.51.0
