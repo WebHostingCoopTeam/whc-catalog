@@ -1,6 +1,6 @@
 .catalog:
   name: Redmine
-  version: 0.1.7
+  version: 0.1.8
   description: |
     Redmine for email settings see the docs here http://www.redmine.org/projects/redmine/wiki/EmailConfiguration
   questions:
@@ -93,9 +93,9 @@
   - variablle: "REDMINE_SECRET_TOKEN"
     description: "REDMINE_SECRET_TOKEN"
     label: "REDMINE_SECRET_TOKEN"
-    required: false
+    required: true
     default: ""
-    type: "string"
+    type: "password"
 
   - variablle: "REDMINE_SUDO_MODE_ENABLED"
     description: "REDMINE_SUDO_MODE_ENABLED"
