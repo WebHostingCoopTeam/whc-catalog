@@ -1,6 +1,6 @@
 .catalog:
   name: "Mattermost"
-  version: "v0.1-educaas"
+  version: "0.1.0"
   description: "Mattermost"
   uuid: mattermost-0
   minimum_rancher_version: v0.51.0
@@ -15,7 +15,7 @@
         description: "main PORT to associate with this server"
         label: "PORT"
         required: true
-        default: "2302"
+        default: "19080"
         type: "string"
       - variable: "VOLUME_DRIVER"
         description: "The VOLUME driver to associate with this server (convoy-nfs,convoy-efs,convoy-ebs)"
