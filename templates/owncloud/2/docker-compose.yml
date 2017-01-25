@@ -12,7 +12,7 @@ owncloud:
     traefik.acme: true
     traefik.alias: ${OWNCLOUD_HOST}
     traefik.domain: ${OWNCLOUD_DOMAIN}
-    traefik.port: ${PORT}
+    traefik.port: 80
   volumes_from:
     - owncloud-datavolume
 
