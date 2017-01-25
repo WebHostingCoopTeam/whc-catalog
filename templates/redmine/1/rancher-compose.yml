@@ -64,7 +64,7 @@
     label: "DB_PORT"
     required: true
     default: "5432"
-    type: "string"
+    type: "int"
   - variablle: "DB_USER"
     description: "DB_USER"
     label: "DB_USER"
@@ -83,7 +83,7 @@
     label: "REDMINE_HTTPS"
     required: false
     default: "false"
-    type: "string"
+    type: "boolean"
   - variablle: "REDMINE_RELATIVE_URL_ROOT"
     description: "REDMINE_RELATIVE_URL_ROOT"
     label: "REDMINE_RELATIVE_URL_ROOT"
@@ -102,20 +102,20 @@
     label: "REDMINE_SUDO_MODE_ENABLED"
     required: false
     default: "false"
-    type: "string"
+    type: "boolean"
   - variablle: "REDMINE_SUDO_MODE_TIMEOUT"
     description: "REDMINE_SUDO_MODE_TIMEOUT"
     label: "REDMINE_SUDO_MODE_TIMEOUT"
     required: false
     default: "15"
-    type: "string"
+    type: "int"
 
   - variablle: "REDMINE_CONCURRENT_UPLOADS"
     description: "REDMINE_CONCURRENT_UPLOADS"
     label: "REDMINE_CONCURRENT_UPLOADS"
     required: false
     default: "2"
-    type: "string"
+    type: "int"
 
   - variablle: "REDMINE_BACKUP_SCHEDULE"
     description: "REDMINE_BACKUP_SCHEDULE"
@@ -171,7 +171,7 @@
     label: "SMTP_PORT"
     required: false
     default: "587"
-    type: "string"
+    type: "int"
   - variablle: "SMTP_USER"
     description: "SMTP_USER"
     label: "SMTP_USER"
@@ -181,9 +181,9 @@
   - variablle: "SMTP_PASS"
     description: "SMTP_PASS"
     label: "SMTP_PASS"
-    required:
-    default: "password"
-    type: "string"
+    required: false
+    default: ""
+    type: "password"
   - variablle: "SMTP_STARTTLS"
     description: "SMTP_STARTTLS"
     label: "SMTP_STARTTLS"
@@ -196,7 +196,7 @@
     label: "IMAP_ENABLED"
     required: false
     default: "false"
-    type: "string"
+    type: "boolean"
   - variablle: "IMAP_HOST"
     description: "IMAP_HOST"
     label: "IMAP_HOST"
@@ -208,7 +208,7 @@
     label: "IMAP_PORT"
     required: false
     default: "993"
-    type: "string"
+    type: "int"
   - variablle: "IMAP_USER"
     description: "IMAP_USER"
     label: "IMAP_USER"
@@ -232,4 +232,4 @@
     label: "IMAP_INTERVAL"
     required: false
     default: "30"
-    type: "string"
+    type: "int"
