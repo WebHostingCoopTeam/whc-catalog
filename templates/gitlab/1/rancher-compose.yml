@@ -241,7 +241,7 @@
       description: "SMTP_DOMAIN"
       label: "SMTP_DOMAIN"
       required: false
-      default: "www.example.com"
+      default: "example.com"
       type: "string"
     - variable: "SMTP_HOST"
       description: "SMTP_HOST"
