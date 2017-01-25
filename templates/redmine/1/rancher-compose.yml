@@ -219,8 +219,8 @@
     description: "IMAP_PASS"
     label: "IMAP_PASS"
     required: false
-    default: "password"
-    type: "string"
+    default: ""
+    type: "password"
   - variablle: "IMAP_SSL"
     description: "IMAP_SSL"
     label: "IMAP_SSL"
