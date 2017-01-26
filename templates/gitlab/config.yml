@@ -1,5 +1,5 @@
-name: Gitlab WHC
+name: Gitlab WHC - MariaDB
 description: |
   Gitlab CE is a free GitHub alternative
-version: 0.2.10
+version: 0.2.11
 category: Versioning

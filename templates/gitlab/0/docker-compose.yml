@@ -12,7 +12,7 @@ services:
     volume_driver: ${VOLUME_DRIVER}
     volumes:
     - ${VOLUME_NAME}:/home/git/data:Z
-    - ${DB_VOLUME_NAME}:/var/lib/postgresql:Z
+    - ${DB_VOLUME_NAME}:/var/lib/postgresql/data:Z
     - ${REDIS_VOLUME_NAME}:/var/lib/redis:Z
 
   redis:
@@ -25,17 +25,17 @@ services:
     volumes_from:
     - gitlab-data
 
-  postgresql:
+  db:
     restart: always
-    image: sameersbn/postgresql:9.6-1
+    image: mariadb
     volumes_from:
     - gitlab-data
     labels:
       io.rancher.sidekicks: gitlab-data
     environment:
-    - DB_USER=${DB_USER}
-    - DB_PASS=${DB_PASS}
-    - DB_NAME=${DB_NAME}
+    - MYSQL_USER=${DB_USER}
+    - MYSQL_PASSWORD=${DB_PASS}
+    - MYSQL_DATABASE=${DB_NAME}
     - DB_EXTENSION=${DB_EXTENSION}
 
   gitlab:
@@ -45,17 +45,17 @@ services:
     - redis
     - postgresql
     ports:
-    - "${http_port}:80"
-    - "${https_port}:443"
     - "${ssh_port}:22"
     volumes_from:
     - gitlab-data
     labels:
-      io.rancher.sidekicks: gitlab-data,redis,postgresql
+      io.rancher.sidekicks: gitlab-data,redis,db
       traefik.enable: true
-      traefik.domain: ${gitlab_hostname}
-      traefik.port: ${http_port}
-    hostname: ${gitlab_hostname}
+      traefik.acme: true
+      traefik.alias: ${gitlab_host}
+      traefik.domain: ${gitlab_domain}
+      traefik.port: 80
+    hostname: ${gitlab_host}.${gitlab_domain}
     environment:
     - DEBUG=${DEBUG}
 
@@ -76,8 +76,8 @@ services:
     - GITLAB_HTTPS=${GITLAB_HTTPS}
     - SSL_SELF_SIGNED=${SSL_SELF_SIGNED}
 
-    - GITLAB_HOST=${gitlab_hostname}
-    - GITLAB_PORT=${http_port}
+    - GITLAB_HOST=${gitlab_host}.${gitlab_domain}
+    - GITLAB_PORT=80
     - GITLAB_SSH_PORT=${ssh_port}
     - GITLAB_RELATIVE_URL_ROOT=${GITLAB_RELATIVE_URL_ROOT}
     - GITLAB_SECRETS_DB_KEY_BASE=${GITLAB_SECRETS_DB_KEY_BASE}
