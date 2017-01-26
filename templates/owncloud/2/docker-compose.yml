@@ -23,7 +23,7 @@ db:
     - POSTGRES_USER=owncloud
     - POSTGRES_DB=owncloud
     - POSTGRES_PASSWORD=${DB_PASS}
-    - PGDATA='/var/lib/postgresql/data/pgdata'
+    - PGDATA='/var/lib/postgresql/data'
   volumes_from:
     - owncloud-datavolume
   labels:
