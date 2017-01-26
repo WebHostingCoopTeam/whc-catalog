@@ -4,6 +4,7 @@ owncloud:
    - "${PORT}:80"
   links:
     - db
+    - memcached
   labels:
     io.rancher.container.hostname_override: container_name
     io.rancher.sidekicks: db,owncloud-datavolume
@@ -29,6 +30,11 @@ db:
   labels:
     io.rancher.sidekicks: owncloud-datavolume
     io.rancher.container.pull_image: always
+
+memcached:
+  image: memcached:alpine
+  restart: always
+  cmd: "memcached -m ${MEMCACHED_MEM}"
 
 owncloud-datavolume:
   labels:

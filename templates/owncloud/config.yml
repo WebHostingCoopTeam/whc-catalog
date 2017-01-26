@@ -1,5 +1,5 @@
 name: Owncloud
 description: |
   Library service powered by Owncloud
-version: 0.1.10-postgres
+version: 0.1.11-postgres
 category: Repository
