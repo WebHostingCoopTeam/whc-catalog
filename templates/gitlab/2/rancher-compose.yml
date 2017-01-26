@@ -1,6 +1,6 @@
 .catalog:
   name: Gitlab WHC
-  version: 0.2.8
+  version: 0.2.9
   description: |
     Gitlab CE is a free GitHub alternative with additions by the Webhosting.coop Team
   minimum_rancher_version: v0.56.0
@@ -29,18 +29,6 @@
       options:
         - 'https://'
         - 'http://'
-    - variable: "http_port"
-      description: "HTTP port to expose on host. Will be used to bind TCP"
-      label: "HTTP port:"
-      required: true
-      default: 2080
-      type: "int"
-    - variable: "https_port"
-      description: "HTTPS port to expose on host. Will be used to bind TCP"
-      label: "HTTPS port:"
-      required: true
-      default: 2443
-      type: "int"
     - variable: "ssh_port"
       description: "SSH port to expose on host. Will be used to bind TCP"
       label: "SSH port:"

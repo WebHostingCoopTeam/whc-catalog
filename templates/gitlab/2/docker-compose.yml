@@ -49,16 +49,11 @@ services:
     - redis
     - postgresql
     ports:
-    - "${http_port}:80"
-    - "${https_port}:443"
     - "${ssh_port}:22"
     volumes_from:
     - gitlab-data
     labels:
       io.rancher.sidekicks: gitlab-data,redis,postgresql
-      traefik.enable: true
-      traefik.domain: ${gitlab_host}.${gitlab_domain}
-      traefik.port: ${http_port}
       traefik.enable: true
       traefik.acme: true
       traefik.alias: ${gitlab_host}
