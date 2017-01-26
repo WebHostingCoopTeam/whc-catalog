@@ -35,8 +35,8 @@ services:
     environment:
     - MYSQL_USER=${DB_USER}
     - MYSQL_PASSWORD=${DB_PASS}
+    - MYSQL_ROOT_PASSWORD=${DB_PASS}
     - MYSQL_DATABASE=${DB_NAME}
-    - DB_EXTENSION=${DB_EXTENSION}
 
   gitlab:
     restart: always
