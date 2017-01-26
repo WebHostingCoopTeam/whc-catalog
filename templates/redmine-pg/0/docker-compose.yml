@@ -6,28 +6,29 @@ services:
     volume_driver: ${VOLUME_DRIVER}
     volumes:
       - ${VOLUME_NAME}:/home/redmine/data
-      - ${PG_VOLUME_NAME}:/var/lib/mysql
+      - ${PG_VOLUME_NAME}:/var/lib/postgresql/data
     labels:
       io.rancher.container.start_once: true
     entrypoint: ["/bin/true"]
 
-  db:
+  postgresql:
     restart: always
-    image: mariadb
+    image: postgres:9.6-alpine
     volumes_from:
     - redmine-datavolume
     labels:
       io.rancher.sidekicks: redmine-datavolume
       io.rancher.container.pull_image: always
     environment:
-    - MYSQL_USER=${DB_USER}
-    - MYSQL_PASSWORD=${DB_PASS}
-    - MYSQL_DB=${DB_NAME}
+    - POSTGRES_USER=${DB_USER}
+    - POSTGRES_PASSWORD=${DB_PASS}
+    - POSTGRES_DB=${DB_NAME}
+    - PGDATA='/var/lib/postgresql/data'
 
   redmine:
     image: sameersbn/redmine:3.3.2
     labels:
-      io.rancher.sidekicks: db,redmine-datavolume
+      io.rancher.sidekicks: postgresql,redmine-datavolume
       io.rancher.container.hostname_override: container_name
       io.rancher.container.pull_image: always
       traefik.enable: true

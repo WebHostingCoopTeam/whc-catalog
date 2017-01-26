@@ -1,5 +1,5 @@
-name: Redmine
+name: Redmine MariaDB
 description: |
-  Redmine Project Manager
-version: 0.1.11
+  Redmine Project Manager using MariaDB
+version: 0.1.12
 category: Project Management

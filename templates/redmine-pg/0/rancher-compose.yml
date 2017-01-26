@@ -1,6 +1,6 @@
 .catalog:
   name: Redmine
-  version: 0.1.12
+  version: 0.1.11
   description: |
     Redmine for email settings see the docs here http://www.redmine.org/projects/redmine/wiki/EmailConfiguration
   questions:
@@ -57,19 +57,19 @@
     description: "DB_ADAPTER"
     label: "DB_ADAPTER"
     required: true
-    default: "mysql"
+    default: "postgresql"
     type: "string"
   - variable: "DB_HOST"
     description: "DB_HOST"
     label: "DB_HOST"
     required: true
-    default: "db"
+    default: "postgresql"
     type: "string"
   - variable: "DB_PORT"
     description: "DB_PORT"
     label: "DB_PORT"
     required: true
-    default: "3306"
+    default: "5432"
     type: "int"
   - variable: "DB_USER"
     description: "DB_USER"

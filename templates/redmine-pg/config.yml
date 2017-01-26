@@ -1,0 +1,5 @@
+name: Redmine Postgres
+description: |
+  Redmine Project Manager using Postgresql
+version: 0.1.11
+category: Project Management
