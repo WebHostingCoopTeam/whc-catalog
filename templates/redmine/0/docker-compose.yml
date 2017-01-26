@@ -6,7 +6,7 @@ services:
     volume_driver: ${VOLUME_DRIVER}
     volumes:
       - ${VOLUME_NAME}:/home/redmine/data
-      - ${PG_VOLUME_NAME}:/var/lib/mysql
+      - ${DB_VOLUME_NAME}:/var/lib/mysql
     labels:
       io.rancher.container.start_once: true
     entrypoint: ["/bin/true"]
