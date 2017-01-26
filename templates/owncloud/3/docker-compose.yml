@@ -4,7 +4,6 @@ owncloud:
    - "${PORT}:80"
   links:
     - db
-    - memcached
   labels:
     io.rancher.container.hostname_override: container_name
     io.rancher.sidekicks: db,owncloud-datavolume
