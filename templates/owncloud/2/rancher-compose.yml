@@ -9,7 +9,7 @@
         description: "Hostname to use for the OWNCLOUD server"
         label: "OWNCLOUD Hostname"
         required: true
-        default: "www"
+        default: "owncloud"
         type: "string"
       - variable: "OWNCLOUD_DOMAIN"
         description: "Domain to use for the OWNCLOUD server"
