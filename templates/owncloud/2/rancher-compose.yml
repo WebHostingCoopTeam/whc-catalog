@@ -1,6 +1,6 @@
 .catalog:
   name: "Owncloud"
-  version: "0.1.11-postgres"
+  version: "0.1.12-postgres"
   description: "Library service powered by Owncloud"
   uuid: owncloud-0
   minimum_rancher_version: v0.51.0
@@ -21,7 +21,7 @@
         description: "Megabytes of RAM to dedicate to memcached"
         label: "MEMCACHE"
         required: true
-        default: "64"
+        default: "32"
         type: "int"
       - variable: "PORT"
         description: "main PORT to associate with this server"

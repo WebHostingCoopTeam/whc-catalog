@@ -34,7 +34,7 @@ db:
 memcached:
   image: memcached:alpine
   restart: always
-  cmd: "memcached -m ${MEMCACHED_MEM}"
+  command: "memcached -m ${MEMCACHED_MEM}"
 
 owncloud-datavolume:
   labels:
