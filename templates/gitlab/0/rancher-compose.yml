@@ -1,6 +1,6 @@
 .catalog:
   name: Gitlab WHC
-  version: 0.2.12
+  version: 0.2.13
   description: |
     Gitlab CE is a free GitHub alternative with additions by the Webhosting.coop Team
   minimum_rancher_version: v0.56.0
@@ -64,8 +64,11 @@
       description: "DB_ADAPTER"
       label: "DB_ADAPTER"
       required: true
-      default: "mysql"
-      type: "string"
+      default: "mysql2"
+      type: enum
+      options: # List of options if using type of `enum`
+        - mysql2
+        - postgres
     - variable: "DB_HOST"
       description: "DB_HOST"
       label: "DB_HOST"
