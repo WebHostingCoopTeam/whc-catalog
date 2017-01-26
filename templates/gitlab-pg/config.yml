@@ -1,0 +1,5 @@
+name: Gitlab WHC - Postgres
+description: |
+  Gitlab CE is a free GitHub alternative using postgres
+version: 0.2.10
+category: Versioning
