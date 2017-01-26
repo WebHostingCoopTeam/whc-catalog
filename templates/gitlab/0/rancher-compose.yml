@@ -76,7 +76,7 @@
       description: "DB_PORT"
       label: "DB_PORT"
       required: true
-      default: "5432"
+      default: "3306"
       type: "int"
     - variable: "DB_USER"
       description: "DB_USER"
