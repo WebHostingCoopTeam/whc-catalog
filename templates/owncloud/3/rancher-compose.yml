@@ -1,6 +1,6 @@
 .catalog:
   name: "Owncloud"
-  version: "0.1.14-mysql"
+  version: "0.1.15-mysql"
   description: "Library service powered by Owncloud"
   uuid: owncloud-0
   minimum_rancher_version: v0.51.0

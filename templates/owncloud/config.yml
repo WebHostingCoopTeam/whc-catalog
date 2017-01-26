@@ -1,5 +1,5 @@
 name: Owncloud
 description: |
   Library service powered by Owncloud
-version: 0.1.14-mysql
+version: 0.1.15-mysql
 category: Repository
