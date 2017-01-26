@@ -23,6 +23,7 @@ db:
     - MYSQL_USER=owncloud
     - MYSQL_DATABASE=owncloud
     - MYSQL_PASSWORD=${DB_PASS}
+    - MYSQL_ROOT_PASSWORD=${DB_PASS}
   volumes_from:
     - owncloud-datavolume
   labels:
