@@ -142,30 +142,6 @@
       required: false
       default: ""
       type: "string"
-    - variable: "GITLAB_ROOT_EMAIL"
-      description: "GITLAB_ROOT_EMAIL"
-      label: "GITLAB_ROOT_EMAIL"
-      required: true
-      default: "gitlab@example.com"
-      type: "string"
-    - variable: "GITLAB_EMAIL"
-      description: "GITLAB_EMAIL"
-      label: "GITLAB_EMAIL"
-      required: true
-      default: "notifications@example.com"
-      type: "string"
-    - variable: "GITLAB_EMAIL_REPLY_TO"
-      description: "GITLAB_EMAIL_REPLY_TO"
-      label: "GITLAB_EMAIL_REPLY_TO"
-      required: true
-      default: "noreply@example.com"
-      type: "string"
-    - variable: "GITLAB_INCOMING_EMAIL_ADDRESS"
-      description: "GITLAB_INCOMING_EMAIL_ADDRESS"
-      label: "GITLAB_INCOMING_EMAIL_ADDRESS"
-      required: true
-      default: "reply@example.com"
-      type: "string"
 
     - variable: "GITLAB_ROOT_PASSWORD"
       description: "GITLAB_ROOT_PASSWORD"
@@ -217,6 +193,31 @@
       label: "GITLAB_BACKUP_TIME"
       required: true
       default: "01:00"
+      type: "string"
+
+    - variable: "GITLAB_ROOT_EMAIL"
+      description: "GITLAB_ROOT_EMAIL"
+      label: "GITLAB_ROOT_EMAIL"
+      required: true
+      default: "gitlab@example.com"
+      type: "string"
+    - variable: "GITLAB_EMAIL"
+      description: "GITLAB_EMAIL"
+      label: "GITLAB_EMAIL"
+      required: true
+      default: "notifications@example.com"
+      type: "string"
+    - variable: "GITLAB_EMAIL_REPLY_TO"
+      description: "GITLAB_EMAIL_REPLY_TO"
+      label: "GITLAB_EMAIL_REPLY_TO"
+      required: true
+      default: "noreply@example.com"
+      type: "string"
+    - variable: "GITLAB_INCOMING_EMAIL_ADDRESS"
+      description: "GITLAB_INCOMING_EMAIL_ADDRESS"
+      label: "GITLAB_INCOMING_EMAIL_ADDRESS"
+      required: true
+      default: "reply@example.com"
       type: "string"
 
     - variable: "SMTP_ENABLED"

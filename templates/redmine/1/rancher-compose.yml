@@ -2,8 +2,8 @@
   name: Redmine
   version: 0.1.12
   description: |
-    Redmine for email settings see the docs here http://www.redmine.org/projects/redmine/wiki/EmailConfiguration
   questions:
+    Redmine for email settings see the docs here http://www.redmine.org/projects/redmine/wiki/EmailConfiguration
   - variable: "REDMINE_HOST"
     description: "Hostname to use for the redmine server"
     label: "REDMINE Hostname"
