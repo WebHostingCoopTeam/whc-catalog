@@ -14,8 +14,8 @@ services:
   db:
     restart: always
     image: mariadb
-    - redmine-datavolume
     volumes_from:
+    - redmine-datavolume
     labels:
       io.rancher.sidekicks: redmine-datavolume
       io.rancher.container.pull_image: always
