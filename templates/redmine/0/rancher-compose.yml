@@ -1,6 +1,6 @@
 .catalog:
   name: Redmine
-  version: 0.1.9
+  version: 0.2.0
   description: |
     Redmine for email settings see the docs here http://www.redmine.org/projects/redmine/wiki/EmailConfiguration
   questions:
@@ -242,3 +242,14 @@
     required: false
     default: "30"
     type: "int"
+
+redmine:
+  scale: 1
+  retain_ip: true
+  health_check:
+    port: 80
+    interval: 30000
+    unhealthy_threshold: 3
+    strategy: recreate
+    response_timeout: 2000
+    healthy_threshold: 2
