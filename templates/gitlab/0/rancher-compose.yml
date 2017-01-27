@@ -652,11 +652,11 @@ gitlab:
     request_line: GET / HTTP/1.0
     # Interval is measured in milliseconds
     interval: 60000
-    initializing_timeout: 60000
-    unhealthy_threshold: 3
+    initializing_timeout: 360000
+    unhealthy_threshold: 9
     # Strategy for what to do when unhealthy
     # In this service, Rancher will recreate any unhealthy containers
     strategy: recreate
-    healthy_threshold: 4
+    healthy_threshold: 2
     # Response timeout is measured in milliseconds
     response_timeout: 4000
