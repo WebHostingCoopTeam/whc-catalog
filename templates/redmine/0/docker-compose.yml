@@ -23,7 +23,7 @@ services:
     - MYSQL_USER=${DB_USER}
     - MYSQL_PASSWORD=${DB_PASS}
     - MYSQL_ROOT_PASSWORD=${DB_PASS}
-    - MYSQL_DATABASEB=${DB_NAME}
+    - MYSQL_DATABASE=${DB_NAME}
 
   redmine:
     image: sameersbn/redmine:3.3.2
