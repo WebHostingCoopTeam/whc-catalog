@@ -14,8 +14,8 @@ services:
   db:
     restart: always
     image: mariadb
-    volumes_from:
     - redmine-datavolume
+    volumes_from:
     labels:
       io.rancher.sidekicks: redmine-datavolume
       io.rancher.container.pull_image: always
@@ -23,7 +23,7 @@ services:
     - MYSQL_USER=${DB_USER}
     - MYSQL_PASSWORD=${DB_PASS}
     - MYSQL_ROOT_PASSWORD=${DB_PASS}
-    - MYSQL_DB=${DB_NAME}
+    - MYSQL_DATABASEB=${DB_NAME}
 
   redmine:
     image: sameersbn/redmine:3.3.2
