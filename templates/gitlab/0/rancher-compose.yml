@@ -1,6 +1,6 @@
 .catalog:
   name: Gitlab WHC
-  version: 0.2.13
+  version: 0.2.14
   description: |
     Gitlab CE is a free GitHub alternative with additions by the Webhosting.coop Team
   minimum_rancher_version: v0.56.0
@@ -644,9 +644,19 @@ gitlab:
   scale: 1
   retain_ip: true
   health_check:
+    # Which port to perform the check against
     port: 80
-    interval: 30000
+    # For TCP, request_line needs to be '' or not shown
+    # TCP Example: 
+    # request_line: ''
+    request_line: GET / HTTP/1.0
+    # Interval is measured in milliseconds
+    interval: 60000
+    initializing_timeout: 60000
     unhealthy_threshold: 3
+    # Strategy for what to do when unhealthy
+    # In this service, Rancher will recreate any unhealthy containers
     strategy: recreate
-    response_timeout: 2000
-    healthy_threshold: 2
+    healthy_threshold: 4
+    # Response timeout is measured in milliseconds
+    response_timeout: 4000
