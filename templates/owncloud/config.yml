@@ -1,5 +1,5 @@
 name: Owncloud
 description: |
   Owncloud cloudy cloud cloudington for cumulonimbus
-version: 0.1.16-mysql
+version: 0.1.17-mysql-fpm
 category: Repository
