@@ -3,7 +3,7 @@ owncloud:
   ports:
    - "${PORT}:80"
   links:
-    - db
+    - db:db
   labels:
     io.rancher.container.hostname_override: container_name
     io.rancher.sidekicks: db,owncloud-datavolume
