@@ -1,6 +1,6 @@
 .catalog:
   name: Redmine
-  version: 0.2.0
+  version: 0.2.1
   description: |
     Redmine for email settings see the docs here http://www.redmine.org/projects/redmine/wiki/EmailConfiguration
   questions:
