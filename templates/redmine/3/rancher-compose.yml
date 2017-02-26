@@ -1,0 +1,275 @@
+version: '2'
+catalog:
+  name: Redmine
+  version: 0.2.4
+  upgrade_from: 0.2.3
+  description: |
+    Redmine for email settings see the docs here http://www.redmine.org/projects/redmine/wiki/EmailConfiguration
+  questions:
+  - variable: "REDMINE_HOST"
+    description: "Hostname to use for the redmine server"
+    label: "REDMINE Hostname"
+    required: true
+    default: "redmine"
+    type: "string"
+  - variable: "REDMINE_DOMAIN"
+    description: "Domain to use for the redmine server"
+    label: "REDMINE Hostname"
+    required: true
+    default: "example.com"
+    type: "string"
+  - variable: "PORT"
+    type: "int"
+    label: "Port Number"
+    description: "Which port should Redmine listen on?"
+    default: 10083
+    required: true
+  - variable: "VOLUME_NAME"
+    description: "Work volume to save redmine data"
+    label: "Work volume:"
+    required: true
+    default: "REDMINE"
+    type: "string"
+  - variable: "DB_VOLUME_NAME"
+    description: "Postgres Work volume to save redmine data"
+    label: "Postgres Work volume:"
+    required: true
+    default: "REDMINE_DB"
+    type: "string"
+  - variable: "LOG_VOLUME_NAME"
+    description: "Postgres Work volume to save redmine logs"
+    label: "Log volume:"
+    required: true
+    default: "REDMINE_LOG"
+    type: "string"
+  - variable: "VOLUME_DRIVER"
+    description: "The VOLUME driver to associate with this server (convoy-nfs,convoy-efs,convoy-ebs)"
+    label: "VOLUME Driver"
+    required: true
+    default: "convoy-nfs"
+    type: "string"
+  - variable: "TZ"
+    description: "Timezone to use for the server"
+    label: "Timezone"
+    required: true
+    default: "America/Chicago"
+    type: "string"
+
+  - variable: "DB_PASS"
+    description: "Database Password to use for the server"
+    label: "DB Password"
+    required: true
+    default: ""
+    type: password
+  - variable: "DB_ADAPTER"
+    description: "DB_ADAPTER"
+    label: "DB_ADAPTER"
+    required: true
+    default: "mysql2"
+    type: enum
+    options: # List of options if using type of `enum`
+      - mysql2
+      - postgres
+  - variable: "DB_HOST"
+    description: "DB_HOST"
+    label: "DB_HOST"
+    required: true
+    default: "db"
+    type: "string"
+  - variable: "DB_PORT"
+    description: "DB_PORT"
+    label: "DB_PORT"
+    required: true
+    default: "3306"
+    type: "int"
+  - variable: "DB_USER"
+    description: "DB_USER"
+    label: "DB_USER"
+    required: true
+    default: "redmine"
+    type: "string"
+  - variable: "DB_NAME"
+    description: "DB_NAME"
+    label: "DB_NAME"
+    required: true
+    default: "redmine_production"
+    type: "string"
+
+  - variable: "REDMINE_HTTPS"
+    description: "REDMINE_HTTPS"
+    label: "REDMINE_HTTPS"
+    required: false
+    default: "false"
+    type: "boolean"
+  - variable: "REDMINE_RELATIVE_URL_ROOT"
+    description: "REDMINE_RELATIVE_URL_ROOT"
+    label: "REDMINE_RELATIVE_URL_ROOT"
+    required: false
+    default: ""
+    type: "string"
+  - variable: "REDMINE_SECRET_TOKEN"
+    description: "REDMINE_SECRET_TOKEN"
+    label: "REDMINE_SECRET_TOKEN"
+    required: true
+    default: ""
+    type: "password"
+
+  - variable: "REDMINE_SUDO_MODE_ENABLED"
+    description: "REDMINE_SUDO_MODE_ENABLED"
+    label: "REDMINE_SUDO_MODE_ENABLED"
+    required: false
+    default: "false"
+    type: "boolean"
+  - variable: "REDMINE_SUDO_MODE_TIMEOUT"
+    description: "REDMINE_SUDO_MODE_TIMEOUT"
+    label: "REDMINE_SUDO_MODE_TIMEOUT"
+    required: false
+    default: "15"
+    type: "int"
+
+  - variable: "REDMINE_CONCURRENT_UPLOADS"
+    description: "REDMINE_CONCURRENT_UPLOADS"
+    label: "REDMINE_CONCURRENT_UPLOADS"
+    required: false
+    default: "2"
+    type: "int"
+
+  - variable: "REDMINE_BACKUP_SCHEDULE"
+    description: "REDMINE_BACKUP_SCHEDULE"
+    label: "REDMINE_BACKUP_SCHEDULE"
+    required: false
+    default: ""
+    type: "string"
+  - variable: "REDMINE_BACKUP_EXPIRY"
+    description: "REDMINE_BACKUP_EXPIRY"
+    label: "REDMINE_BACKUP_EXPIRY"
+    required: false
+    default: ""
+    type: "string"
+  - variable: "REDMINE_BACKUP_TIME"
+    description: "REDMINE_BACKUP_TIME"
+    label: "REDMINE_BACKUP_TIME"
+    required: false
+    default: ""
+    type: "string"
+
+  - variable: "SMTP_ENABLED"
+    description: "SMTP ENABLED"
+    label: "SMTP ENABLED"
+    required: true
+    default: ""
+    type: "boolean"
+  - variable: "SMTP_HOST"
+    description: "SMTP Host to use for the server"
+    label: "SMTP Host"
+    required: true
+    default: ""
+    type: "string"
+  - variable: "SMTP_AUTHENTICATION"
+    description: "SMTP Authentication to use for the server[:login,nil,:plain,:cram_md5]"
+    label: "SMTP Authentication"
+    required: true
+    default: ":login"
+    type: "string"
+  - variable: "SMTP_METHOD"
+    description: "SMTP_METHOD"
+    label: "SMTP_METHOD"
+    required: false
+    default: "smtp"
+    type: "string"
+  - variable: "SMTP_DOMAIN"
+    description: "SMTP_DOMAIN"
+    label: "SMTP_DOMAIN"
+    required: false
+    default: "example.com"
+    type: "string"
+  - variable: "SMTP_PORT"
+    description: "SMTP_PORT"
+    label: "SMTP_PORT"
+    required: false
+    default: "587"
+    type: "int"
+  - variable: "SMTP_USER"
+    description: "SMTP_USER"
+    label: "SMTP_USER"
+    required: false
+    default: "mailer@example.com"
+    type: "string"
+  - variable: "SMTP_PASS"
+    description: "SMTP_PASS"
+    label: "SMTP_PASS"
+    required: false
+    default: ""
+    type: "password"
+  - variable: "SMTP_STARTTLS"
+    description: "SMTP_STARTTLS"
+    label: "SMTP_STARTTLS"
+    required: false
+    default: "true"
+    type: "boolean"
+
+  - variable: "IMAP_ENABLED"
+    description: "IMAP_ENABLED"
+    label: "IMAP_ENABLED"
+    required: false
+    default: "false"
+    type: "boolean"
+  - variable: "IMAP_HOST"
+    description: "IMAP_HOST"
+    label: "IMAP_HOST"
+    required: false
+    default: "imap.gmail.com"
+    type: "string"
+  - variable: "IMAP_PORT"
+    description: "IMAP_PORT"
+    label: "IMAP_PORT"
+    required: false
+    default: "993"
+    type: "int"
+  - variable: "IMAP_USER"
+    description: "IMAP_USER"
+    label: "IMAP_USER"
+    required: false
+    default: "mailer@example.com"
+    type: "string"
+  - variable: "IMAP_PASS"
+    description: "IMAP_PASS"
+    label: "IMAP_PASS"
+    required: false
+    default: ""
+    type: "password"
+  - variable: "IMAP_SSL"
+    description: "IMAP_SSL"
+    label: "IMAP_SSL"
+    required: false
+    default: "true"
+    type: "string"
+  - variable: "IMAP_INTERVAL"
+    description: "IMAP_INTERVAL"
+    label: "IMAP_INTERVAL"
+    required: false
+    default: "30"
+    type: "int"
+
+services:
+  redmine:
+    scale: 1
+    retain_ip: true
+    health_check:
+      # Which port to perform the check against
+      port: 80
+      # For TCP, request_line needs to be '' or not shown
+      # TCP Example:
+      request_line: ''
+      # request_line: GET /healthcheck HTTP/1.0
+      # Interval is measured in milliseconds
+      interval: 30000
+      initializing_timeout: 60000
+      unhealthy_threshold: 7
+      # Strategy for what to do when unhealthy
+      # In this service, no action will occur when a container is found unhealthy
+      strategy: none
+      healthy_threshold: 2
+      # Response timeout is measured in milliseconds
+      response_timeout: 9000
+      initializing_timeout: 120000
