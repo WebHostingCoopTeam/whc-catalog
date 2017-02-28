@@ -649,14 +649,15 @@ gitlab:
     # For TCP, request_line needs to be '' or not shown
     # TCP Example: 
     # request_line: ''
-    request_line: GET / HTTP/1.0
+    # request_line: GET / HTTP/1.0
+    request_line: ''
     # Interval is measured in milliseconds
-    interval: 60000
+    interval: 300000
     initializing_timeout: 360000
     unhealthy_threshold: 9
     # Strategy for what to do when unhealthy
     # In this service, Rancher will recreate any unhealthy containers
-    strategy: recreate
+    strategy: none
     healthy_threshold: 2
     # Response timeout is measured in milliseconds
-    response_timeout: 4000
+    response_timeout: 54000
