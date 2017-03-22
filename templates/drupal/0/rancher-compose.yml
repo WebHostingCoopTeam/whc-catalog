@@ -1,6 +1,6 @@
 .catalog:
   name: "Drupal"
-  version: "0.1.0"
+  version: "0.1.1"
   description: "Blog tool, publishing platform and CMS"
   uuid: Drupal-0
   minimum_rancher_version: v0.51.0
@@ -11,18 +11,6 @@
       required: true
       default: "80"
       type: "int"
-    - variable: "VOLUME_NAME"
-      description: "Work volume to save redmine data"
-      label: "Work volume:"
-      required: true
-      default: "DRUPAL"
-      type: "string"
-    - variable: "DB_VOLUME_NAME"
-      description: "DB Work volume to save redmine data"
-      label: "DB Work volume:"
-      required: true
-      default: "DRUPAL_DB"
-      type: "string"
     - variable: "DB_PASS"
       description: "Database Password to use for the server"
       label: "DB Password"
