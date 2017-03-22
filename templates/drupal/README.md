@@ -9,8 +9,8 @@ to test.  To see an implementation using convoy for persistent data see
 the catalog [here](https://github.com/webhostingcoopteam/whc-catalog)
 
 When starting for the first time you will be asked to setup the
-database, you will provide the USER and PASSWORD in the questions below,
-remember them for later, as for the database host use
+database, you will provide the database NAME, USER and PASSWORD in the questions below,
+remember them for later, as for the database host simply use:
 
 ```
 postgres

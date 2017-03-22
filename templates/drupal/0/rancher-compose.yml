@@ -18,7 +18,7 @@
       default: "drupal"
       type: "string"
     - variable: "DB_USER"
-      description: "Database Password to use for the server"
+      description: "Database User to use for the server"
       label: "DB User"
       required: true
       default: "drupal"
