@@ -28,9 +28,10 @@ services:
 
   drupal-datavolume:
     image: "busybox"
+    volume_driver: ${VOLUME_DRIVER}
     volumes:
-      - /var/www/drupal
-      - /var/lib/postgresql
+      - ${VOLUME_NAME}:/var/www/drupal
+      - ${DB_VOLUME_NAME}:/var/lib/postgresql
     labels:
       io.rancher.container.start_once: true
     entrypoint: ["/bin/true"]

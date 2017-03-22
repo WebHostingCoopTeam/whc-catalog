@@ -23,6 +23,12 @@
       required: true
       default: "DRUPAL_DB"
       type: "string"
+    - variable: "VOLUME_DRIVER"
+      description: "The VOLUME driver to associate with this server (convoy-nfs,convoy-efs,convoy-ebs)"
+      label: "VOLUME Driver"
+      required: true
+      default: "convoy-nfs"
+      type: "string"
     - variable: "DB_PASS"
       description: "Database Password to use for the server"
       label: "DB Password"
