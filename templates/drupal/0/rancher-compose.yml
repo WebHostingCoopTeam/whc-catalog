@@ -1,6 +1,6 @@
 .catalog:
   name: "Drupal"
-  version: "0.1.1"
+  version: "0.1.3"
   description: "Blog tool, publishing platform and CMS"
   uuid: Drupal-0
   minimum_rancher_version: v0.51.0
@@ -9,14 +9,25 @@
       description: "public port to access the drupal site"
       label: "Public Port"
       required: true
-      default: "80"
+      default: "15080"
       type: "int"
+    - variable: "DB_NAME"
+      description: "Database Name to use for the server"
+      label: "DB Name"
+      required: true
+      default: "drupal"
+      type: "string"
+    - variable: "DB_USER"
+      description: "Database Password to use for the server"
+      label: "DB User"
+      required: true
+      default: "drupal"
+      type: "string"
     - variable: "DB_PASS"
       description: "Database Password to use for the server"
       label: "DB Password"
       required: true
-      default: ""
+      default: "drupal123"
       type: "password"
-
 
 drupal:
