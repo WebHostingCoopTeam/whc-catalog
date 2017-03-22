@@ -1,6 +1,6 @@
 .catalog:
   name: Redmine
-  version: 0.1.12
+  version: 0.2.0
   description: |
     Redmine for email settings see the docs here http://www.redmine.org/projects/redmine/wiki/EmailConfiguration
   questions:
@@ -22,6 +22,24 @@
     description: "Which port should Redmine listen on?"
     default: 10083
     required: true
+  - variable: "VOLUME_NAME"
+    description: "Work volume to save redmine data"
+    label: "Work volume:"
+    required: true
+    default: "REDMINE"
+    type: "string"
+  - variable: "DB_VOLUME_NAME"
+    description: "Postgres Work volume to save redmine data"
+    label: "Postgres Work volume:"
+    required: true
+    default: "REDMINE_DB"
+    type: "string"
+  - variable: "VOLUME_DRIVER"
+    description: "The VOLUME driver to associate with this server (convoy-nfs,convoy-efs,convoy-ebs)"
+    label: "VOLUME Driver"
+    required: true
+    default: "convoy-nfs"
+    type: "string"
   - variable: "TZ"
     description: "Timezone to use for the server"
     label: "Timezone"
@@ -34,24 +52,27 @@
     label: "DB Password"
     required: true
     default: ""
-    type: "password"
+    type: password
   - variable: "DB_ADAPTER"
     description: "DB_ADAPTER"
     label: "DB_ADAPTER"
     required: true
-    default: "postgresql"
-    type: "string"
+    default: "mysql2"
+    type: enum
+    options: # List of options if using type of `enum`
+      - mysql2
+      - postgres
   - variable: "DB_HOST"
     description: "DB_HOST"
     label: "DB_HOST"
     required: true
-    default: "postgresql"
+    default: "db"
     type: "string"
   - variable: "DB_PORT"
     description: "DB_PORT"
     label: "DB_PORT"
     required: true
-    default: "5432"
+    default: "3306"
     type: "int"
   - variable: "DB_USER"
     description: "DB_USER"
@@ -221,3 +242,15 @@
     required: false
     default: "30"
     type: "int"
+
+redmine:
+  scale: 1
+  retain_ip: true
+  health_check:
+    port: 80
+    interval: 30000
+    unhealthy_threshold: 7
+    strategy: none
+    response_timeout: 9000
+    initializing_timeout: 120000
+    healthy_threshold: 2

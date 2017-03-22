@@ -3,10 +3,10 @@ version: '2'
 services:
   redmine-datavolume:
     image: "busybox"
-    volume_driver: ${VOLUME_DRIVER}
     volumes:
-      - ${VOLUME_NAME}:/home/redmine/data
-      - ${DB_VOLUME_NAME}:/var/lib/mysql
+      - /home/redmine/data
+      - /var/lib/mysql
+      - /var/log/redmine
     labels:
       io.rancher.container.start_once: true
     entrypoint: ["/bin/true"]
@@ -26,7 +26,7 @@ services:
     - MYSQL_DATABASE=${DB_NAME}
 
   redmine:
-    image: sameersbn/redmine:3.3.2
+    image: sameersbn/redmine:3.3.2-1
     labels:
       io.rancher.sidekicks: db,redmine-datavolume
       io.rancher.container.hostname_override: container_name
@@ -75,7 +75,5 @@ services:
     - IMAP_PASS=${IMAP_PASS}
     - IMAP_SSL=${IMAP_SSL}
     - IMAP_INTERVAL=${IMAP_INTERVAL}
-    ports:
-    - "${PORT}:80"
     volumes_from:
     - redmine-datavolume

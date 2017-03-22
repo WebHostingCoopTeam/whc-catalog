@@ -3,9 +3,10 @@ version: '2'
 services:
   redmine-datavolume:
     image: "busybox"
+    volume_driver: ${VOLUME_DRIVER}
     volumes:
-      - /home/redmine/data
-      - /var/lib/postgresql/data
+      - ${VOLUME_NAME}:/home/redmine/data
+      - ${PG_VOLUME_NAME}:/var/lib/postgresql/data
     labels:
       io.rancher.container.start_once: true
     entrypoint: ["/bin/true"]

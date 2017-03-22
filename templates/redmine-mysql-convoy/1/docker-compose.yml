@@ -3,31 +3,32 @@ version: '2'
 services:
   redmine-datavolume:
     image: "busybox"
+    volume_driver: ${VOLUME_DRIVER}
     volumes:
-      - /home/redmine/data
-      - /var/lib/postgresql/data
+      - ${VOLUME_NAME}:/home/redmine/data
+      - ${DB_VOLUME_NAME}:/var/lib/mysql
     labels:
       io.rancher.container.start_once: true
     entrypoint: ["/bin/true"]
 
-  postgresql:
+  db:
     restart: always
-    image: postgres:9.6-alpine
+    image: mariadb
     volumes_from:
     - redmine-datavolume
     labels:
       io.rancher.sidekicks: redmine-datavolume
       io.rancher.container.pull_image: always
     environment:
-    - POSTGRES_USER=${DB_USER}
-    - POSTGRES_PASSWORD=${DB_PASS}
-    - POSTGRES_DB=${DB_NAME}
-    - PGDATA='/var/lib/postgresql/data'
+    - MYSQL_USER=${DB_USER}
+    - MYSQL_PASSWORD=${DB_PASS}
+    - MYSQL_ROOT_PASSWORD=${DB_PASS}
+    - MYSQL_DATABASE=${DB_NAME}
 
   redmine:
     image: sameersbn/redmine:3.3.2
     labels:
-      io.rancher.sidekicks: postgresql,redmine-datavolume
+      io.rancher.sidekicks: db,redmine-datavolume
       io.rancher.container.hostname_override: container_name
       io.rancher.container.pull_image: always
       traefik.enable: true
