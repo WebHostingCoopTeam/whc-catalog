@@ -1,11 +1,11 @@
 .catalog:
   name: traefik
-  version: v1.1.2-rancher1-whc
+  version: v1.1.2-rancher1-whc-1
   description: |
     Traefik load balancer with defaults for the WHC
   minimum_rancher_version: v0.59.0
   maintainer: "Josh Cox <josh@webhosting.coop>"
-  uuid: traefik-whc-0
+  uuid: traefik-0
   questions:
     - variable: "host_label"
       description: "Host label where to run traefik service."
