@@ -1,0 +1,9 @@
+name: Traefik-WHC
+description: |
+  Traefik active load balancer with WHC defaults
+version: v1.1.2-rancher1-whc
+category: Load Balancing
+maintainer: "Josh Cox <josh@webhosting.coop>"
+minimum_rancher_version: v0.59.0
+license:
+projectURL: https://github.com/rawmind0/alpine-traefik
