@@ -35,7 +35,6 @@
     - variable: "SES_REGION"
       description: "If using Amazon SES, the region"
       label: "AmazonSES-region"
-      label: ":"
       required: false
       default: ""
       type: "string"
