@@ -1,0 +1,5 @@
+name: PostfixRelay-WHC
+description: |
+  SMTP postfix relay
+version: 0.0.1
+category: Mail
