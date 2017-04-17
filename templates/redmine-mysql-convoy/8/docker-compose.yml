@@ -37,7 +37,7 @@ services:
       traefik.domain: ${REDMINE_DOMAIN}
       traefik.acme: true
       traefik.port: 80
-    external_smtp_links:
+    external_links:
     - ${external_smtp_link}:smtp
     environment:
     - REDMINE_HOST=${REDMINE_HOST}
