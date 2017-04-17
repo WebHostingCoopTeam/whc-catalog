@@ -8,6 +8,12 @@
   uuid: smtp-whc-0
   questions:
 
+    - variable: "MAILNAME"
+      description: "Mail hostname to use"
+      label: "mailname"
+      required: true
+      default: ""
+      type: "string"
     - variable: "GMAIL_USER"
       description: "If using Gmail, the Username"
       label: "Gmail-User"
@@ -48,12 +54,6 @@
       description: "Domains to relay"
       label: "RelayDomains"
       required: false
-      default: ""
-      type: "string"
-    - variable: "MAILNAME"
-      description: "Mail hostname to use"
-      label: "mailname"
-      required: true
       default: ""
       type: "string"
 

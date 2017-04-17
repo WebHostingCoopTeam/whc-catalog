@@ -1,5 +1,5 @@
 name: Redmine MariaDB Convoy
 description: |
   Redmine Project Manager using MariaDB with Convoy for persistence
-version: 0.2.7
+version: 0.2.8
 category: Project Management
