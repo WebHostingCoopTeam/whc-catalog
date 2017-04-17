@@ -1,0 +1,22 @@
+version: '2'
+
+services:
+  smtp:
+    restart: always
+    image: joshuacox/docker-smtp
+    labels:
+      io.rancher.container.hostname_override: container_name
+      io.rancher.container.pull_image: always
+      io.rancher.scheduler.affinity:host_label: ${smtp_host_label}
+    hostname: ${MAILNAME}
+    environment:
+    - GMAIL_USER=${GMAIL_USER}
+    - GMAIL_PASSWORD=${GMAIL_PASSWORD}
+    - SES_USER=${SES_USER}
+    - SES_PASSWORD=${SES_PASSWORD}
+    - SES_REGION=${SES_REGION}
+    - RELAY_NETWORKS=${RELAY_NETWORKS}
+    - RELAY_DOMAINS=${RELAY_DOMAINS}
+    - KEY_PATH=${KEY_PATH}
+    - CERTIFICATE_PATH=${CERTIFICATE_PATH}
+    - MAILNAME=${MAILNAME}

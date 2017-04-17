@@ -1,0 +1,68 @@
+.catalog:
+  name: PostfixRelay-WHC
+  version: 0.0.2
+  description: |
+    SMTP postfix
+  minimum_rancher_version: v0.56.0
+  maintainer: "Josh Cox <josh@webhosting.coop>"
+  uuid: smtp-whc-0
+  questions:
+
+    - variable: "MAILNAME"
+      description: "Mail hostname to use"
+      label: "mailname"
+      required: true
+      default: ""
+      type: "string"
+    - variable: "GMAIL_USER"
+      description: "If using Gmail, the Username"
+      label: "Gmail-User"
+      required: false
+      default: ""
+      type: "string"
+    - variable: "GMAIL_PASSWORD"
+      description: "If using Gmail, the Password"
+      label: "Gmail-Pass"
+      required: false
+      default: ""
+      type: "string"
+    - variable: "SES_USER"
+      description: "If using Amazon SES, the Username"
+      label: "AmazonSES-User"
+      required: false
+      default: ""
+      type: "string"
+    - variable: "SES_PASSWORD"
+      description: "If using Amazon SES, the Password"
+      label: "AmazonSES-Pass"
+      required: false
+      default: ""
+      type: "string"
+    - variable: "SES_REGION"
+      description: "If using Amazon SES, the region"
+      label: "AmazonSES-region"
+      required: false
+      default: ""
+      type: "string"
+    - variable: "RELAY_NETWORKS"
+      description: "Which networks to relay"
+      label: "RelayNetworks"
+      required: false
+      default: ""
+      type: "string"
+    - variable: "RELAY_DOMAINS"
+      description: "Domains to relay"
+      label: "RelayDomains"
+      required: false
+      default: ""
+      type: "string"
+    - variable: "smtp_host_label"
+      description: "Host label where to run SMTP service."
+      label: "SMTP Host label:"
+      required: true
+      default: "smtp=true"
+      type: "string"
+
+smtp:
+  scale: 1
+  retain_ip: true
