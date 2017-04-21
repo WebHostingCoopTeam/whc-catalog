@@ -3,7 +3,7 @@ mattermost:
   ports:
    - "${PORT}:80"
   links:
-    - mattermostdb
+    - mattermostdb:mysql
   labels:
     io.rancher.container.hostname_override: container_name
     io.rancher.sidekicks: mattermostdb,mattermost-datavolume
