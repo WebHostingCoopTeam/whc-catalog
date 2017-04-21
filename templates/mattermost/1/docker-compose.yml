@@ -1,0 +1,45 @@
+mattermost:
+  image: joshuacox/mattermost
+  links:
+    - mattermostdb
+  labels:
+    io.rancher.container.hostname_override: container_name
+    io.rancher.sidekicks: mattermostdb,mattermost-datavolume
+    io.rancher.container.pull_image: always
+    traefik.enable: true
+    traefik.alias: ${MATTERMOST_HOST}
+    traefik.domain: ${MATTERMOST_DOMAIN}
+    traefik.enable: true
+    traefik.acme: true
+    traefik.port: 80
+  environment:
+    - MATTERMOST_SECRET_KEY=${MATTERMOST_SECRET_KEY}
+    - MATTERMOST_LINK_SALT=${MATTERMOST_LINK_SALT}
+    - MATTERMOST_RESET_SALT=${MATTERMOST_RESET_SALT}
+    - MATTERMOST_INVITE_SALT=${MATTERMOST_INVITE_SALT}
+  volumes_from:
+    - mattermost-datavolume
+
+mattermostdb:
+  image: mariadb
+  environment:
+    - MYSQL_USER=mattermost
+    - MYSQL_PASSWORD=${MYSQL_PASSWD}
+    - MYSQL_DATABASE=mattermost
+    - MYSQL_ROOT_PASSWORD=${MYSQL_PASSWD}
+  volumes_from:
+    - mattermost-datavolume
+  labels:
+    io.rancher.sidekicks: mattermost-datavolume
+    io.rancher.container.pull_image: always
+
+mattermost-datavolume:
+  labels:
+    io.rancher.container.start_once: true
+    io.rancher.container.pull_image: always
+  volume_driver: ${VOLUME_DRIVER}
+  volumes:
+    - ${VOLUME_NAME}:/opt/mattermost/data
+    - ${DB_VOLUME_NAME}:/var/lib/mysql
+  image: busybox
+  command: /bin/true

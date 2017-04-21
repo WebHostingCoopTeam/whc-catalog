@@ -1,5 +1,5 @@
 name: Mattermost
 description: |
   Mattermost Team Communication
-version: v0.1-educaas
+version: "0.1.1"
 category: Repository

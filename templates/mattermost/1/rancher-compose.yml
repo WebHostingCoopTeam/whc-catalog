@@ -1,0 +1,79 @@
+.catalog:
+  name: "Mattermost"
+  version: "0.1.1"
+  description: "Mattermost"
+  uuid: mattermost-0
+  minimum_rancher_version: v0.51.0
+  questions:
+      - variable: "MATTERMOST_HOST"
+        description: "Hostname to use for the MATTERMOST server"
+        label: "MATTERMOST Hostname"
+        required: true
+        default: ""
+        type: "string"
+      - variable: "MATTERMOST_DOMAIN"
+        description: "Domain to use for the MATTERMOST server"
+        label: "MATTERMOST Domain"
+        required: true
+        default: "webhosting.coop"
+        type: "string"
+      - variable: "VOLUME_DRIVER"
+        description: "The VOLUME driver to associate with this server (convoy-nfs,convoy-efs,convoy-ebs)"
+        label: "VOLUME Driver"
+        required: true
+        default: "convoy-nfs"
+        type: "string"
+      - variable: "VOLUME_NAME"
+        description: "The VOLUME name to associate with this server"
+        label: "VOLUME Name"
+        required: true
+        default: "MATTERMOST"
+        type: "string"
+      - variable: "DB_VOLUME_NAME"
+        description: "The VOLUME name to associate with the DB of this server"
+        label: "DB VOLUME Name"
+        required: true
+        default: "MATTERMOST_DB"
+        type: "string"
+      - variable: "MYSQL_PASSWD"
+        description: "MYSQL password to use for the server"
+        label: "MYSQL_PASSWD"
+        required: true
+        default: ""
+        type: "password"
+      - variable: "MATTERMOST_SECRET_KEY"
+        description: "MATTERMOST_SECRET_KEY to use for the server"
+        label: "MATTERMOST_SECRET_KEY"
+        required: true
+        default: ""
+        type: "password"
+      - variable: "MATTERMOST_LINK_SALT"
+        description: "MATTERMOST_LINK_SALT to use for the server"
+        label: "MATTERMOST_LINK_SALT"
+        required: true
+        default: ""
+        type: "password"
+      - variable: "MATTERMOST_RESET_SALT"
+        description: "MATTERMOST_RESET_SALT to use for the server"
+        label: "MATTERMOST_RESET_SALT"
+        required: true
+        default: ""
+        type: "password"
+      - variable: "MATTERMOST_INVITE_SALT"
+        description: "MATTERMOST_INVITE_SALT to use for the server"
+        label: "MATTERMOST_INVITE_SALT"
+        required: true
+        default: ""
+        type: "password"
+
+services:
+  mattermost:
+    scale: 1
+    health_check:
+      port: 80
+      interval: 30000
+      initializing_timeout: 360000
+      unhealthy_threshold: 4
+      strategy: none
+      healthy_threshold: 2
+      response_timeout: 9000
