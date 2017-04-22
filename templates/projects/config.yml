@@ -1,0 +1,5 @@
+name: Redmine - WHC Projects
+description: |
+  Redmine Project Manager using MariaDB with Convoy for persistence
+version: 0.3.0
+category: Project Management
