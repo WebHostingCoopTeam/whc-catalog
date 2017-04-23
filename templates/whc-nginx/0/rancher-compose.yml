@@ -30,17 +30,11 @@ catalog:
         required: true
         default: "80"
         type: "string"
-      - variable: "NODE_TAG"
-        description: "The Docker Tag for the node proxy server"
-        label: "node tag"
-        required: true
-        default: "thalhalla/meanshop:thalhalla-node"
-        type: "string"
       - variable: "NGINX_TAG"
         description: "The Docker Tag for the nginx proxy server"
         label: "nginx tag"
         required: true
-        default: "thalhalla/meanshop:thalhalla-nginx"
+        default: "webhostingcoopteam/nginx-tiny-proxy"
         type: "string"
       - variable: "NGINX_AUTH"
         description: "include basic auth"
