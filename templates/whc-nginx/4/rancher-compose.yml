@@ -1,0 +1,83 @@
+version: '2'
+catalog:
+  name: "nginx-whc"
+  version: "0.0.5"
+  description: "nginx WHC"
+  uuid: whc-nginx-0
+  minimum_rancher_version: v0.51.0
+  questions:
+      - variable: "NGINX_HOST"
+        description: "Hostname to use for the proxy"
+        label: "Redirected Hostname"
+        required: true
+        default: "www"
+        type: "string"
+      - variable: "NGINX_DOMAIN"
+        description: "Domain to use for the proxy server"
+        label: "NGINX Domain"
+        required: true
+        default: "example.com"
+        type: "string"
+      - variable: "NGINX_SRC_HOST"
+        description: "upstream Hostname/IP to use for the proxy"
+        label: "upstream host"
+        required: true
+        default: "192.168.1.2"
+        type: "string"
+      - variable: "NGINX_SRC_PORT"
+        description: "upstream port to use for the proxy"
+        label: "upstream host"
+        required: true
+        default: "80"
+        type: "string"
+      - variable: "NGINX_TAG"
+        description: "The Docker Tag for the nginx proxy server"
+        label: "nginx tag"
+        required: true
+        default: "webhostingcoopteam/nginx-tiny-proxy"
+        type: "string"
+      - variable: "NGINX_TEMPLATE"
+        description: "The Docker Template for the nginx proxy server (proxy,full)"
+        label: "nginx template"
+        required: true
+        default: "proxy"
+        type: "string"
+      - variable: "NGINX_AUTH"
+        description: "include basic auth"
+        label: "htauth"
+        required: false
+        type: "boolean"
+      - variable: "NGINX_USER"
+        description: "include a basic auth user"
+        label: "htuser"
+        required: false
+        type: "string"
+      - variable: "NGINX_PASS"
+        description: "include a basic auth htpasswd"
+        label: "htpasswd"
+        required: false
+        type: "string"
+      - variable: "NGINX_DEBUG"
+        description: "Include extra debug info"
+        label: "htdebug"
+        required: false
+        type: "boolean"
+      - variable: host_label
+        label: "Host Label to Meanshop Tags"
+        description: |
+          Host label to use as Meanshop 'value' tag.
+          Example: 'thalhallashop=true'
+        required: false
+        default: "private=true"
+        type: "string"
+services:
+  whc-nginx:
+    scale: 1
+    health_check:
+      port: 80
+      interval: 30000
+      initializing_timeout: 360000
+      unhealthy_threshold: 9
+      strategy: none
+      healthy_threshold: 2
+      response_timeout: 9000
