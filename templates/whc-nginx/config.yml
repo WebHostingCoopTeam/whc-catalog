@@ -1,0 +1,5 @@
+name: WHC-NGINX
+description: |
+  Webhosting.coop Nginx tiny proxy
+version: 0.0.1
+category: Repository
