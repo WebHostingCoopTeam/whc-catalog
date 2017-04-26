@@ -27,7 +27,7 @@ services:
     volumes_from:
     - gitlab-data
     labels:
-      io.rancher.sidekicks: gitlab-data,redis
+      io.rancher.sidekicks: gitlab-data
       traefik.enable: true
       traefik.acme: true
       traefik.alias: ${gitlab_host}
