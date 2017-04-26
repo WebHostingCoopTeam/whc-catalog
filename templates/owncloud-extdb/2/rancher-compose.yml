@@ -1,6 +1,6 @@
 .catalog:
   name: "Owncloud"
-  version: "0.1.24-9.1"
+  version: "0.1.0"
   description: "Library service powered by Owncloud"
   uuid: owncloudextdb-0
   minimum_rancher_version: v0.51.0
