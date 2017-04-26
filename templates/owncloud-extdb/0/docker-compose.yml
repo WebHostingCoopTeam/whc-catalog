@@ -1,0 +1,27 @@
+version: '2'
+
+services:
+
+  owncloud:
+    image: owncloud:9.1
+    labels:
+      io.rancher.container.hostname_override: container_name
+      io.rancher.sidekicks: owncloud-datavolume
+      io.rancher.container.pull_image: always
+      traefik.enable: true
+      traefik.acme: true
+      traefik.alias: ${OWNCLOUD_HOST}
+      traefik.domain: ${OWNCLOUD_DOMAIN}
+      traefik.port: 80
+    volumes_from:
+      - owncloud-datavolume
+
+  owncloud-datavolume:
+    labels:
+      io.rancher.container.start_once: true
+      io.rancher.container.pull_image: always
+    volume_driver: ${VOLUME_DRIVER}
+    volumes:
+      - ${VOLUME_NAME}:/var/www/html
+    image: busybox
+    command: /bin/true
