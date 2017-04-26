@@ -1,0 +1,82 @@
+.catalog:
+  name: Gitlab WHC
+  version: 0.2.12
+  description: |
+    Gitlab CE is a free GitHub alternative with additions by the Webhosting.coop Team
+  minimum_rancher_version: v0.56.0
+  maintainer: "Josh Cox <josh@webhosting.coop>"
+  uuid: gitlab-whc-0
+  questions:
+    - variable: "gitlab_host"
+      description: "Gitlab hostname (without uri scheme http:// or https://)"
+      label: "Hostname:"
+      required: true
+      default: "gitlab"
+      type: "string"
+    - variable: "gitlab_domain"
+      description: "Gitlab hostname (without uri scheme http:// or https://)"
+      label: "Hostname:"
+      required: true
+      default: "example.com"
+      type: "string"
+    - variable: host_label
+      label: "Host Label to Tags"
+      description: |
+        Host label to use as host 'value' tag.
+        Example: 'thalhallashop=true'
+      required: false
+      default: "public=true"
+      type: "string"
+    - variable: "ssh_port"
+      description: "SSH port to expose on host. Will be used to bind TCP"
+      label: "SSH port:"
+      required: true
+      default: 2222
+      type: "int"
+    - variable: "VOLUME_DRIVER"
+      description: "The VOLUME driver to associate with this server (convoy-nfs,convoy-efs,convoy-ebs)"
+      label: "VOLUME Driver"
+      required: true
+      default: "convoy-nfs"
+      type: "string"
+    - variable: "VOLUME_NAME"
+      description: "The VOLUME name to associate with this server"
+      label: "VOLUME Name"
+      required: true
+      default: "GITLAB"
+      type: "string"
+    - variable: "LOG_VOLUME_NAME"
+      description: "The LOG VOLUME name to associate with this server"
+      label: "Log Volume Name"
+      required: true
+      default: "GITLAB_LOG"
+      type: "string"
+    - variable: "ETC_VOLUME_NAME"
+      description: "The ETC VOLUME name to associate with this server"
+      label: "Etc Volume Name"
+      required: true
+      default: "GITLAB_ETC"
+      type: "string"
+    - variable: "GITLAB_OMNIBUS_CONFIG"
+      description: "Gitlab omnibus config"
+      label: "Omnibus config:"
+      required: true
+      default: |
+        external_url 'https://gitlab.example.com'
+        # Add any other gitlab.rb configuration here, each on its own line
+      type: "multiline"
+
+gitlab-data:
+  scale: 1
+  retain_ip: true
+
+gitlab:
+  scale: 1
+  retain_ip: true
+  health_check:
+    port: 80
+    interval: 30000
+    unhealthy_threshold: 3
+    strategy: recreate
+    response_timeout: 2000
+    healthy_threshold: 2

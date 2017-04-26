@@ -1,0 +1,36 @@
+version: '2'
+
+services:
+
+  gitlab-data:
+    labels:
+      io.rancher.container.start_once: 'true'
+      io.rancher.container.hostname_override: container_name
+      io.rancher.container.pull_image: always
+      io.rancher.scheduler.affinity:host_label: ${host_label}
+    command: /bin/true
+    image: busybox
+    volume_driver: ${VOLUME_DRIVER}
+    volumes:
+      - ${VOLUME_NAME}:/var/opt/gitlab
+      - ${ETC_VOLUME_NAME}:/etc/gitlab
+      - ${LOG_VOLUME_NAME}:/var/log/gitlab
+
+  gitlab:
+    image: 'gitlab/gitlab-ce:latest'
+    restart: always
+    hostname: ${gitlab_host}.${gitlab_domain}
+    environment:
+    - GITLAB_OMNIBUS_CONFIG=${GITLAB_OMNIBUS_CONFIG}
+    ports:
+      - "${ssh_port}:22"
+    volumes_from:
+    - gitlab-data
+    labels:
+      io.rancher.sidekicks: gitlab-data,redis
+      traefik.enable: true
+      traefik.acme: true
+      traefik.alias: ${gitlab_host}
+      traefik.domain: ${gitlab_domain}
+      traefik.port: 80
+      io.rancher.scheduler.affinity:host_label: ${host_label}
