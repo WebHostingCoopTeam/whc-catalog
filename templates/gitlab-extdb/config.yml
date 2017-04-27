@@ -1,5 +1,5 @@
 name: Gitlab WHC - ExternalDB
 description: |
   Gitlab CE is a free GitHub alternative using postgres
-version: 0.2.14
+version: 0.2.15
 category: Versioning
