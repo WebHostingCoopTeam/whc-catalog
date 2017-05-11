@@ -9,8 +9,9 @@ services:
       io.rancher.container.pull_image: always
     command: /bin/true
     image: busybox
+    volume_driver: ${VOLUME_DRIVER}
     volumes:
-    - /srv/wwiv:Z
+    - ${VOLUME_NAME}:/srv/wwiv:Z
 
   wwiv:
     restart: always
