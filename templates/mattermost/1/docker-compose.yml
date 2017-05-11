@@ -1,7 +1,5 @@
 mattermost:
   image: joshuacox/mattermost
-  ports:
-   - "${PORT}:80"
   links:
     - mattermostdb:mysql
   labels:
@@ -9,8 +7,11 @@ mattermost:
     io.rancher.sidekicks: mattermostdb,mattermost-datavolume
     io.rancher.container.pull_image: always
     traefik.enable: true
-    traefik.domain: ${MATTERMOST_HOST}
-    traefik.port: ${PORT}
+    traefik.alias: ${MATTERMOST_HOST}
+    traefik.domain: ${MATTERMOST_DOMAIN}
+    traefik.enable: true
+    traefik.acme: true
+    traefik.port: 80
   environment:
     - MATTERMOST_SECRET_KEY=${MATTERMOST_SECRET_KEY}
     - MATTERMOST_LINK_SALT=${MATTERMOST_LINK_SALT}

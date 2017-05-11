@@ -1,0 +1,21 @@
+version: '2'
+services:
+  whc-nginx:
+    image: ${NGINX_TAG}
+    labels:
+      io.rancher.scheduler.affinity:host_label: ${host_label}
+      io.rancher.container.hostname_override: container_name
+      io.rancher.container.pull_image: always
+      traefik.enable: true
+      traefik.alias: ${NGINX_HOST}
+      traefik.domain: ${NGINX_DOMAIN}
+      traefik.acme: true
+      traefik.port: 80
+    environment:
+      NGINX_HOST: ${NGINX_HOST}.${NGINX_DOMAIN}
+      NGINX_PORT: 80
+      NGINX_SRC_HOST: ${NGINX_SRC_HOST}
+      NGINX_SRC_PORT: ${NGINX_SRC_PORT}
+      NGINX_AUTH: ${NGINX_AUTH}
+      NGINX_USER: ${NGINX_USER}
+      NGINX_PASS: ${NGINX_PASS}
