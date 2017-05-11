@@ -23,7 +23,7 @@
       description: "WWIV telnet port"
       label: "telnet port"
       required: true
-      default: "2322"
+      default: "2323"
       type: "string"
     - variable: "wwiv_ssh_port"
       description: "WWIV ssh port"
