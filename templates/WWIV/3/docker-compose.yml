@@ -26,7 +26,7 @@ services:
     - "${wwiv_telnet_port}:23"
     - "${wwiv_ssh_port}:22"
     - "${wwiv_http_port}:80"
-    - "${wwiv_bipd_port}:24"
+    - "${wwiv_bipd_port}:2324"
     volumes_from:
     - wwiv-data
     labels:
