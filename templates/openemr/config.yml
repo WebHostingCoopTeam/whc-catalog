@@ -1,0 +1,5 @@
+name: OpenEMR - MariaDB
+description: |
+  OpenEMR
+version: 0.0.1
+category: Versioning
