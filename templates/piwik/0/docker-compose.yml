@@ -1,0 +1,47 @@
+version: '2'
+networks:
+  lb_web:
+    external: true
+  back:
+    driver: bridge
+services:
+  app:
+    image: piwik:fpm
+    links:
+      - db
+    volume_driver: ${VOLUME_DRIVER}
+    volumes:
+      - ${VOLUME_NAME}:/var/www/html/config
+    volumes:
+    - ${VOLUME_NAME}:/home/git/data:Z
+    networks:
+    - back
+  web:
+    image: WebHostingCoopTeam/nginx-tiny-proxy:latest
+    links:
+      - app
+    volumes_from:
+      - app
+    environment:
+      - NGINX_TEMPLATE=piwik
+      - NGINX_SRC_HOST=app
+      - NGINX_SRC_PORT=9000
+    networks:
+    - back
+    - lb_web
+  cron:
+    image: piwik:fpm
+    links:
+      - db
+    volumes_from:
+      - app
+    entrypoint: |
+      bash -c 'bash -s <<EOF
+      trap "break;exit" SIGHUP SIGINT SIGTERM
+      while /bin/true; do
+        su -s "/bin/bash" -c "/usr/local/bin/php /var/www/html/console core:archive" www-data
+        sleep 3600
+      done
+      EOF'
+    networks:
+    - back
