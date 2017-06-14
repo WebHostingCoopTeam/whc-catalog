@@ -4,7 +4,7 @@ services:
     image: piwik:fpm
     volume_driver: ${VOLUME_DRIVER}
     volumes:
-      - ${VOLUME_NAME}:/var/www/html/config
+      - ${VOLUME_NAME}/config:/var/www/html/config
   web:
     image: WebHostingCoopTeam/nginx-tiny-proxy:latest
     links:
