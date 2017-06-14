@@ -1,0 +1,26 @@
+.catalog:
+  name: Snowplow Scala Collector
+  version: 0.0.3
+  description: Snowplow Scala Collector
+  uuid: snowplowscala
+  questions:
+    - variable: "kafka_link"
+      description: |
+        Choose the Kafka service to use.
+        It's really recommended a dedicated Kafka service just for Snowplow.
+      label: "Kafka stack/service"
+      default: "kafka/kafka"
+      required: true
+      type: "service"
+    - variable: "SNOWPLOW_HOST"
+      description: "Hostname to use for the Thalhalla store"
+      label: "Snowplow Hostname"
+      required: true
+      default: "collector"
+      type: "string"
+    - variable: "SNOWPLOW_DOMAIN"
+      description: "Domain to use for the Thalhalla store server"
+      label: "Snowplow Domain"
+      required: true
+      default: "example.com"
+      type: "string"
