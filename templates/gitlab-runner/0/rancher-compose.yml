@@ -1,0 +1,33 @@
+.catalog:
+  name: GitlabRunner
+  version: "0.0.1"
+  description: |
+    Gitlab Runner CI pipeline
+    # Description of the versioned template of the Catalog Entry
+  uuid: gitlabrunner
+  questions:
+      - variable: "VOLUME_DRIVER"
+        description: "The VOLUME driver to associate with this server"
+        label: "VOLUME Driver"
+        required: true
+        default: "rancher-nfs"
+        type: enum
+        options: # List of options if using type of `enum`
+          - rancher-nfs
+          - rancher-efs
+          - rancher-ebs
+          - convoy-nfs
+          - convoy-efs
+          - convoy-ebs
+      - variable: "VOLUME_NAME"
+        description: "The VOLUME name to associate with this server"
+        label: "VOLUME Name"
+        required: true
+        default: "GITLAB_RUNNER"
+        type: "string"
+      - variable: "host_label"
+        description: "Host label where to run this service."
+        label: "Host label:"
+        required: true
+        default: "public=true"
+        type: "string"

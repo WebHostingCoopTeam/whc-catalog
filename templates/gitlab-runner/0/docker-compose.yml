@@ -1,0 +1,16 @@
+gitlabrunner:
+  image: gitlab/gitlab-runner:alpine
+  labels:
+    io.rancher.container.hostname_override: container_name
+    io.rancher.scheduler.affinity:host_label: ${host_label}
+    io.rancher.sidekicks: gitlabrunner-datavolume
+    io.rancher.container.pull_image: always
+  volumes_from:
+    - gitlabrunner-datavolume
+gitlabrunner-datavolume:
+  volume_driver: ${VOLUME_DRIVER}
+  volumes:
+    - ${VOLUME_NAME}:/etc/gitlab-runner
+    - /var/run/docker.sock:/var/run/docker.sock
+  image: busybox:latest
+  command: /bin/true
