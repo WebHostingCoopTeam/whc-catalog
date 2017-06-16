@@ -1,0 +1,18 @@
+collector:
+  tty: true
+  image: webhostingcoopteam/snowplow-scala-collector
+  environment:
+    - KAFKA_SERVICE=${kafka_link}
+    - SNOWPLOW_HOST=${SNOWPLOW_HOST}
+    - SNOWPLOW_DOMAIN=${SNOWPLOW_DOMAIN}
+  external_links:
+    - ${kafka_link}:kafka
+  labels:
+    io.rancher.scheduler.affinity:container_label_soft_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
+    io.rancher.container.hostname_override: container_name
+    io.rancher.container.pull_image: always
+    traefik.enable: true
+    traefik.alias: ${SNOWPLOW_HOST}
+    traefik.domain: ${SNOWPLOW_DOMAIN}
+    traefik.acme: true
+    traefik.port: 80

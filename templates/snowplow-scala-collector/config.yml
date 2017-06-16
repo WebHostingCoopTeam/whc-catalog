@@ -1,7 +1,7 @@
 name: Snowplow-Scala-Collector
 description: |
   Scala Collector for Snowplow
-version: 0.0.7
+version: 0.0.8
 category: Snowplow
 maintainer: https://github.com/joshuacox
 license: GPL v3
