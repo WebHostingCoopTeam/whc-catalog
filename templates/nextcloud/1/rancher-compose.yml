@@ -34,13 +34,13 @@
         description: "The VOLUME name to associate with this server"
         label: "VOLUME Name"
         required: true
-        default: "nextcloud"
+        default: "NEXTCLOUD"
         type: "string"
       - variable: "DB_VOLUME_NAME"
         description: "The VOLUME name to associate with the DB of this server"
         label: "DB VOLUME Name"
         required: true
-        default: "nextcloud_DB"
+        default: "NEXTCLOUD_DB"
         type: "string"
       - variable: "DB_PASS"
         description: "DB password to use for the server"
