@@ -1,7 +1,5 @@
 version: '2'
-
 services:
-
   nextcloud:
     image: nextcloud:fpm
     links:
@@ -12,7 +10,6 @@ services:
       io.rancher.container.pull_image: always
     volumes_from:
       - nextcloud-datavolume
-
   nginx:
     image: nginx
     labels:
@@ -35,7 +32,6 @@ services:
     volumes_from:
       - app
     restart: always
-
   db:
     image: postgres:9-alpine
     restart: always
