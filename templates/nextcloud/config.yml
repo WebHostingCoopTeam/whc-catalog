@@ -1,5 +1,5 @@
-name: Owncloud
+name: Nextcloud
 description: |
-  Owncloud cloudy cloud cloudington for cumulonimbus
-version: 0.1.23-mysql-9.1
+  Nextcloud cloudy cloud cloudington for cumulonimbus
+version: 0.0.2
 category: Repository
