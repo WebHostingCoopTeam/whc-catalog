@@ -1,0 +1,52 @@
+version: '2'
+catalog:
+  name: "nextcloud"
+  version: 0.0.9
+  description: "Library service powered by nextcloud"
+  uuid: nextcloudextdb-0
+  minimum_rancher_version: v0.51.0
+  questions:
+      - variable: "NEXTCLOUD_HOST"
+        description: "Hostname to use for the nextcloud server"
+        label: "nextcloud Hostname"
+        required: true
+        default: "nextcloud"
+        type: "string"
+      - variable: "NEXTCLOUD_DOMAIN"
+        description: "Domain to use for the nextcloud server"
+        label: "nextcloud Domain"
+        required: true
+        default: ""
+        type: "string"
+      - variable: "VOLUME_DRIVER"
+        description: "The VOLUME driver to associate with this server"
+        label: "VOLUME Driver"
+        required: true
+        default: "rancher-nfs"
+        type: enum
+        options: # List of options if using type of `enum`
+          - rancher-nfs
+          - rancher-efs
+          - rancher-ebs
+          - convoy-nfs
+          - convoy-efs
+          - convoy-ebs
+      - variable: "VOLUME_NAME"
+        description: "The VOLUME name to associate with this server"
+        label: "VOLUME Name"
+        required: true
+        default: "NEXTCLOUD"
+        type: "string"
+
+services:
+  nextcloud-datavolume:
+    scale: 1
+  nextcloud:
+    scale: 1
+    health_check:
+      port: 80
+      interval: 30000
+      unhealthy_threshold: 9
+      strategy: none
+      response_timeout: 9000
+      healthy_threshold: 2
