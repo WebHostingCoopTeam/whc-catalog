@@ -1,0 +1,48 @@
+version: '2'
+services:
+  nextcloud:
+    image: nextcloud:fpm
+    labels:
+      io.rancher.container.hostname_override: container_name
+      io.rancher.sidekicks: db,nextcloud-datavolume,nginx
+      io.rancher.container.pull_image: always
+    volumes_from:
+      - nextcloud-datavolume
+  nginx:
+    image: webhostingcoopteam/nginx-tiny-proxy:latest
+    labels:
+      io.rancher.container.hostname_override: container_name
+      io.rancher.container.pull_image: always
+      io.rancher.sidekicks: nextcloud-datavolume
+      traefik.enable: true
+      traefik.acme: true
+      traefik.alias: ${NEXTCLOUD_HOST}
+      traefik.domain: ${NEXTCLOUD_DOMAIN}
+      traefik.port: 80
+    environment:
+      - NGINX_TEMPLATE=nextcloud
+      - NGINX_SRC_HOST=nextcloud
+      - NGINX_SRC_PORT=9000
+    volumes_from:
+      - nextcloud-datavolume
+    restart: always
+  db:
+    image: postgres:9-alpine
+    restart: always
+    environment:
+      - POSTGRES_PASSWORD=${DB_PASS}
+    volumes_from:
+      - nextcloud-datavolume
+    labels:
+      io.rancher.sidekicks: nextcloud-datavolume
+      io.rancher.container.pull_image: always
+  nextcloud-datavolume:
+    labels:
+      io.rancher.container.start_once: true
+      io.rancher.container.pull_image: always
+    volume_driver: ${VOLUME_DRIVER}
+    volumes:
+      - ${VOLUME_NAME}:/var/www/html
+      - ${DB_VOLUME_NAME}:/var/lib/postgresql/data
+    image: busybox
+    command: /bin/true
