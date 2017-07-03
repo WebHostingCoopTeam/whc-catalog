@@ -1,5 +1,5 @@
 name: OAUTH2-proxy auth_request with nginx
 description: |
   Webhosting.coop Oauth2 proxy with nginx
-version: 0.0.6
+version: 0.0.5
 category: Repository

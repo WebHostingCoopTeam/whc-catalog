@@ -1,7 +1,7 @@
 version: '2'
 catalog:
   name: "oauth2_proxy_auth_request"
-  version: "0.0.6"
+  version: "0.0.5"
   description: "oauth2_proxy_auth_request"
   uuid: oauth-proxy-auth-request-0
   minimum_rancher_version: v0.51.0
