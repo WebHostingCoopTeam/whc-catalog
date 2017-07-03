@@ -75,7 +75,7 @@ catalog:
         default: ""
         type: "string"
       - variable: "OAUTH2_PROXY_COOKIE_SECRET"
-        description: "OAUTH2_PROXY_COOKIE_SECRET"
+        description: "OAUTH2_PROXY_COOKIE_SECRET needs to be 32 bytes exactly"
         label: "OAUTH2_PROXY_COOKIE_SECRET"
         required: false
         default: ""
