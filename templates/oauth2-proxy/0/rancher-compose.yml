@@ -1,0 +1,125 @@
+version: '2'
+catalog:
+  name: "oauth2_proxy"
+  version: "0.0.5"
+  description: "oauth2_proxy"
+  uuid: oauth-proxy-0
+  minimum_rancher_version: v0.51.0
+  questions:
+      - variable: "PROXIED_HOST"
+        description: "Hostname to use for the proxy (www)"
+        label: "Redirected Hostname"
+        required: true
+        default: ""
+        type: "string"
+      - variable: "PROXIED_DOMAIN"
+        description: "Domain to use for the proxy server (example.com)"
+        label: "PROXIED Domain"
+        required: true
+        default: ""
+        type: "string"
+      - variable: "PROXIED_SRC_HOST"
+        description: "upstream Hostname/IP to use for the proxy"
+        label: "upstream host"
+        required: true
+        default: "192.168.1.2"
+        type: "string"
+      - variable: "PROXIED_SRC_PORT"
+        description: "upstream port to use for the proxy"
+        label: "upstream host"
+        required: true
+        default: "80"
+        type: "string"
+      - variable: "OAUTH_TAG"
+        description: "The Docker Tag for the OAUTH proxy server"
+        label: "OAUTH tag"
+        required: true
+        default: "webhostingcoopteam/oauth2_proxy:2.2"
+        type: "string"
+      - variable: "NGINX_TAG"
+        description: "The Docker Tag for the nginx proxy server"
+        label: "nginx tag"
+        required: true
+        default: "webhostingcoopteam/nginx-tiny-proxy"
+        type: "string"
+      - variable: "NGINX_TEMPLATE"
+        description: "The Template for the nginx proxy server"
+        label: "nginx TEMPLATE"
+        required: true
+        default: "oauth_proxy"
+        type: "string"
+      - variable: host_label
+        label: "Host Label to stick the oauth container on"
+        description: |
+          Host label to use as oauth 'value' tag.
+          Example: 'oauth=true'
+        required: false
+        default: "private=true"
+        type: "string"
+      - variable: "OAUTH2_PROXY_CLIENT_ID"
+        description: "OAUTH2_PROXY_CLIENT_ID"
+        label: "OAUTH2_PROXY_CLIENT_ID"
+        required: false
+        default: ""
+        type: "string"
+      - variable: "OAUTH2_PROXY_CLIENT_SECRET"
+        description: "OAUTH2_PROXY_CLIENT_SECRET"
+        label: "OAUTH2_PROXY_CLIENT_SECRET"
+        required: false
+        default: ""
+        type: "string"
+      - variable: "OAUTH2_PROXY_COOKIE_NAME"
+        description: "OAUTH2_PROXY_COOKIE_NAME"
+        label: "OAUTH2_PROXY_COOKIE_NAME"
+        required: false
+        default: ""
+        type: "string"
+      - variable: "OAUTH2_PROXY_COOKIE_SECRET"
+        description: "OAUTH2_PROXY_COOKIE_SECRET"
+        label: "OAUTH2_PROXY_COOKIE_SECRET"
+        required: false
+        default: ""
+        type: "string"
+      - variable: "OAUTH2_PROXY_COOKIE_DOMAIN"
+        description: "OAUTH2_PROXY_COOKIE_DOMAIN"
+        label: "OAUTH2_PROXY_COOKIE_DOMAIN"
+        required: false
+        default: ""
+        type: "string"
+      - variable: "OAUTH2_PROXY_COOKIE_EXPIRE"
+        description: "OAUTH2_PROXY_COOKIE_EXPIRE"
+        label: "OAUTH2_PROXY_COOKIE_EXPIRE"
+        required: false
+        default: ""
+        type: "string"
+      - variable: "OAUTH2_PROXY_COOKIE_REFRESH"
+        description: "OAUTH2_PROXY_COOKIE_REFRESH"
+        label: "OAUTH2_PROXY_COOKIE_REFRESH"
+        required: false
+        default: "1h"
+        type: "string"
+      - variable: "OAUTH2_PROXY_SIGNATURE_KEY"
+        description: "OAUTH2_PROXY_SIGNATURE_KEY"
+        label: "OAUTH2_PROXY_SIGNATURE_KEY"
+        required: false
+        default: ""
+        type: "string"
+      - variable: "OAUTH2_PROXY_ARGS"
+        description: "OAUTH2_PROXY_ARGS"
+        label: "OAUTH2_PROXY_ARGS"
+        required: false
+        default: ""
+        type: "string"
+services:
+  oauth-proxy:
+    scale: 1
+  nginx-proxy:
+    scale: 1
+    health_check:
+      port: 80
+      interval: 30000
+      initializing_timeout: 360000
+      unhealthy_threshold: 9
+      strategy: none
+      healthy_threshold: 2
+      response_timeout: 9000

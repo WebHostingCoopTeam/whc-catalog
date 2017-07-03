@@ -1,0 +1,37 @@
+version: '2'
+services:
+  nginx-proxy:
+    image: ${NGINX_TAG}
+    labels:
+      io.rancher.scheduler.affinity:host_label: ${host_label}
+      io.rancher.container.hostname_override: container_name
+      io.rancher.container.pull_image: always
+      traefik.enable: true
+      traefik.alias: ${PROXIED_HOST}
+      traefik.domain: ${PROXIED_DOMAIN}
+      traefik.acme: true
+      traefik.port: 80
+    environment:
+      NGINX_HOST: ${PROXIED_HOST}
+      NGINX_DOMAIN: ${PROXIED_DOMAIN}
+      NGINX_PORT: 80
+      NGINX_SRC_HOST: ${PROXIED_SRC_HOST}
+      NGINX_SRC_PORT: ${PROXIED_SRC_PORT}
+      NGINX_DEBUG: false
+      NGINX_TEMPLATE: ${NGINX_TEMPLATE}
+  oauth-proxy:
+    image: ${OAUTH_TAG}
+    labels:
+      io.rancher.scheduler.affinity:host_label: ${host_label}
+      io.rancher.container.hostname_override: container_name
+      io.rancher.container.pull_image: always
+    environment:
+      OAUTH2_PROXY_ARGS: ${OAUTH2_PROXY_ARGS}
+      OAUTH2_PROXY_CLIENT_ID: ${OAUTH2_PROXY_CLIENT_ID}
+      OAUTH2_PROXY_CLIENT_SECRET: ${OAUTH2_PROXY_CLIENT_SECRET}
+      OAUTH2_PROXY_COOKIE_NAME: ${OAUTH2_PROXY_COOKIE_NAME}
+      OAUTH2_PROXY_COOKIE_SECRET: ${OAUTH2_PROXY_COOKIE_SECRET}
+      OAUTH2_PROXY_COOKIE_DOMAIN: ${OAUTH2_PROXY_COOKIE_DOMAIN}
+      OAUTH2_PROXY_COOKIE_EXPIRE: ${OAUTH2_PROXY_COOKIE_EXPIRE}
+      OAUTH2_PROXY_COOKIE_REFRESH: ${OAUTH2_PROXY_COOKIE_REFRESH}
+      OAUTH2_PROXY_SIGNATURE_KEY: ${OAUTH2_PROXY_SIGNATURE_KEY}
