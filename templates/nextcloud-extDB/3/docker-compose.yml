@@ -1,0 +1,36 @@
+version: '2'
+services:
+  nextcloud:
+    image: nextcloud:12-apache
+    labels:
+      io.rancher.container.hostname_override: container_name
+      io.rancher.sidekicks: nextcloud-datavolume,redis,collabora
+      io.rancher.container.pull_image: always
+      traefik.enable: true
+      traefik.acme: true
+      traefik.alias: ${NEXTCLOUD_HOST}
+      traefik.domain: ${NEXTCLOUD_DOMAIN}
+      traefik.port: 80
+    volumes_from:
+      - nextcloud-datavolume
+  nextcloud-datavolume:
+    labels:
+      io.rancher.container.start_once: true
+      io.rancher.container.pull_image: always
+    volume_driver: ${VOLUME_DRIVER}
+    volumes:
+      - ${VOLUME_NAME}:/var/www/html
+    image: busybox
+    command: /bin/true
+  redis:
+    image: redis
+    container_name: redis
+    restart: always
+  collabora:
+    image: collabora/code
+    container_name: collabora
+    cap_add:
+      - MKNOD
+    environment:
+      - domain=${NEXTCLOUD_DOMAIN}
+    restart: alwayscd $MYCWD

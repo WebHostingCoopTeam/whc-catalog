@@ -1,0 +1,14 @@
+.catalog:
+  name: Snowplow Scala Collector
+  version: 0.0.2
+  description: Snowplow Scala Collector
+  uuid: snowplowscala
+  questions:
+    - variable: "kafka_link"
+      description: |
+        Choose the Kafka service to use.
+        It's really recommended a dedicated Kafka service just for Snowplow.
+      label: "Kafka stack/service"
+      default: "kafka/kafka"
+      required: true
+      type: "service"

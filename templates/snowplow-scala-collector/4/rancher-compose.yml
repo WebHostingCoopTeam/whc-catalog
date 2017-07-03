@@ -1,0 +1,39 @@
+version: '2'
+catalog:
+  name: Snowplow Scala Collector
+  version: 0.0.5
+  description: Snowplow Scala Collector
+  uuid: snowplowscala
+  questions:
+    - variable: "kafka_link"
+      description: |
+        Choose the Kafka service to use.
+        It's really recommended a dedicated Kafka service just for Snowplow.
+      label: "Kafka stack/service"
+      default: "kafka/kafka"
+      required: true
+      type: "service"
+    - variable: "SNOWPLOW_HOST"
+      description: "Hostname to use for the Thalhalla store"
+      label: "Snowplow Hostname"
+      required: true
+      default: "collector"
+      type: "string"
+    - variable: "SNOWPLOW_DOMAIN"
+      description: "Domain to use for the Thalhalla store server"
+      label: "Snowplow Domain"
+      required: true
+      default: "example.com"
+      type: "string"
+services:
+  collector:
+    scale: 1
+    health_check:
+      port: 80
+      interval: 30000
+      request_line: GET /health HTTP/1.0
+      initializing_timeout: 360000
+      unhealthy_threshold: 9
+      strategy: none
+      healthy_threshold: 2
+      response_timeout: 9000
