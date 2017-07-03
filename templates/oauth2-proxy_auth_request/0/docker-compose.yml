@@ -26,6 +26,7 @@ services:
       io.rancher.container.hostname_override: container_name
       io.rancher.container.pull_image: always
     environment:
+      UPSTREAM: http://${PROXIED_SRC_HOST}:${PROXIED_SRC_PORT}
       OAUTH2_PROXY_ARGS: ${OAUTH2_PROXY_ARGS}
       OAUTH2_PROXY_CLIENT_ID: ${OAUTH2_PROXY_CLIENT_ID}
       OAUTH2_PROXY_CLIENT_SECRET: ${OAUTH2_PROXY_CLIENT_SECRET}

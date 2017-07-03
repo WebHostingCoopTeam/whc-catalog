@@ -12,6 +12,7 @@ services:
       traefik.acme: true
       traefik.port: 4180
     environment:
+      UPSTREAM: http://${PROXIED_SRC_HOST}:${PROXIED_SRC_PORT}
       OAUTH2_PROXY_ARGS: ${OAUTH2_PROXY_ARGS}
       OAUTH2_PROXY_CLIENT_ID: ${OAUTH2_PROXY_CLIENT_ID}
       OAUTH2_PROXY_CLIENT_SECRET: ${OAUTH2_PROXY_CLIENT_SECRET}
