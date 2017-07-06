@@ -1,7 +1,7 @@
 version: '2'
 catalog:
   name: "oauth2_proxy"
-  version: "0.0.6"
+  version: 0.0.7
   description: "oauth2_proxy"
   uuid: oauth-proxy-0
   minimum_rancher_version: v0.51.0
@@ -34,7 +34,7 @@ catalog:
         description: "The Docker Tag for the OAUTH proxy server"
         label: "OAUTH tag"
         required: true
-        default: "webhostingcoopteam/oauth2_proxy:2.2"
+        default: "webhostingcoopteam/oauth2_proxy:latest"
         type: "string"
       - variable: "NGINX_TAG"
         description: "The Docker Tag for the nginx proxy server"
@@ -59,43 +59,43 @@ catalog:
       - variable: "OAUTH2_PROXY_CLIENT_ID"
         description: "OAUTH2_PROXY_CLIENT_ID"
         label: "OAUTH2_PROXY_CLIENT_ID"
-        required: false
+        required: true
         default: ""
         type: "string"
       - variable: "OAUTH2_PROXY_CLIENT_SECRET"
         description: "OAUTH2_PROXY_CLIENT_SECRET"
         label: "OAUTH2_PROXY_CLIENT_SECRET"
-        required: false
+        required: true
         default: ""
         type: "string"
       - variable: "OAUTH2_PROXY_COOKIE_NAME"
         description: "OAUTH2_PROXY_COOKIE_NAME"
         label: "OAUTH2_PROXY_COOKIE_NAME"
-        required: false
+        required: true
         default: ""
         type: "string"
       - variable: "OAUTH2_PROXY_COOKIE_SECRET"
         description: "OAUTH2_PROXY_COOKIE_SECRET needs to be 32 bytes exactly"
         label: "OAUTH2_PROXY_COOKIE_SECRET"
-        required: false
+        required: true
         default: ""
         type: "string"
       - variable: "OAUTH2_PROXY_COOKIE_DOMAIN"
         description: "OAUTH2_PROXY_COOKIE_DOMAIN"
         label: "OAUTH2_PROXY_COOKIE_DOMAIN"
-        required: false
+        required: true
         default: ""
         type: "string"
       - variable: "OAUTH2_PROXY_COOKIE_EXPIRE"
         description: "OAUTH2_PROXY_COOKIE_EXPIRE"
         label: "OAUTH2_PROXY_COOKIE_EXPIRE"
-        required: false
-        default: ""
+        required: true
+        default: "8h"
         type: "string"
       - variable: "OAUTH2_PROXY_COOKIE_REFRESH"
         description: "OAUTH2_PROXY_COOKIE_REFRESH"
         label: "OAUTH2_PROXY_COOKIE_REFRESH"
-        required: false
+        required: true
         default: "1h"
         type: "string"
       - variable: "OAUTH2_PROXY_SIGNATURE_KEY"
@@ -109,6 +109,18 @@ catalog:
         label: "OAUTH2_PROXY_ARGS"
         required: false
         default: ""
+        type: "string"
+      - variable: "OAUTH2_EMAIL_DOMAIN"
+        description: "OAUTH2 Email Domain"
+        label: "Email Domain"
+        required: true
+        default: ""
+        type: "string"
+      - variable: "OAUTH2_PROVIDER"
+        description: "OAUTH2 Provider"
+        label: "Provider"
+        required: true
+        default: "google"
         type: "string"
 services:
   oauth-proxy:
