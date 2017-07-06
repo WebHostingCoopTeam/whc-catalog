@@ -5,6 +5,7 @@ catalog:
   description: Snowplow EMRETL Runner
   uuid: snowplowemretl
   questions:
+
     - variable: "elasticsearch_link"
       description: |
         Choose the ElasticSearch service to use.
@@ -13,13 +14,14 @@ catalog:
       default: "elasticsearch/elasticsearch"
       required: true
       type: "service"
+
     - variable: "AWS_SNOWPLOW_ACCESS_KEY"
       description: |
         AWS_SNOWPLOW_ACCESS_KEY
       label: "AWS_SNOWPLOW_ACCESS_KEY"
       default: ""
       required: true
-      type: "service"
+      type: "string"
 
     - variable: "AWS_SNOWPLOW_SECRET_KEY"
       description: |
@@ -27,7 +29,7 @@ catalog:
       label: "AWS_SNOWPLOW_SECRET_KEY"
       default: ""
       required: true
-      type: "service"
+      type: "string"
 
     - variable: "AWS_region_AWS"
       description: |
@@ -35,7 +37,7 @@ catalog:
       label: "AWS_region_AWS"
       default: "eu-west-1"
       required: true
-      type: "service"
+      type: "string"
 
     - variable: "AWS_log_AWS"
       description: |
@@ -43,7 +45,7 @@ catalog:
       label: "AWS_log_AWS"
       default: "s3://MY-collector-logs/emrlogs"
       required: true
-      type: "service"
+      type: "string"
 
     - variable: "AWS_S3_collector_AWS"
       description: |
@@ -51,7 +53,7 @@ catalog:
       label: "AWS_S3_collector_AWS"
       default: "s3://MYcollector-logs"
       required: true
-      type: "service"
+      type: "string"
 
     - variable: "AWS_processing_AWS"
       description: |
@@ -59,7 +61,7 @@ catalog:
       label: "AWS_processing_AWS"
       default: "s3://MY-collector-logs/processing"
       required: true
-      type: "service"
+      type: "string"
 
     - variable: "AWS_archive_AWS"
       description: |
@@ -67,7 +69,7 @@ catalog:
       label: "AWS_archive_AWS"
       default: "s3://MY-collector-archive/raw"
       required: true
-      type: "service"
+      type: "string"
 
     - variable: "AWS_enriched_good_AWS"
       description: |
@@ -75,7 +77,7 @@ catalog:
       label: "AWS_enriched_good_AWS"
       default: "s3://MY-collector-out/enriched/good"
       required: true
-      type: "service"
+      type: "string"
 
     - variable: "AWS_enriched_bad_AWS"
       description: |
@@ -83,7 +85,7 @@ catalog:
       label: "AWS_enriched_bad_AWS"
       default: "s3://MY-collector-out/enriched/bad"
       required: true
-      type: "service"
+      type: "string"
 
     - variable: "AWS_enriched_errors_AWS"
       description: |
@@ -91,7 +93,7 @@ catalog:
       label: "AWS_enriched_errors_AWS"
       default: "s3://MY-collector-errors/enriched"
       required: true
-      type: "service"
+      type: "string"
 
     - variable: "AWS_enriched_archive_AWS"
       description: |
@@ -99,7 +101,7 @@ catalog:
       label: "AWS_enriched_archive_AWS"
       default: "s3://MY-collector-archive/enriched"
       required: true
-      type: "service"
+      type: "string"
 
     - variable: "AWS_shredded_good_AWS"
       description: |
@@ -107,7 +109,7 @@ catalog:
       label: "AWS_shredded_good_AWS"
       default: "s3://MY-collector-out/shredded/good"
       required: true
-      type: "service"
+      type: "string"
 
     - variable: "AWS_shredded_bad_AWS"
       description: |
@@ -115,7 +117,7 @@ catalog:
       label: "AWS_shredded_bad_AWS"
       default: "s3://MY-collector-out/shredded/bad"
       required: true
-      type: "service"
+      type: "string"
 
     - variable: "AWS_shredded_errors_AWS"
       description: |
@@ -123,7 +125,7 @@ catalog:
       label: "AWS_shredded_errors_AWS"
       default: "s3://MY-collector-errors/shredded"
       required: true
-      type: "service"
+      type: "string"
 
     - variable: "AWS_shredded_archive_AWS"
       description: |
@@ -131,7 +133,7 @@ catalog:
       label: "AWS_shredded_archive_AWS"
       default: "s3://MY-collector-archive/shredded"
       required: true
-      type: "service"
+      type: "string"
 
     - variable: "EMR_EC2_DefaultRole_EMR"
       description: |
@@ -139,7 +141,7 @@ catalog:
       label: "EMR_EC2_DefaultRole_EMR"
       default: "EMR_EC2_DefaultRole"
       required: true
-      type: "service"
+      type: "string"
 
     - variable: "EMR_DefaultRole_EMR"
       description: |
@@ -147,23 +149,23 @@ catalog:
       label: "EMR_DefaultRole_EMR"
       default: "EMR_DefaultRole"
       required: true
-      type: "service"
+      type: "string"
 
     - variable: "AWS_placement_AWS"
       description: |
         AWS_placement_AWS
       label: "AWS_placement_AWS"
       default: ""
-      required: true
-      type: "service"
+      required: false
+      type: "string"
 
     - variable: "AWS_ec2_subnet_id_AWS"
       description: |
         AWS_ec2_subnet_id_AWS
       label: "AWS_ec2_subnet_id_AWS"
       default: ""
-      required: true
-      type: "service"
+      required: false
+      type: "string"
 
     - variable: "AWS_ec2_key_name_AWS"
       description: |
@@ -171,7 +173,7 @@ catalog:
       label: "AWS_ec2_key_name_AWS"
       default: ""
       required: true
-      type: "service"
+      type: "string"
 
     - variable: "LOG_LEVEL"
       description: |
@@ -179,7 +181,7 @@ catalog:
       label: "LOG_LEVEL"
       default: "DEBUG"
       required: true
-      type: "service"
+      type: "string"
 
     - variable: "AWS_app_id_AWS"
       description: |
@@ -187,7 +189,7 @@ catalog:
       label: "AWS_app_id_AWS"
       default: " MYplow"
       required: true
-      type: "service"
+      type: "string"
 
     - variable: "AWS_collector_AWS"
       description: |
@@ -195,7 +197,7 @@ catalog:
       label: "AWS_collector_AWS"
       default: ""
       required: true
-      type: "service"
+      type: "string"
 
     - variable: "IGLU_REPO_NAME"
       description: |
@@ -203,7 +205,7 @@ catalog:
       label: "IGLU_REPO_NAME"
       default: ""
       required: true
-      type: "service"
+      type: "string"
 
     - variable: "IGLU_VENDOR_PREFIX"
       description: |
@@ -211,7 +213,7 @@ catalog:
       label: "IGLU_VENDOR_PREFIX"
       default: ""
       required: true
-      type: "service"
+      type: "string"
 
     - variable: "IGLU_URL"
       description: |
@@ -219,8 +221,47 @@ catalog:
       label: "IGLU_URL"
       default: ""
       required: true
-      type: "service"
+      type: "string"
 
+    - variable: "POSTGRES_HOST"
+      description: |
+        POSTGRES_HOST
+      label: "POSTGRES_HOST"
+      default: ""
+      required: false
+      type: "string"
+
+    - variable: "POSTGRES_PORT"
+      description: |
+        POSTGRES_PORT
+      label: "POSTGRES_PORT"
+      default: ""
+      required: false
+      type: "string"
+
+    - variable: "POSTGRES_USER"
+      description: |
+        POSTGRES_USER
+      label: "POSTGRES_USER"
+      default: ""
+      required: false
+      type: "string"
+
+    - variable: "POSTGRES_PASS"
+      description: |
+        POSTGRES_PASS
+      label: "POSTGRES_PASS"
+      default: ""
+      required: false
+      type: "password"
+
+    - variable: "POSTGRES_DB"
+      description: |
+        POSTGRES_DB
+      label: "POSTGRES_DB"
+      default: ""
+      required: false
+      type: "string"
 
 services:
   emretl:

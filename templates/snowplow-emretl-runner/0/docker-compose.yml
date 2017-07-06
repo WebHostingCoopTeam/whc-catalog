@@ -29,7 +29,11 @@ emretl:
     - IGLU_REPO_NAME=${IGLU_REPO_NAME}
     - IGLU_VENDOR_PREFIX=${IGLU_VENDOR_PREFIX}
     - IGLU_URL=${IGLU_URL}
-
+    - POSTGRES_HOST=${POSTGRES_HOST}
+    - POSTGRES_PORT=${POSTGRES_PORT}
+    - POSTGRES_USER=${POSTGRES_USER}
+    - POSTGRES_PASS=${POSTGRES_PASS}
+    - POSTGRES_DB=${POSTGRES_DB}
   external_links:
     - ${elasticsearch_link}:elasticsearch
   labels:
