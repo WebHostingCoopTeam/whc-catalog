@@ -1,0 +1,227 @@
+version: '2'
+catalog:
+  name: Snowplow EMRETL Runner
+  version: 0.0.1
+  description: Snowplow EMRETL Runner
+  uuid: snowplowemretl
+  questions:
+    - variable: "elasticsearch_link"
+      description: |
+        Choose the ElasticSearch service to use.
+        It's really recommended a dedicated ElasticSearch service just for Snowplow.
+      label: "ElasticSearch stack/service"
+      default: "elasticsearch/elasticsearch"
+      required: true
+      type: "service"
+    - variable: "AWS_SNOWPLOW_ACCESS_KEY"
+      description: |
+        AWS_SNOWPLOW_ACCESS_KEY
+      label: "AWS_SNOWPLOW_ACCESS_KEY"
+      default: ""
+      required: true
+      type: "service"
+
+    - variable: "AWS_SNOWPLOW_SECRET_KEY"
+      description: |
+        AWS_SNOWPLOW_SECRET_KEY
+      label: "AWS_SNOWPLOW_SECRET_KEY"
+      default: ""
+      required: true
+      type: "service"
+
+    - variable: "AWS_region_AWS"
+      description: |
+        AWS_region_AWS
+      label: "AWS_region_AWS"
+      default: "eu-west-1"
+      required: true
+      type: "service"
+
+    - variable: "AWS_log_AWS"
+      description: |
+        AWS_log_AWS
+      label: "AWS_log_AWS"
+      default: "s3://MY-collector-logs/emrlogs"
+      required: true
+      type: "service"
+
+    - variable: "AWS_S3_collector_AWS"
+      description: |
+        AWS_S3_collector_AWS
+      label: "AWS_S3_collector_AWS"
+      default: "s3://MYcollector-logs"
+      required: true
+      type: "service"
+
+    - variable: "AWS_processing_AWS"
+      description: |
+        AWS_processing_AWS
+      label: "AWS_processing_AWS"
+      default: "s3://MY-collector-logs/processing"
+      required: true
+      type: "service"
+
+    - variable: "AWS_archive_AWS"
+      description: |
+        AWS_archive_AWS
+      label: "AWS_archive_AWS"
+      default: "s3://MY-collector-archive/raw"
+      required: true
+      type: "service"
+
+    - variable: "AWS_enriched_good_AWS"
+      description: |
+        AWS_enriched_good_AWS
+      label: "AWS_enriched_good_AWS"
+      default: "s3://MY-collector-out/enriched/good"
+      required: true
+      type: "service"
+
+    - variable: "AWS_enriched_bad_AWS"
+      description: |
+        AWS_enriched_bad_AWS
+      label: "AWS_enriched_bad_AWS"
+      default: "s3://MY-collector-out/enriched/bad"
+      required: true
+      type: "service"
+
+    - variable: "AWS_enriched_errors_AWS"
+      description: |
+        AWS_enriched_errors_AWS
+      label: "AWS_enriched_errors_AWS"
+      default: "s3://MY-collector-errors/enriched"
+      required: true
+      type: "service"
+
+    - variable: "AWS_enriched_archive_AWS"
+      description: |
+        AWS_enriched_archive_AWS
+      label: "AWS_enriched_archive_AWS"
+      default: "s3://MY-collector-archive/enriched"
+      required: true
+      type: "service"
+
+    - variable: "AWS_shredded_good_AWS"
+      description: |
+        AWS_shredded_good_AWS
+      label: "AWS_shredded_good_AWS"
+      default: "s3://MY-collector-out/shredded/good"
+      required: true
+      type: "service"
+
+    - variable: "AWS_shredded_bad_AWS"
+      description: |
+        AWS_shredded_bad_AWS
+      label: "AWS_shredded_bad_AWS"
+      default: "s3://MY-collector-out/shredded/bad"
+      required: true
+      type: "service"
+
+    - variable: "AWS_shredded_errors_AWS"
+      description: |
+        AWS_shredded_errors_AWS
+      label: "AWS_shredded_errors_AWS"
+      default: "s3://MY-collector-errors/shredded"
+      required: true
+      type: "service"
+
+    - variable: "AWS_shredded_archive_AWS"
+      description: |
+        AWS_shredded_archive_AWS
+      label: "AWS_shredded_archive_AWS"
+      default: "s3://MY-collector-archive/shredded"
+      required: true
+      type: "service"
+
+    - variable: "EMR_EC2_DefaultRole_EMR"
+      description: |
+        EMR_EC2_DefaultRole_EMR
+      label: "EMR_EC2_DefaultRole_EMR"
+      default: "EMR_EC2_DefaultRole"
+      required: true
+      type: "service"
+
+    - variable: "EMR_DefaultRole_EMR"
+      description: |
+        EMR_DefaultRole_EMR
+      label: "EMR_DefaultRole_EMR"
+      default: "EMR_DefaultRole"
+      required: true
+      type: "service"
+
+    - variable: "AWS_placement_AWS"
+      description: |
+        AWS_placement_AWS
+      label: "AWS_placement_AWS"
+      default: ""
+      required: true
+      type: "service"
+
+    - variable: "AWS_ec2_subnet_id_AWS"
+      description: |
+        AWS_ec2_subnet_id_AWS
+      label: "AWS_ec2_subnet_id_AWS"
+      default: ""
+      required: true
+      type: "service"
+
+    - variable: "AWS_ec2_key_name_AWS"
+      description: |
+        AWS_ec2_key_name_AWS
+      label: "AWS_ec2_key_name_AWS"
+      default: ""
+      required: true
+      type: "service"
+
+    - variable: "LOG_LEVEL"
+      description: |
+        LOG_LEVEL
+      label: "LOG_LEVEL"
+      default: "DEBUG"
+      required: true
+      type: "service"
+
+    - variable: "AWS_app_id_AWS"
+      description: |
+        AWS_app_id_AWS
+      label: "AWS_app_id_AWS"
+      default: " MYplow"
+      required: true
+      type: "service"
+
+    - variable: "AWS_collector_AWS"
+      description: |
+        AWS_collector_AWS
+      label: "AWS_collector_AWS"
+      default: ""
+      required: true
+      type: "service"
+
+    - variable: "IGLU_REPO_NAME"
+      description: |
+        IGLU_REPO_NAME
+      label: "IGLU_REPO_NAME"
+      default: ""
+      required: true
+      type: "service"
+
+    - variable: "IGLU_VENDOR_PREFIX"
+      description: |
+        IGLU_VENDOR_PREFIX
+      label: "IGLU_VENDOR_PREFIX"
+      default: ""
+      required: true
+      type: "service"
+
+    - variable: "IGLU_URL"
+      description: |
+        IGLU_URL
+      label: "IGLU_URL"
+      default: ""
+      required: true
+      type: "service"
+
+
+services:
+  emretl:
+    scale: 1

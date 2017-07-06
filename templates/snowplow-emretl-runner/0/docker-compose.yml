@@ -1,0 +1,38 @@
+emretl:
+  tty: true
+  image: webhostingcoopteam/snowplow-emretlrunner
+  environment:
+    - ELASTICSEARCH_SERVICE=${elasticsearch_link}
+    - AWS_SNOWPLOW_ACCESS_KEY=${AWS_SNOWPLOW_ACCESS_KEY}
+    - AWS_SNOWPLOW_SECRET_KEY=${AWS_SNOWPLOW_SECRET_KEY}
+    - AWS_region_AWS=${AWS_region_AWS}
+    - AWS_log_AWS=${AWS_log_AWS}
+    - AWS_S3_collector_AWS=${AWS_S3_collector_AWS}
+    - AWS_processing_AWS=${AWS_processing_AWS}
+    - AWS_archive_AWS=${AWS_archive_AWS}
+    - AWS_enriched_good_AWS=${AWS_enriched_good_AWS}
+    - AWS_enriched_bad_AWS=${AWS_enriched_bad_AWS}
+    - AWS_enriched_errors_AWS=${AWS_enriched_errors_AWS}
+    - AWS_enriched_archive_AWS=${AWS_enriched_archive_AWS}
+    - AWS_shredded_good_AWS=${AWS_shredded_good_AWS}
+    - AWS_shredded_bad_AWS=${AWS_shredded_bad_AWS}
+    - AWS_shredded_errors_AWS=${AWS_shredded_errors_AWS}
+    - AWS_shredded_archive_AWS=${AWS_shredded_archive_AWS}
+    - EMR_EC2_DefaultRole_EMR=${EMR_EC2_DefaultRole_EMR}
+    - EMR_DefaultRole_EMR=${EMR_DefaultRole_EMR}
+    - AWS_placement_AWS=${AWS_placement_AWS}
+    - AWS_ec2_subnet_id_AWS=${AWS_ec2_subnet_id_AWS}
+    - AWS_ec2_key_name_AWS=${AWS_ec2_key_name_AWS}
+    - LOG_LEVEL=${LOG_LEVEL}
+    - AWS_app_id_AWS=${AWS_app_id_AWS}
+    - AWS_collector_AWS=${AWS_collector_AWS}
+    - IGLU_REPO_NAME=${IGLU_REPO_NAME}
+    - IGLU_VENDOR_PREFIX=${IGLU_VENDOR_PREFIX}
+    - IGLU_URL=${IGLU_URL}
+
+  external_links:
+    - ${elasticsearch_link}:elasticsearch
+  labels:
+    io.rancher.scheduler.affinity:container_label_soft_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
+    io.rancher.container.hostname_override: container_name
+    io.rancher.container.pull_image: always
