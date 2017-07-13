@@ -31,7 +31,6 @@ services:
     restart: always
     volumes_from:
       - rabbitmq-datavolume
-    net: "container:rabbitmq"
     entrypoint:
       - /opt/rancher/bin/run.sh
     environment:
