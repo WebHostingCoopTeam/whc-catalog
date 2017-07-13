@@ -23,7 +23,6 @@ services:
       io.rancher.scheduler.affinity:host_label: ${host_label}
       io.rancher.sidekicks: broker-volume, broker-conf
   broker-conf:
-    net: none
     labels:
       io.rancher.scheduler.affinity:container_label_soft_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
       io.rancher.container.hostname_override: container_name
@@ -33,7 +32,6 @@ services:
     volumes:
       - kafkatools:/opt/tools
   broker-volume:
-    net: none
     labels:
       io.rancher.scheduler.affinity:container_label_soft_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
       io.rancher.container.hostname_override: container_name
