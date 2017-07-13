@@ -42,12 +42,6 @@ catalog:
         - rancher-nfs
         - rancher-efs
         - rancher-ebs
-    - variable: "CONFIG_VOLUME_NAME"
-      description: "The CONFIG VOLUME name to associate with this server"
-      label: "CONFIG VOLUME Name"
-      required: true
-      default: ""
-      type: "string"
     - variable: host_label
       label: "Host with Label to put rabbitmq on"
       description: |

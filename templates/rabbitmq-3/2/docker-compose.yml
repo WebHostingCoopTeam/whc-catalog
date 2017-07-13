@@ -19,7 +19,7 @@ services:
       io.rancher.container.start_once: true
     volume_driver: ${VOLUME_DRIVER}
     volumes:
-      - ${CONFIG_VOLUME_NAME}:/etc/rabbitmq
+      - rabbitconf:/etc/rabbitmq
       - rancherbin:/opt/rancher/bin
     entrypoint: /bin/true
     image: rabbitmq:3.6-management
@@ -38,4 +38,6 @@ services:
       - RABBITMQ_ERLANG_COOKIE=${erlang_cookie}
 volumes:
   rancherbin:
+    driver: ${VOLUME_DRIVER}
+  rabbitconf:
     driver: ${VOLUME_DRIVER}
