@@ -1,4 +1,5 @@
-.catalog:
+version: '2'
+catalog:
   name: Kafka
   version: 0.10.2.1-rancher2
   description: |
@@ -67,13 +68,25 @@
       default: "kafka-zk/zk"
       required: true
       type: "service"
-broker:
-  scale: ${kafka_scale}
-  retain_ip: true
-  health_check:
-    port: 9092
-    interval: 5000
-    unhealthy_threshold: 3
-    request_line: ''
-    healthy_threshold: 2
-    response_timeout: 5000
+    - variable: "VOLUME_DRIVER"
+      description: "The VOLUME driver to associate with this server"
+      label: "VOLUME Driver"
+      required: true
+      default: "rancher-nfs"
+      type: enum
+      options: # List of options if using type of `enum`
+        - rancher-nfs
+        - rancher-efs
+        - rancher-ebs
+        - local
+services:
+  broker:
+    scale: ${kafka_scale}
+    retain_ip: true
+    health_check:
+      port: 9092
+      interval: 5000
+      unhealthy_threshold: 3
+      request_line: ''
+      healthy_threshold: 2
+      response_timeout: 5000
