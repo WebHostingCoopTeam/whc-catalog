@@ -1,6 +1,7 @@
-.catalog:
+version: '2'
+catalog:
   name: Zookeeper
-  version: 3.4.9-rancher1
+  version: 3.4.9-rancher2
   description: |
     (Experimental) Apache Zookeeper cluster.
   minimum_rancher_version: v0.59.0
@@ -55,13 +56,32 @@
       required: true
       default: 60
       type: "int"
-zk:
-  scale: ${zk_scale}
-  retain_ip: true
-  health_check:
-    port: 2181
-    interval: 5000
-    unhealthy_threshold: 3
-    request_line: ''
-    healthy_threshold: 2
-    response_timeout: 5000
+    - variable: host_label
+      label: "Host with Label to put zookeeper on"
+      description: |
+        Host label to use as Meanshop 'value' tag.
+        Example: 'zookeper=true'
+      required: true
+      default: "private=true"
+      type: "string"
+    - variable: "VOLUME_DRIVER"
+      description: "The VOLUME driver to associate with this server"
+      label: "VOLUME Driver"
+      required: true
+      default: "rancher-nfs"
+      type: enum
+      options: # List of options if using type of `enum`
+        - rancher-nfs
+        - rancher-efs
+        - rancher-ebs
+services:
+  zk:
+    scale: ${zk_scale}
+    retain_ip: true
+    health_check:
+      port: 2181
+      interval: 5000
+      unhealthy_threshold: 3
+      request_line: ''
+      healthy_threshold: 2
+      response_timeout: 5000
