@@ -79,6 +79,14 @@ catalog:
         - rancher-efs
         - rancher-ebs
         - local
+    - variable: host_label
+      label: "Host with Label to put kafka on"
+      description: |
+        Host label to use as kafka 'value' tag.
+        Example: 'kafka=true'
+      required: true
+      default: "private=true"
+      type: "string"
 services:
   broker:
     scale: ${kafka_scale}

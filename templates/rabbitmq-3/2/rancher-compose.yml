@@ -48,6 +48,14 @@ catalog:
       required: true
       default: ""
       type: "string"
+    - variable: host_label
+      label: "Host with Label to put rabbitmq on"
+      description: |
+        Host label to use as rabbitmq 'value' tag.
+        Example: 'rabbitmq=true'
+      required: true
+      default: "private=true"
+      type: "string"
 
 services:
   rabbitmq:

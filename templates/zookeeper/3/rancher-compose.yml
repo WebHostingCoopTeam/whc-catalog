@@ -59,8 +59,8 @@ catalog:
     - variable: host_label
       label: "Host with Label to put zookeeper on"
       description: |
-        Host label to use as Meanshop 'value' tag.
-        Example: 'zookeper=true'
+        Host label to use as zookeeper 'value' tag.
+        Example: 'zookeeper=true'
       required: true
       default: "private=true"
       type: "string"

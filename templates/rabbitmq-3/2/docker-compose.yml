@@ -5,6 +5,7 @@ services:
     labels:
       io.rancher.container.hostname_override: container_name
       io.rancher.sidekicks: rabbitmq-base,rabbitmq-datavolume
+      io.rancher.scheduler.affinity:host_label: ${host_label}
     volumes_from:
       - rabbitmq-datavolume
     environment:
@@ -14,6 +15,7 @@ services:
   rabbitmq-datavolume:
     labels:
       io.rancher.container.hostname_override: container_name
+      io.rancher.scheduler.affinity:host_label: ${host_label}
       io.rancher.container.start_once: true
     volume_driver: ${VOLUME_DRIVER}
     volumes:
@@ -24,6 +26,7 @@ services:
   rabbitmq-base:
     labels:
       io.rancher.container.hostname_override: container_name
+      io.rancher.scheduler.affinity:host_label: ${host_label}
     image: rabbitmq:3.6-management
     restart: always
     volumes_from:
