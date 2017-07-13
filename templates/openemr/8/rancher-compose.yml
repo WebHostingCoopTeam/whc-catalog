@@ -16,9 +16,9 @@ catalog:
       type: "string"
     - variable: "openemr_domain"
       description: "openemr hostname (without uri scheme http:// or https://)"
-      label: "Hostname:"
+      label: "Domain:"
       required: true
-      default: "example.com"
+      default: ""
       type: "string"
     - variable: "TAG"
       description: "TAG"
