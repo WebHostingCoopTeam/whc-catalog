@@ -1,0 +1,36 @@
+version: '2'
+services:
+  openemr:
+    image: webhostingcoopteam/openemr:${TAG}
+    labels:
+      io.rancher.sidekicks: openemr-data,db
+      io.rancher.scheduler.affinity:host_label: ${host_label}
+      io.rancher.container.pull_image: always
+      traefik.enable: true
+      traefik.acme: true
+      traefik.alias: ${openemr_host}
+      traefik.domain: ${openemr_domain}
+      traefik.port: 80
+    hostname: ${openemr_host}.${openemr_domain}
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+  db:
+    image: mysql:5.7
+    volumes_from:
+    - openemr-data
+    labels:
+      io.rancher.sidekicks: openemr-data
+      io.rancher.scheduler.affinity:host_label: ${host_label}
+      io.rancher.container.pull_image: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+  openemr-data:
+    labels:
+      io.rancher.container.start_once: 'true'
+      io.rancher.scheduler.affinity:host_label: ${host_label}
+      io.rancher.container.hostname_override: container_name
+    command: /bin/true
+    image: busybox
+    volume_driver: ${VOLUME_DRIVER}
+    volumes:
+    - /var/lib/mysql
