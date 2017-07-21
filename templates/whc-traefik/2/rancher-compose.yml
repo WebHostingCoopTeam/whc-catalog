@@ -73,11 +73,27 @@
       default: false
       type: "boolean"
     - variable: "refresh_interval"
-      description: "Interval to poll/apply configuration changes." 
+      description: "Interval to poll/apply configuration changes."
       label: "Refresh Interval (s):"
       required: true
-      default: 10 
+      default: 10
       type: "int"
+    - variable: "VOLUME_DRIVER"
+      description: "The VOLUME driver to associate with this server"
+      label: "VOLUME Driver"
+      required: true
+      default: "rancher-nfs"
+      type: enum
+      options: # List of options if using type of `enum`
+        - rancher-nfs
+        - rancher-efs
+        - rancher-ebs
+    - variable: "VOLUME_NAME"
+      description: "The VOLUME name to associate with this server"
+      label: "VOLUME Name"
+      required: true
+      default: "TRAEFIK"
+      type: "string"
 traefik:
   retain_ip: true
   health_check:
