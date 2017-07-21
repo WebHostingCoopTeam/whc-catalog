@@ -1,4 +1,5 @@
-.catalog:
+version: '2'
+catalog:
   name: traefik
   version: v1.2.3-rancher1-whc-2
   description: |
@@ -94,12 +95,13 @@
       required: true
       default: "TRAEFIK"
       type: "string"
-traefik:
-  retain_ip: true
-  health_check:
-    port: 8000
-    interval: 5000
-    unhealthy_threshold: 3
-    request_line: 'GET /dashboard/# HTTP/1.0'
-    healthy_threshold: 2
-    response_timeout: 5000
+services:
+  traefik:
+    retain_ip: true
+    health_check:
+      port: 8000
+      interval: 5000
+      unhealthy_threshold: 3
+      request_line: 'GET /dashboard/# HTTP/1.0'
+      healthy_threshold: 2
+      response_timeout: 5000
