@@ -1,7 +1,7 @@
 name: Traefik-WHC
 description: |
   Traefik active load balancer with WHC defaults
-version: v1.1.2-rancher1-whc-1
+version: v1.2.3-rancher1-whc-2
 category: Load Balancing
 maintainer: "Josh Cox <josh@webhosting.coop>"
 minimum_rancher_version: v0.59.0
