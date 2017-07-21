@@ -1,7 +1,6 @@
-version: '2'
-catalog:
+.catalog:
   name: traefik
-  version: v1.2.3-rancher1-whc-3
+  version: v1.3.3-rancher1-whc-1
   description: |
     (Experimental) Traefik load balancer.
   minimum_rancher_version: v0.59.0
@@ -56,8 +55,8 @@ catalog:
       default: "coopadmin@webhosting.coop"
       type: "string"
     - variable: "acme_ondemand"
-      description: "Enable acme onDemand."
-      label: "ACME onDemand:"
+      description: "Enable acme ondemand."
+      label: "ACME ondemand:"
       required: true
       default: true
       type: "boolean"
@@ -74,35 +73,23 @@ catalog:
       default: false
       type: "boolean"
     - variable: "refresh_interval"
-      description: "Interval to poll/apply configuration changes."
+      description: "Interval to poll/apply configuration changes." 
       label: "Refresh Interval (s):"
       required: true
-      default: 10
+      default: 10 
       type: "int"
-    - variable: "VOLUME_DRIVER"
-      description: "The VOLUME driver to associate with this server"
-      label: "VOLUME Driver"
-      required: true
-      default: "rancher-nfs"
-      type: enum
-      options: # List of options if using type of `enum`
-        - local
-        - rancher-nfs
-        - rancher-efs
-        - rancher-ebs
-    - variable: "VOLUME_NAME"
-      description: "The VOLUME name to associate with this server"
-      label: "VOLUME Name"
-      required: true
-      default: "TRAEFIK"
-      type: "string"
-services:
-  traefik:
-    retain_ip: true
-    health_check:
-      port: 8000
-      interval: 5000
-      unhealthy_threshold: 3
-      request_line: 'GET /dashboard/# HTTP/1.0'
-      healthy_threshold: 2
-      response_timeout: 5000
+traefik:
+  retain_ip: true
+  health_check:
+    port: 8000
+    interval: 5000
+    unhealthy_threshold: 3
+    request_line: 'GET /dashboard/# HTTP/1.0'
+    healthy_threshold: 2
+    response_timeout: 5000
+  metadata:
+    traefik:
+      ssl_key: |
+        ${ssl_key}
+      ssl_crt: |
+        ${ssl_crt}
