@@ -1,0 +1,26 @@
+version: '2'
+catalog:
+  name: "Rabbit MQ Examples"
+  version: "3.6-rancher1"
+  decription: A reliable, distributed messaging broker with persistent - tutorial storage examples
+  questions:
+    - variable: "rabbitmq_link"
+      description: |
+        rabbitmq service link
+      label: "rabbitmq stack/service"
+      default: "rabbitmq/rabbitmq"
+      required: true
+      type: "service"
+services:
+  receive:
+  send:
+  worker:
+  new_task:
+  rpc_server:
+  rpc_client:
+  receive_logs:
+  emit_log:
+  receive_logs_direct:
+  emit_log_direct:
+  receive_logs_topic:
+  emit_log_topic:
