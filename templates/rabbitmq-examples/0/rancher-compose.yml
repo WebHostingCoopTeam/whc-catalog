@@ -5,9 +5,13 @@ catalog:
   description: |
     tutorial storage examples
   questions:
+    - variable: rabbitmq_link
+      description: "rabbitmq service link"
+      label: "rabbitmq stack/service"
+      default: ""
+      required: false
+      type: "service"
 services:
-  rabbit:
-    scale: 1
   receive:
     scale: 1
   send:

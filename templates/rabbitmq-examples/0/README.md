@@ -1,1 +1,2 @@
-# Internal Rabbit
+# RabbitMQ Examples
+
