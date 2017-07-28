@@ -9,7 +9,7 @@ services:
       io.rancher.scheduler.affinity:host_label: ${host_label}
     environment:
       - AMQ_HOST=rabbitmq
-  rabbit:
+  rabbitmq:
     hostname: rabbit
     image: rabbitmq:3
   send:
