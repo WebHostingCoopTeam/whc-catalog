@@ -8,8 +8,8 @@ services:
       io.rancher.container.hostname_override: container_name
       io.rancher.scheduler.affinity:host_label: ${host_label}
     environment:
-      - AMQ_HOST=rabbitmq
-  rabbitmq:
+      - AMQ_HOST=rabbit
+  rabbit:
     hostname: rabbit
     image: rabbitmq:3
   send:
@@ -19,7 +19,7 @@ services:
       io.rancher.scheduler.affinity:host_label: ${host_label}
       io.rancher.container.start_once: true
     environment:
-      - AMQ_HOST=rabbitmq
+      - AMQ_HOST=rabbit
     command:
       - send
 
@@ -29,7 +29,7 @@ services:
       io.rancher.container.hostname_override: container_name
       io.rancher.scheduler.affinity:host_label: ${host_label}
     environment:
-      - AMQ_HOST=rabbitmq
+      - AMQ_HOST=rabbit
     command:
       - worker
   newtask:
@@ -39,7 +39,7 @@ services:
       io.rancher.scheduler.affinity:host_label: ${host_label}
       io.rancher.container.start_once: true
     environment:
-      - AMQ_HOST=rabbitmq
+      - AMQ_HOST=rabbit
     command:
       - new_task
 
@@ -49,7 +49,7 @@ services:
       io.rancher.container.hostname_override: container_name
       io.rancher.scheduler.affinity:host_label: ${host_label}
     environment:
-      - AMQ_HOST=rabbitmq
+      - AMQ_HOST=rabbit
     command:
       - rpc_server
   rpcclient:
@@ -59,7 +59,7 @@ services:
       io.rancher.scheduler.affinity:host_label: ${host_label}
       io.rancher.container.start_once: true
     environment:
-      - AMQ_HOST=rabbitmq
+      - AMQ_HOST=rabbit
     command:
       - rpc_client
       - '5'
@@ -70,7 +70,7 @@ services:
       io.rancher.container.hostname_override: container_name
       io.rancher.scheduler.affinity:host_label: ${host_label}
     environment:
-      - AMQ_HOST=rabbitmq
+      - AMQ_HOST=rabbit
     command:
       - receive_logs
   emitlog:
@@ -80,7 +80,7 @@ services:
       io.rancher.scheduler.affinity:host_label: ${host_label}
       io.rancher.container.start_once: true
     environment:
-      - AMQ_HOST=rabbitmq
+      - AMQ_HOST=rabbit
     command:
       - emit_log
 
@@ -90,7 +90,7 @@ services:
       io.rancher.container.hostname_override: container_name
       io.rancher.scheduler.affinity:host_label: ${host_label}
     environment:
-      - AMQ_HOST=rabbitmq
+      - AMQ_HOST=rabbit
     command:
       - receive_logs_direct
   emitlogdirect:
@@ -100,7 +100,7 @@ services:
       io.rancher.scheduler.affinity:host_label: ${host_label}
       io.rancher.container.start_once: true
     environment:
-      - AMQ_HOST=rabbitmq
+      - AMQ_HOST=rabbit
     command:
       - emit_log_direct
 
@@ -110,7 +110,7 @@ services:
       io.rancher.container.hostname_override: container_name
       io.rancher.scheduler.affinity:host_label: ${host_label}
     environment:
-      - AMQ_HOST=rabbitmq
+      - AMQ_HOST=rabbit
     command:
       - receive_logs_topic
   emitlogtopic:
@@ -120,6 +120,6 @@ services:
       io.rancher.scheduler.affinity:host_label: ${host_label}
       io.rancher.container.start_once: true
     environment:
-      - AMQ_HOST=rabbitmq
+      - AMQ_HOST=rabbit
     command:
       - emit_log_topic
