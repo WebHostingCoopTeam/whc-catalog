@@ -131,6 +131,7 @@ services:
       - AMQ_HOST=rabbit
     command:
       - receive_logs_topic
+      - anonymous.info
     external_links:
       - ${rabbitmq_link}:rabbitmq
   emitlogtopic:
