@@ -1,7 +1,7 @@
 version: '2'
 catalog:
   name: "Rabbit MQ Examples"
-  version: "3.6-rancher2"
+  version: "3.6-rancher3"
   decription: A reliable, distributed messaging broker with persistent - tutorial storage examples
   questions:
 
