@@ -106,6 +106,7 @@ services:
       - AMQ_HOST=rabbit
     command:
       - receive_logs_direct
+      - "info"
     external_links:
       - ${rabbitmq_link}:rabbitmq
   emitlogdirect:
