@@ -1,8 +1,6 @@
 version: '2'
 services:
   receive:
-    environment:
-		  AMQ_HOST: rabbitmq
     command:
       - receive
     external_links:
@@ -11,6 +9,8 @@ services:
     labels:
       io.rancher.container.hostname_override: container_name
       io.rancher.scheduler.affinity:host_label: ${host_label}
+    environment:
+		  AMQ_HOST: rabbitmq
   send:
     image: joshuacox/rabbitmq-tutorials
     labels:
