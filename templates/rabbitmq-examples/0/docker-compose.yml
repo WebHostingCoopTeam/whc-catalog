@@ -35,7 +35,7 @@ services:
       - worker
     external_links:
       - ${rabbitmq_link}:rabbitmq
-  new_task:
+  newtask:
     image: joshuacox/rabbitmq-tutorials
     labels:
       io.rancher.container.hostname_override: container_name
@@ -48,7 +48,7 @@ services:
     external_links:
       - ${rabbitmq_link}:rabbitmq
 
-  rpc_server:
+  rpcserver:
     image: joshuacox/rabbitmq-tutorials
     labels:
       io.rancher.container.hostname_override: container_name
@@ -59,7 +59,7 @@ services:
       - rpc_server
     external_links:
       - ${rabbitmq_link}:rabbitmq
-  rpc_client:
+  rpcclient:
     image: joshuacox/rabbitmq-tutorials
     labels:
       io.rancher.container.hostname_override: container_name
@@ -73,7 +73,7 @@ services:
     external_links:
       - ${rabbitmq_link}:rabbitmq
 
-  receive_logs:
+  receivelogs:
     image: joshuacox/rabbitmq-tutorials
     labels:
       io.rancher.container.hostname_override: container_name
@@ -84,7 +84,7 @@ services:
       - receive_logs
     external_links:
       - ${rabbitmq_link}:rabbitmq
-  emit_log:
+  emitlog:
     image: joshuacox/rabbitmq-tutorials
     labels:
       io.rancher.container.hostname_override: container_name
@@ -97,7 +97,7 @@ services:
     external_links:
       - ${rabbitmq_link}:rabbitmq
 
-  receive_logs_direct:
+  receivelogsdirect:
     image: joshuacox/rabbitmq-tutorials
     labels:
       io.rancher.container.hostname_override: container_name
@@ -108,7 +108,7 @@ services:
       - receive_logs_direct
     external_links:
       - ${rabbitmq_link}:rabbitmq
-  emit_log_direct:
+  emitlogdirect:
     image: joshuacox/rabbitmq-tutorials
     labels:
       io.rancher.container.hostname_override: container_name
@@ -121,7 +121,7 @@ services:
     external_links:
       - ${rabbitmq_link}:rabbitmq
 
-  receive_logs_topic:
+  receivelogstopic:
     image: joshuacox/rabbitmq-tutorials
     labels:
       io.rancher.container.hostname_override: container_name
@@ -132,7 +132,7 @@ services:
       - receive_logs_topic
     external_links:
       - ${rabbitmq_link}:rabbitmq
-  emit_log_topic:
+  emitlogtopic:
     image: joshuacox/rabbitmq-tutorials
     labels:
       io.rancher.container.hostname_override: container_name

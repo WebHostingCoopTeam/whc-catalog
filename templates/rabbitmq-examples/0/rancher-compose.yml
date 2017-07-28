@@ -1,7 +1,7 @@
 version: '2'
 catalog:
   name: RabbitMQ_Examples
-  version: 3.6-rancher6
+  version: 3.6-rancher7
   description: |
     tutorial storage examples
   questions:
@@ -18,21 +18,21 @@ services:
     scale: 1
   worker:
     scale: 1
-  new_task:
+  newtask:
     scale: 1
-  rpc_server:
+  rpcserver:
     scale: 1
-  rpc_client:
+  rpcclient:
     scale: 1
-  receive_logs:
+  receivelogs:
     scale: 1
-  emit_log:
+  emitlog:
     scale: 1
-  receive_logs_direct:
+  receivelogsdirect:
     scale: 1
-  emit_log_direct:
+  emitlogdirect:
     scale: 1
-  receive_logs_topic:
+  receivelogstopic:
     scale: 1
-  emit_log_topic:
+  emitlogtopic:
     scale: 1
