@@ -9,7 +9,7 @@ catalog:
       description: "rabbitmq service link"
       label: "rabbitmq stack/service"
       default: ""
-      required: true
+      required: false
       type: "service"
 services:
   receive:
