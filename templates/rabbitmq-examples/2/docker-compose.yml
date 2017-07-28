@@ -4,7 +4,7 @@ services:
     command:
       - receive
     external_links:
-      - ${rabbitmq_link}:rabbitmq
+      - ${rabbitmq_link}:rabbit
     image: joshuacox/rabbitmq-tutorials
     labels:
       io.rancher.container.hostname_override: container_name
@@ -22,7 +22,7 @@ services:
     command:
       - send
     external_links:
-      - ${rabbitmq_link}:rabbitmq
+      - ${rabbitmq_link}:rabbit
 
   worker:
     image: joshuacox/rabbitmq-tutorials
@@ -34,7 +34,7 @@ services:
     command:
       - worker
     external_links:
-      - ${rabbitmq_link}:rabbitmq
+      - ${rabbitmq_link}:rabbit
   newtask:
     image: joshuacox/rabbitmq-tutorials
     labels:
@@ -46,7 +46,7 @@ services:
     command:
       - new_task
     external_links:
-      - ${rabbitmq_link}:rabbitmq
+      - ${rabbitmq_link}:rabbit
 
   rpcserver:
     image: joshuacox/rabbitmq-tutorials
@@ -58,7 +58,7 @@ services:
     command:
       - rpc_server
     external_links:
-      - ${rabbitmq_link}:rabbitmq
+      - ${rabbitmq_link}:rabbit
   rpcclient:
     image: joshuacox/rabbitmq-tutorials
     labels:
@@ -71,7 +71,7 @@ services:
       - rpc_client
       - '5'
     external_links:
-      - ${rabbitmq_link}:rabbitmq
+      - ${rabbitmq_link}:rabbit
 
   receivelogs:
     image: joshuacox/rabbitmq-tutorials
@@ -83,7 +83,7 @@ services:
     command:
       - receive_logs
     external_links:
-      - ${rabbitmq_link}:rabbitmq
+      - ${rabbitmq_link}:rabbit
   emitlog:
     image: joshuacox/rabbitmq-tutorials
     labels:
@@ -95,7 +95,7 @@ services:
     command:
       - emit_log
     external_links:
-      - ${rabbitmq_link}:rabbitmq
+      - ${rabbitmq_link}:rabbit
 
   receivelogsdirect:
     image: joshuacox/rabbitmq-tutorials
@@ -108,7 +108,7 @@ services:
       - receive_logs_direct
       - "info"
     external_links:
-      - ${rabbitmq_link}:rabbitmq
+      - ${rabbitmq_link}:rabbit
   emitlogdirect:
     image: joshuacox/rabbitmq-tutorials
     labels:
@@ -120,7 +120,7 @@ services:
     command:
       - emit_log_direct
     external_links:
-      - ${rabbitmq_link}:rabbitmq
+      - ${rabbitmq_link}:rabbit
 
   receivelogstopic:
     image: joshuacox/rabbitmq-tutorials
@@ -133,7 +133,7 @@ services:
       - receive_logs_topic
       - anonymous.info
     external_links:
-      - ${rabbitmq_link}:rabbitmq
+      - ${rabbitmq_link}:rabbit
   emitlogtopic:
     image: joshuacox/rabbitmq-tutorials
     labels:
@@ -145,4 +145,4 @@ services:
     command:
       - emit_log_topic
     external_links:
-      - ${rabbitmq_link}:rabbitmq
+      - ${rabbitmq_link}:rabbit
