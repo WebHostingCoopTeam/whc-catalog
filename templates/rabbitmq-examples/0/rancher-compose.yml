@@ -1,7 +1,7 @@
 version: '2'
 catalog:
   name: RabbitMQ_Examples
-  version: "3.6-rancher7"
+  version: 3.6-rancher1
   description: |
     A reliable, distributed messaging broker with persistent - tutorial storage examples
   questions:
