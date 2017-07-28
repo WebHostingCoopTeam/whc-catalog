@@ -1,8 +1,7 @@
 version: '2'
 services:
   receive:
-    command:
-      - receive
+    command: receive
     image: joshuacox/rabbitmq-tutorials
     labels:
       io.rancher.container.hostname_override: container_name
@@ -20,8 +19,7 @@ services:
       io.rancher.container.start_once: true
     environment:
       - AMQ_HOST=rabbit
-    command:
-      - send
+    command: send
 
   worker:
     image: joshuacox/rabbitmq-tutorials
@@ -30,8 +28,7 @@ services:
       io.rancher.scheduler.affinity:host_label: ${host_label}
     environment:
       - AMQ_HOST=rabbit
-    command:
-      - worker
+    command: worker
   newtask:
     image: joshuacox/rabbitmq-tutorials
     labels:
@@ -40,8 +37,7 @@ services:
       io.rancher.container.start_once: true
     environment:
       - AMQ_HOST=rabbit
-    command:
-      - new_task
+    command: new_task
 
   rpcserver:
     image: joshuacox/rabbitmq-tutorials
@@ -50,8 +46,7 @@ services:
       io.rancher.scheduler.affinity:host_label: ${host_label}
     environment:
       - AMQ_HOST=rabbit
-    command:
-      - rpc_server
+    command: rpc_server
   rpcclient:
     image: joshuacox/rabbitmq-tutorials
     labels:
@@ -60,9 +55,7 @@ services:
       io.rancher.container.start_once: true
     environment:
       - AMQ_HOST=rabbit
-    command:
-      - rpc_client
-      - '5'
+    command: rpc_client 5
 
   receivelogs:
     image: joshuacox/rabbitmq-tutorials
@@ -71,8 +64,7 @@ services:
       io.rancher.scheduler.affinity:host_label: ${host_label}
     environment:
       - AMQ_HOST=rabbit
-    command:
-      - receive_logs
+    command: receive_logs
   emitlog:
     image: joshuacox/rabbitmq-tutorials
     labels:
@@ -81,8 +73,7 @@ services:
       io.rancher.container.start_once: true
     environment:
       - AMQ_HOST=rabbit
-    command:
-      - emit_log
+    command: emit_log
 
   receivelogsdirect:
     image: joshuacox/rabbitmq-tutorials
@@ -91,9 +82,7 @@ services:
       io.rancher.scheduler.affinity:host_label: ${host_label}
     environment:
       - AMQ_HOST=rabbit
-    command:
-      - receive_logs_direct
-      - info
+    command: receive_logs_direct info
   emitlogdirect:
     image: joshuacox/rabbitmq-tutorials
     labels:
@@ -102,8 +91,7 @@ services:
       io.rancher.container.start_once: true
     environment:
       - AMQ_HOST=rabbit
-    command:
-      - emit_log_direct
+    command: emit_log_direct
 
   receivelogstopic:
     image: joshuacox/rabbitmq-tutorials
@@ -112,9 +100,7 @@ services:
       io.rancher.scheduler.affinity:host_label: ${host_label}
     environment:
       - AMQ_HOST=rabbit
-    command:
-      - receive_logs_topic
-      - anonymous.info
+    command: receive_logs_topic anonymous.info
   emitlogtopic:
     image: joshuacox/rabbitmq-tutorials
     labels:
@@ -123,5 +109,4 @@ services:
       io.rancher.container.start_once: true
     environment:
       - AMQ_HOST=rabbit
-    command:
-      - emit_log_topic
+    command: emit_log_topic

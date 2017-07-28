@@ -1,8 +1,7 @@
 version: '2'
 services:
   receive:
-    command:
-      - receive
+    command: receive
     external_links:
       - ${rabbitmq_link}:rabbit
     image: joshuacox/rabbitmq-tutorials
@@ -19,8 +18,7 @@ services:
       io.rancher.container.start_once: true
     environment:
       - AMQ_HOST=rabbit
-    command:
-      - send
+    command: send
     external_links:
       - ${rabbitmq_link}:rabbit
 
@@ -31,8 +29,7 @@ services:
       io.rancher.scheduler.affinity:host_label: ${host_label}
     environment:
       - AMQ_HOST=rabbit
-    command:
-      - worker
+    command: worker
     external_links:
       - ${rabbitmq_link}:rabbit
   newtask:
@@ -43,8 +40,7 @@ services:
       io.rancher.container.start_once: true
     environment:
       - AMQ_HOST=rabbit
-    command:
-      - new_task
+    command: new_task
     external_links:
       - ${rabbitmq_link}:rabbit
 
@@ -55,8 +51,7 @@ services:
       io.rancher.scheduler.affinity:host_label: ${host_label}
     environment:
       - AMQ_HOST=rabbit
-    command:
-      - rpc_server
+    command: rpc_server
     external_links:
       - ${rabbitmq_link}:rabbit
   rpcclient:
@@ -67,9 +62,7 @@ services:
       io.rancher.container.start_once: true
     environment:
       - AMQ_HOST=rabbit
-    command:
-      - rpc_client
-      - '5'
+    command: rpc_client 4
     external_links:
       - ${rabbitmq_link}:rabbit
 
@@ -80,8 +73,7 @@ services:
       io.rancher.scheduler.affinity:host_label: ${host_label}
     environment:
       - AMQ_HOST=rabbit
-    command:
-      - receive_logs
+    command: receive_logs
     external_links:
       - ${rabbitmq_link}:rabbit
   emitlog:
@@ -92,8 +84,7 @@ services:
       io.rancher.container.start_once: true
     environment:
       - AMQ_HOST=rabbit
-    command:
-      - emit_log
+    command: emit_log
     external_links:
       - ${rabbitmq_link}:rabbit
 
@@ -104,9 +95,7 @@ services:
       io.rancher.scheduler.affinity:host_label: ${host_label}
     environment:
       - AMQ_HOST=rabbit
-    command:
-      - receive_logs_direct
-      - "info"
+    command: receive_logs_direct info
     external_links:
       - ${rabbitmq_link}:rabbit
   emitlogdirect:
@@ -117,8 +106,7 @@ services:
       io.rancher.container.start_once: true
     environment:
       - AMQ_HOST=rabbit
-    command:
-      - emit_log_direct
+    command: emit_log_direct
     external_links:
       - ${rabbitmq_link}:rabbit
 
@@ -129,9 +117,7 @@ services:
       io.rancher.scheduler.affinity:host_label: ${host_label}
     environment:
       - AMQ_HOST=rabbit
-    command:
-      - receive_logs_topic
-      - anonymous.info
+    command: receive_logs_topic anonymous.info
     external_links:
       - ${rabbitmq_link}:rabbit
   emitlogtopic:
@@ -142,7 +128,6 @@ services:
       io.rancher.container.start_once: true
     environment:
       - AMQ_HOST=rabbit
-    command:
-      - emit_log_topic
+    command: emit_log_topic
     external_links:
       - ${rabbitmq_link}:rabbit
