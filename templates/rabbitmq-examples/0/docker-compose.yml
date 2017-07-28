@@ -3,14 +3,15 @@ services:
   receive:
     command:
       - receive
-    external_links:
-      - ${rabbitmq_link}:rabbitmq
     image: joshuacox/rabbitmq-tutorials
     labels:
       io.rancher.container.hostname_override: container_name
       io.rancher.scheduler.affinity:host_label: ${host_label}
     environment:
-      - AMQ_HOST=rabbitmq
+      - AMQ_HOST=rabbit
+  rabbit:
+    hostname: rabbit
+    image: rabbitmq:3
   send:
     image: joshuacox/rabbitmq-tutorials
     labels:
@@ -18,11 +19,9 @@ services:
       io.rancher.scheduler.affinity:host_label: ${host_label}
       io.rancher.container.start_once: true
     environment:
-      - AMQ_HOST=rabbitmq
+      - AMQ_HOST=rabbit
     command:
       - send
-    external_links:
-      - ${rabbitmq_link}:rabbitmq
 
   worker:
     image: joshuacox/rabbitmq-tutorials
@@ -30,11 +29,9 @@ services:
       io.rancher.container.hostname_override: container_name
       io.rancher.scheduler.affinity:host_label: ${host_label}
     environment:
-      - AMQ_HOST=rabbitmq
+      - AMQ_HOST=rabbit
     command:
       - worker
-    external_links:
-      - ${rabbitmq_link}:rabbitmq
   newtask:
     image: joshuacox/rabbitmq-tutorials
     labels:
@@ -42,11 +39,9 @@ services:
       io.rancher.scheduler.affinity:host_label: ${host_label}
       io.rancher.container.start_once: true
     environment:
-      - AMQ_HOST=rabbitmq
+      - AMQ_HOST=rabbit
     command:
       - new_task
-    external_links:
-      - ${rabbitmq_link}:rabbitmq
 
   rpcserver:
     image: joshuacox/rabbitmq-tutorials
@@ -54,11 +49,9 @@ services:
       io.rancher.container.hostname_override: container_name
       io.rancher.scheduler.affinity:host_label: ${host_label}
     environment:
-      - AMQ_HOST=rabbitmq
+      - AMQ_HOST=rabbit
     command:
       - rpc_server
-    external_links:
-      - ${rabbitmq_link}:rabbitmq
   rpcclient:
     image: joshuacox/rabbitmq-tutorials
     labels:
@@ -66,12 +59,10 @@ services:
       io.rancher.scheduler.affinity:host_label: ${host_label}
       io.rancher.container.start_once: true
     environment:
-      - AMQ_HOST=rabbitmq
+      - AMQ_HOST=rabbit
     command:
       - rpc_client
       - '5'
-    external_links:
-      - ${rabbitmq_link}:rabbitmq
 
   receivelogs:
     image: joshuacox/rabbitmq-tutorials
@@ -79,11 +70,9 @@ services:
       io.rancher.container.hostname_override: container_name
       io.rancher.scheduler.affinity:host_label: ${host_label}
     environment:
-      - AMQ_HOST=rabbitmq
+      - AMQ_HOST=rabbit
     command:
       - receive_logs
-    external_links:
-      - ${rabbitmq_link}:rabbitmq
   emitlog:
     image: joshuacox/rabbitmq-tutorials
     labels:
@@ -91,11 +80,9 @@ services:
       io.rancher.scheduler.affinity:host_label: ${host_label}
       io.rancher.container.start_once: true
     environment:
-      - AMQ_HOST=rabbitmq
+      - AMQ_HOST=rabbit
     command:
       - emit_log
-    external_links:
-      - ${rabbitmq_link}:rabbitmq
 
   receivelogsdirect:
     image: joshuacox/rabbitmq-tutorials
@@ -103,11 +90,10 @@ services:
       io.rancher.container.hostname_override: container_name
       io.rancher.scheduler.affinity:host_label: ${host_label}
     environment:
-      - AMQ_HOST=rabbitmq
+      - AMQ_HOST=rabbit
     command:
       - receive_logs_direct
-    external_links:
-      - ${rabbitmq_link}:rabbitmq
+      - info
   emitlogdirect:
     image: joshuacox/rabbitmq-tutorials
     labels:
@@ -115,11 +101,9 @@ services:
       io.rancher.scheduler.affinity:host_label: ${host_label}
       io.rancher.container.start_once: true
     environment:
-      - AMQ_HOST=rabbitmq
+      - AMQ_HOST=rabbit
     command:
       - emit_log_direct
-    external_links:
-      - ${rabbitmq_link}:rabbitmq
 
   receivelogstopic:
     image: joshuacox/rabbitmq-tutorials
@@ -127,11 +111,10 @@ services:
       io.rancher.container.hostname_override: container_name
       io.rancher.scheduler.affinity:host_label: ${host_label}
     environment:
-      - AMQ_HOST=rabbitmq
+      - AMQ_HOST=rabbit
     command:
       - receive_logs_topic
-    external_links:
-      - ${rabbitmq_link}:rabbitmq
+      - anonymous.info
   emitlogtopic:
     image: joshuacox/rabbitmq-tutorials
     labels:
@@ -139,8 +122,6 @@ services:
       io.rancher.scheduler.affinity:host_label: ${host_label}
       io.rancher.container.start_once: true
     environment:
-      - AMQ_HOST=rabbitmq
+      - AMQ_HOST=rabbit
     command:
       - emit_log_topic
-    external_links:
-      - ${rabbitmq_link}:rabbitmq

@@ -1,17 +1,13 @@
 version: '2'
 catalog:
   name: RabbitMQ_Examples
-  version: 3.6-rancher7
+  version: 3.6-rancher2
   description: |
     tutorial storage examples
   questions:
-    - variable: rabbitmq_link
-      description: "rabbitmq service link"
-      label: "rabbitmq stack/service"
-      default: ""
-      required: true
-      type: "service"
 services:
+  rabbit:
+    scale: 1
   receive:
     scale: 1
   send:
