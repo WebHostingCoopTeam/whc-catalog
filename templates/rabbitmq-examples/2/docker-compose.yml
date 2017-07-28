@@ -1,0 +1,98 @@
+version: '2'
+services:
+  rpc_server:
+    image: joshuacox/rabbitmq-tutorials
+    labels:
+      io.rancher.container.hostname_override: container_name
+      io.rancher.scheduler.affinity:host_label: ${host_label}
+    environment:
+		  AMQ_HOST: rabbitmq
+    command:
+      - rpc_server
+    external_links:
+      - ${rabbitmq_link}:rabbitmq
+  rpc_client:
+    image: joshuacox/rabbitmq-tutorials
+    labels:
+      io.rancher.container.hostname_override: container_name
+      io.rancher.scheduler.affinity:host_label: ${host_label}
+      io.rancher.container.start_once: true
+    environment:
+		  AMQ_HOST: rabbitmq
+    command:
+      - rpc_client
+      - 5
+    external_links:
+      - ${rabbitmq_link}:rabbitmq
+
+  receive_logs:
+    image: joshuacox/rabbitmq-tutorials
+    labels:
+      io.rancher.container.hostname_override: container_name
+      io.rancher.scheduler.affinity:host_label: ${host_label}
+    environment:
+		  AMQ_HOST: rabbitmq
+    command:
+      - receive_logs
+    external_links:
+      - ${rabbitmq_link}:rabbitmq
+  emit_log:
+    image: joshuacox/rabbitmq-tutorials
+    labels:
+      io.rancher.container.hostname_override: container_name
+      io.rancher.scheduler.affinity:host_label: ${host_label}
+      io.rancher.container.start_once: true
+    environment:
+		  AMQ_HOST: rabbitmq
+    command:
+      - emit_log
+    external_links:
+      - ${rabbitmq_link}:rabbitmq
+
+  receive_logs_direct:
+    image: joshuacox/rabbitmq-tutorials
+    labels:
+      io.rancher.container.hostname_override: container_name
+      io.rancher.scheduler.affinity:host_label: ${host_label}
+    environment:
+		  AMQ_HOST: rabbitmq
+    command:
+      - receive_logs_direct
+    external_links:
+      - ${rabbitmq_link}:rabbitmq
+  emit_log_direct:
+    image: joshuacox/rabbitmq-tutorials
+    labels:
+      io.rancher.container.hostname_override: container_name
+      io.rancher.scheduler.affinity:host_label: ${host_label}
+      io.rancher.container.start_once: true
+    environment:
+		  AMQ_HOST: rabbitmq
+    command:
+      - emit_log_direct
+    external_links:
+      - ${rabbitmq_link}:rabbitmq
+
+  receive_logs_topic:
+    image: joshuacox/rabbitmq-tutorials
+    labels:
+      io.rancher.container.hostname_override: container_name
+      io.rancher.scheduler.affinity:host_label: ${host_label}
+    environment:
+		  AMQ_HOST: rabbitmq
+    command:
+      - receive_logs_topic
+    external_links:
+      - ${rabbitmq_link}:rabbitmq
+  emit_log_topic:
+    image: joshuacox/rabbitmq-tutorials
+    labels:
+      io.rancher.container.hostname_override: container_name
+      io.rancher.scheduler.affinity:host_label: ${host_label}
+      io.rancher.container.start_once: true
+    environment:
+		  AMQ_HOST: rabbitmq
+    command:
+      - emit_log_topic
+    external_links:
+      - ${rabbitmq_link}:rabbitmq
