@@ -1,7 +1,7 @@
 version: '2'
 catalog:
   name: RabbitMQ_Examples
-  version: 3.6-rancher10
+  version: 3.6-rancher11
   description: |
     tutorial storage examples
   questions:
