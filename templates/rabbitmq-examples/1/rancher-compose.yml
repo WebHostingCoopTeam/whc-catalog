@@ -1,0 +1,38 @@
+version: '2'
+catalog:
+  name: RabbitMQ_Examples
+  version: 3.6-rancher3
+  description: |
+    tutorial storage examples
+  questions:
+    - variable: rabbitmq_link
+      description: "rabbitmq service link"
+      label: "rabbitmq stack/service"
+      default: ""
+      required: true
+      type: "service"
+services:
+  receive:
+    scale: 1
+  send:
+    scale: 1
+  worker:
+    scale: 1
+  new_task:
+    scale: 1
+  rpc_server:
+    scale: 1
+  rpc_client:
+    scale: 1
+  receive_logs:
+    scale: 1
+  emit_log:
+    scale: 1
+  receive_logs_direct:
+    scale: 1
+  emit_log_direct:
+    scale: 1
+  receive_logs_topic:
+    scale: 1
+  emit_log_topic:
+    scale: 1
