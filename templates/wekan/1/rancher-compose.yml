@@ -1,7 +1,7 @@
 version: '2'
 catalog:
   name: "Wekan"
-  version: "v0.1-educaas"
+  version: "v0.2-educaas"
   description: "The open-source Trello-like kanban (build with Meteor)"
   uuid: cloudflare-0
   minimum_rancher_version: v0.51.0
