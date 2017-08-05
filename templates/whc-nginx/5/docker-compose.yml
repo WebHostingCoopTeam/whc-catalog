@@ -11,6 +11,8 @@ services:
       traefik.domain: ${NGINX_DOMAIN}
       traefik.acme: true
       traefik.port: 80
+    external_links:
+      - ${external_link}:extlink
     environment:
       NGINX_HOST: ${NGINX_HOST}
       NGINX_DOMAIN: ${NGINX_DOMAIN}
