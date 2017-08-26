@@ -24,8 +24,26 @@ catalog:
       description: "TAG"
       label: "TAG"
       required: true
-      default: "latest"
+      default: "webhostingcoopteam/openemr:latest"
       type: "string"
+    - variable: "MYSQL_USER"
+      description: "MySQL database user"
+      label: "MySQLUSER"
+      required: true
+      default: "openemr"
+      type: "string"
+    - variable: "MYSQL_DATABASE"
+      description: "MySQL database name"
+      label: "MySQLUSER"
+      required: true
+      default: "openemr"
+      type: "string"
+    - variable: "MYSQL_PASSWORD"
+      description: "MySQL database password"
+      label: "MySQLPASS"
+      required: true
+      default: ""
+      type: "password"
     - variable: "MYSQL_ROOT_PASSWORD"
       description: "MySQL root password"
       label: "MySQLROOTPASS"
