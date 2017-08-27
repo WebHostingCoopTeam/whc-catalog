@@ -3,10 +3,13 @@ services:
   openemr:
     restart: always
     image: ${TAG}
-    ports:
-    - ${PORT}:80
     labels:
       io.rancher.sidekicks: openemr-data,db
+      traefik.enable: true
+      traefik.acme: true
+      traefik.alias: ${openemr_host}
+      traefik.domain: ${openemr_domain}
+      traefik.port: 80
     hostname: ${openemr_host}.${openemr_domain}
     environment:
     - MYSQL_USER=${DB_USER}
