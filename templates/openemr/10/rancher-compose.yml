@@ -26,25 +26,25 @@ catalog:
       required: true
       default: "webhostingcoopteam/openemr:latest"
       type: "string"
-    - variable: "MYSQL_USER"
+    - variable: "DB_USER"
       description: "MySQL database user"
       label: "MySQLUSER"
       required: true
       default: "openemr"
       type: "string"
-    - variable: "MYSQL_DATABASE"
+    - variable: "DB_NAME"
       description: "MySQL database name"
       label: "MySQLUSER"
       required: true
       default: "openemr"
       type: "string"
-    - variable: "MYSQL_PASSWORD"
+    - variable: "DB_PASS"
       description: "MySQL database password"
       label: "MySQLPASS"
       required: true
       default: ""
       type: "password"
-    - variable: "MYSQL_ROOT_PASSWORD"
+    - variable: "DB_ROOT_PASS"
       description: "MySQL root password"
       label: "MySQLROOTPASS"
       required: true
