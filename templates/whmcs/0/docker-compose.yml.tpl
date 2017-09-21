@@ -31,10 +31,10 @@ services:
     restart: always
     environment:
       CATTLE_SCRIPT_DEBUG: ${debug}
-      DB_NAME: ${DB_NAME}
-      DB_USERNAME: ${DB_USERNAME}
-      DB_PASSWORD: ${DB_PASSWORD}
-      DB_HOST: ${DB_HOST}
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
     labels:
       io.rancher.container.hostname_override: ${WHMCS_HOST}.${WHMCS_DOMAIN}
     {{- if ne .Values.host_label ""}}
