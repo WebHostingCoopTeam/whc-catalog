@@ -8,7 +8,7 @@ services:
       traefik.alias: ${WHMCS_HOST}
       traefik.domain: ${WHMCS_DOMAIN}
       traefik.acme: true
-      traefik.port: 3000
+      traefik.port: 80
     {{- if ne .Values.host_label ""}}
       io.rancher.scheduler.affinity:host_label: ${host_label}
     {{- end}}
