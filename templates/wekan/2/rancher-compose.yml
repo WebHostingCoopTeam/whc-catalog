@@ -40,6 +40,17 @@ catalog:
       label: "mongo_db"
       required: true
       type: "string"
+    - variable: "VOLUME_DRIVER"
+      description: "The VOLUME driver to associate with this server"
+      label: "VOLUME Driver"
+      required: true
+      default: "rancher-nfs"
+      type: enum
+      options:
+        - local
+        - rancher-nfs
+        - rancher-efs
+        - rancher-ebs
 
 services:
   wekan:
