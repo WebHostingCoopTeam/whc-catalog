@@ -3,7 +3,7 @@ catalog:
   name: "Wekan"
   version: "v0.3"
   description: "The open-source Trello-like kanban (build with Meteor)"
-  uuid: cloudflare-0
+  uuid: wekan-0
   minimum_rancher_version: v0.51.0
   questions:
     - variable: "WEKAN_HOST"

@@ -1,0 +1,85 @@
+version: '2'
+catalog:
+  name: "WHMCS"
+  version: "0.0.0"
+  description: "Web Hosting Automation Made Easy"
+  uuid: whmcs-0
+  minimum_rancher_version: v0.51.0
+  questions:
+    - variable: "WHMCS_HOST"
+      description: "Hostname to use for the WHMCS server"
+      label: "WHMCS Hostname"
+      required: true
+      default: "whmcs"
+      type: "string"
+    - variable: "WHMCS_DOMAIN"
+      description: "Domain to use for the WHMCS server"
+      label: "WHMCS Domain"
+      required: true
+      default: ""
+      type: "string"
+    - variable: host_label
+      label: "Host Label to WHMCS Tags"
+      description: |
+        Host label to use as WHMCS 'value' tag.
+        Example: 'WHMCS=true'
+      required: false
+      default: ""
+      type: "string"
+    - variable: "mysql_link"
+      description: |
+        MysqlDB external service link
+        cluster.
+      label: "External stack/service"
+      default: ""
+      required: false
+      type: "service"
+    - variable: "DB_NAME"
+      default: "whmcsdb"
+      description: "The mysqldb name to associate with this server."
+      label: "db_NAME"
+      required: true
+      type: "string"
+    - variable: "DB_USERNAME"
+      default: "whmcs"
+      description: "The mysqldb username to associate with this server."
+      label: "db_username"
+      required: true
+      type: "string"
+    - variable: "DB_PASSWORD"
+      default: ""
+      description: "The mysqldb password to associate with this server."
+      label: "db_password"
+      required: true
+      type: "password"
+    - variable: "DB_HOST"
+      default: "mysql"
+      description: "The mysqldb host to associate with this server. Leave at default is specifying with the above link"
+      label: "db_host"
+      required: true
+      type: "string"
+    - variable: "LICENSE"
+      default: ""
+      description: "The WHMCS License to associate with this server."
+      label: "whmcs license"
+      required: true
+      type: "string"
+    - variable: "TEMPLATES_COMPILEDIR"
+      default: "templates_c"
+      description: "The WHMCS templates compile dir to associate with this server. (Should be left to default)"
+      label: "compile dir"
+      required: true
+      type: "string"
+
+services:
+  whmcs:
+    scale: 1
+    retain_ip: true
+    health_check:
+      healthy_threshold: 2
+      response_timeout: 5000
+      port: 80
+      unhealthy_threshold: 3
+      interval: 5000
+      strategy: recreate
+      request_line: GET / # HTTP/1.0
