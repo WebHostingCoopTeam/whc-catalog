@@ -10,13 +10,13 @@ catalog:
       description: "Hostname to use for the WHMCS server"
       label: "WHMCS Hostname"
       required: true
-      default: "WHMCS"
+      default: "whmcs"
       type: "string"
     - variable: "WHMCS_DOMAIN"
       description: "Domain to use for the WHMCS server"
       label: "WHMCS Domain"
       required: true
-      default: "local"
+      default: ""
       type: "string"
     - variable: host_label
       label: "Host Label to WHMCS Tags"
@@ -37,25 +37,25 @@ catalog:
     - variable: "DB_NAME"
       default: "whmcsdb"
       description: "The mysqldb name to associate with this server."
-      label: "mysql_db"
+      label: "db_NAME"
       required: true
       type: "string"
     - variable: "DB_USERNAME"
       default: "whmcs"
       description: "The mysqldb username to associate with this server."
-      label: "mysql_db"
+      label: "db_username"
       required: true
       type: "string"
     - variable: "DB_PASSWORD"
       default: ""
       description: "The mysqldb password to associate with this server."
-      label: "mysql_db"
+      label: "db_password"
       required: true
       type: "password"
     - variable: "DB_HOST"
-      default: "mysql_link"
+      default: "mysql"
       description: "The mysqldb host to associate with this server. Leave at default is specifying with the above link"
-      label: "mysql_db"
+      label: "db_host"
       required: true
       type: "string"
     - variable: "LICENSE"
