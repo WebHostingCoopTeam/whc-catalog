@@ -27,7 +27,7 @@ services:
       MONGO_SERVICE_NAME: mongo
       CATTLE_SCRIPT_DEBUG: ${debug}
     tty: true
-    image: mongo:3.5
+    image: mongo:3.4
     labels:
       io.rancher.container.hostname_override: container_name
     {{- if ne .Values.host_label ""}}
