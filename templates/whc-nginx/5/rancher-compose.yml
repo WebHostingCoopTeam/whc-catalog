@@ -63,10 +63,10 @@ catalog:
         required: false
         type: "boolean"
       - variable: host_label
-        label: "Host Label to Meanshop Tags"
+        label: "Host Label to affiliate with this container"
         description: |
-          Host label to use as Meanshop 'value' tag.
-          Example: 'thalhallashop=true'
+          Host label to use as nginx 'value' tag.
+          Example: 'nginx=true'
         required: false
         default: "private=true"
         type: "string"

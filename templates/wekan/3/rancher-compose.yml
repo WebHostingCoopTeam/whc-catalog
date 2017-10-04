@@ -1,7 +1,7 @@
 version: '2'
 catalog:
   name: "Wekan"
-  version: "v0.3"
+  version: "v0.3.1"
   description: "The open-source Trello-like kanban (build with Meteor)"
   uuid: wekan-0
   minimum_rancher_version: v0.51.0
