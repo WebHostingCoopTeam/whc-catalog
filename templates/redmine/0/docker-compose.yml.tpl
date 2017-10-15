@@ -116,9 +116,11 @@ volumes:
   redmine-datavolume:
     driver: ${VOLUME_DRIVER}
     per_container: true
-  redmine-db-datavolume:
-    driver: ${VOLUME_DRIVER}
-    per_container: true
   redmine-log-datavolume:
     driver: ${VOLUME_DRIVER}
     per_container: true
+ {{- if .Values.DB_HOST "db"}}
+  redmine-db-datavolume:
+    driver: ${VOLUME_DRIVER}
+    per_container: true
+  {{- end}}
