@@ -88,8 +88,8 @@ catalog:
   - variable: "DB_PORT"
     description: "DB_PORT"
     label: "DB_PORT"
-    required: true
-    default: "3306"
+    required: false
+    default: ""
     type: "int"
   - variable: "DB_USER"
     description: "DB_USER"

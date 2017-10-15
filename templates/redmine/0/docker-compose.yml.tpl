@@ -26,7 +26,15 @@ services:
     - DB_PASS=${DB_PASS}
     - DB_ADAPTER=${DB_ADAPTER}
     - DB_HOST=${DB_HOST}
+    {{- if ne .Values.DB_PORT ""}}
+      {{- if .Values.DB_ADAPTOR "mysql2"}}
+    - DB_PORT=3306
+      {{- else if .Values.db_adaptor "postgresql"}}
+    - DB_PORT=5432
+      {{- end}}
+    {{- else}}
     - DB_PORT=${DB_PORT}
+    {{- end}}
     - DB_USER=${DB_USER}
     - DB_NAME=${DB_NAME}
     - REDMINE_HTTPS=${REDMINE_HTTPS}
