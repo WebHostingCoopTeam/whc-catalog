@@ -166,12 +166,12 @@ catalog:
     description: "SMTP ENABLED"
     label: "SMTP ENABLED"
     required: true
-    default: ""
+    default: "false"
     type: "boolean"
   - variable: "SMTP_HOST"
     description: "SMTP Host to use for the server"
     label: "SMTP Host"
-    required: true
+    required: false
     default: ""
     type: "string"
   - variable: "SMTP_AUTHENTICATION"
@@ -220,7 +220,7 @@ catalog:
   - variable: "IMAP_ENABLED"
     description: "IMAP_ENABLED"
     label: "IMAP_ENABLED"
-    required: false
+    required: true
     default: "false"
     type: "boolean"
   - variable: "IMAP_HOST"
