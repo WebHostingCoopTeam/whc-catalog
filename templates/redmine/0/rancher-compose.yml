@@ -260,8 +260,8 @@ catalog:
     default: "30"
     type: "int"
   - variable: "MEMCACHE"
-    description: "MEMCACHE"
-    label: "MEMCACHE"
+    description: "The amount of memory to dedicate to memcached (in bytes)"
+    label: "Memcache"
     required: true
     default: "67108864"
     type: "int"
