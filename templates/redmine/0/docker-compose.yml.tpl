@@ -108,6 +108,10 @@ services:
   {{- end}}
  {{- end}}
 {{- end}}
+  memcached:
+    restart: always
+    image: memcached:1.5-alpine
+    mem_limit: ${MEMCACHE}
 volumes:
   redmine-datavolume:
     driver: ${VOLUME_DRIVER}

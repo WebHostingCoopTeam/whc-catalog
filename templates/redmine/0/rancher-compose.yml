@@ -259,6 +259,12 @@ catalog:
     required: false
     default: "30"
     type: "int"
+  - variable: "MEMCACHE"
+    description: "MEMCACHE"
+    label: "MEMCACHE"
+    required: true
+    default: "67108864"
+    type: "int"
 
 services:
   redmine:
