@@ -31,11 +31,17 @@ catalog:
     required: true
     default: ""
     type: password
+  - variable: "REDMINE_SECRET_TOKEN"
+    description: "REDMINE_SECRET_TOKEN"
+    label: "REDMINE_SECRET_TOKEN"
+    required: true
+    default: ""
+    type: "password"
   - variable: "REDMINE_TAG"
     description: "REDMINE_TAG"
     label: "REDMINE_TAG"
     required: true
-    default: "sameersbn/redmine:latest"
+    default: "sameersbn/redmine:3.2-latest"
     type: enum
     options: # List of options if using type of `enum`
       - sameersbn/redmine:latest
@@ -116,12 +122,6 @@ catalog:
     required: false
     default: ""
     type: "string"
-  - variable: "REDMINE_SECRET_TOKEN"
-    description: "REDMINE_SECRET_TOKEN"
-    label: "REDMINE_SECRET_TOKEN"
-    required: true
-    default: ""
-    type: "password"
 
   - variable: "REDMINE_SUDO_MODE_ENABLED"
     description: "REDMINE_SUDO_MODE_ENABLED"

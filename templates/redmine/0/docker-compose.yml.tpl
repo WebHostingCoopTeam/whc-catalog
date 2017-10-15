@@ -4,7 +4,9 @@ services:
   redmine:
     image: ${REDMINE_TAG}
     labels:
-      io.rancher.sidekicks: db,redmine-datavolume
+      {{- if .Values.DB_HOST "db"}}
+      io.rancher.sidekicks: db
+      {{- end}}
       io.rancher.container.hostname_override: container_name
       io.rancher.container.pull_image: always
       traefik.enable: true
