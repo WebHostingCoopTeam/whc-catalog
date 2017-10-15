@@ -31,12 +31,6 @@ catalog:
     required: true
     default: ""
     type: password
-  - variable: "REDMINE_SECRET_TOKEN"
-    description: "REDMINE_SECRET_TOKEN"
-    label: "REDMINE_SECRET_TOKEN"
-    required: true
-    default: ""
-    type: "password"
   - variable: "REDMINE_TAG"
     description: "REDMINE_TAG"
     label: "REDMINE_TAG"
@@ -57,6 +51,12 @@ catalog:
       - sameersbn/redmine:3.0-latest
       - sameersbn/redmine:2.6-latest
       - sameersbn/redmine:2.5-latest
+  - variable: "REDMINE_SECRET_TOKEN"
+    description: "REDMINE_SECRET_TOKEN"
+    label: "REDMINE_SECRET_TOKEN"
+    required: true
+    default: ""
+    type: "password"
   - variable: "DB_ADAPTER"
     description: "DB_ADAPTER"
     label: "DB_ADAPTER"
