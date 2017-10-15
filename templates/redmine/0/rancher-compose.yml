@@ -71,6 +71,14 @@ catalog:
       - rancher-nfs
       - rancher-efs
       - rancher-ebs
+  - variable: "DB_LINK"
+    description: |
+      DB external service link
+      cluster.
+    label: "External stack/service"
+    default: ""
+    required: false
+    type: "service"
   - variable: "DB_HOST"
     description: "DB_HOST"
     label: "DB_HOST"
