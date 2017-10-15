@@ -1,8 +1,8 @@
 version: '2'
 catalog:
   name: Redmine
-  version: 0.2.7
-  upgrade_from: 0.2.6
+  version: 0.2.8
+  upgrade_from: 0.2.7
   description: |
     Redmine for email settings see the docs here http://www.redmine.org/projects/redmine/wiki/EmailConfiguration
   questions:
@@ -31,6 +31,26 @@ catalog:
     required: true
     default: ""
     type: password
+  - variable: "REDMINE_TAG"
+    description: "REDMINE_TAG"
+    label: "REDMINE_TAG"
+    required: true
+    default: "sameersbn/redmine:latest"
+    type: enum
+    options: # List of options if using type of `enum`
+      - sameersbn/redmine:latest
+      - sameersbn/redmine:3.4.2
+      - sameersbn/redmine:3.4.1
+      - sameersbn/redmine:3.4.0
+      - sameersbn/redmine:3.3.4
+      - sameersbn/redmine:3.3.3-1
+      - sameersbn/redmine:3.3.3
+      - sameersbn/redmine:3.3-latest
+      - sameersbn/redmine:3.2-latest
+      - sameersbn/redmine:3.1-latest
+      - sameersbn/redmine:3.0-latest
+      - sameersbn/redmine:2.6-latest
+      - sameersbn/redmine:2.5-latest
   - variable: "DB_ADAPTER"
     description: "DB_ADAPTER"
     label: "DB_ADAPTER"

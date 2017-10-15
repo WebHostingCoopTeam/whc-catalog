@@ -1,21 +1,8 @@
 version: '2'
 
 services:
-  redmine-datavolume:
-    image: "busybox"
-    volumes:
-      - /home/redmine/data
-      - /var/lib/mysql
-      - /var/log/redmine
-    labels:
-      io.rancher.container.start_once: true
-    {{- if ne .Values.host_label ""}}
-      io.rancher.scheduler.affinity:host_label: ${host_label}
-    {{- end}}
-    entrypoint: ["/bin/true"]
-
   redmine:
-    image: sameersbn/redmine:3.3.2-1
+    image: ${REDMINE_TAG}
     labels:
       io.rancher.sidekicks: db,redmine-datavolume
       io.rancher.container.hostname_override: container_name
@@ -75,7 +62,8 @@ services:
       - ${db_link}:db
     tty: true
 {{- else}}
-  {{- if .Values.db_adaptor "mysql2"}}
+ {{- if .Values.DB_HOST "db"}}
+  {{- if .Values.DB_ADAPTOR "mysql2"}}
   db:
     restart: always
     image: mariadb
@@ -110,6 +98,7 @@ services:
     - POSTGRES_DB=${DB_NAME}
     - PGDATA='/var/lib/postgresql/data'
   {{- end}}
+ {{- end}}
 {{- end}}
 volumes:
   redmine-datavolume:
