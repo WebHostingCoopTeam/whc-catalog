@@ -4,7 +4,7 @@ services:
   redmine:
     image: ${REDMINE_TAG}
     labels:
-      {{- if .Values.DB_HOST "db"}}
+      {{- if eq .Values.DB_HOST "db"}}
       io.rancher.sidekicks: db
       {{- end}}
       io.rancher.container.hostname_override: container_name
@@ -14,9 +14,9 @@ services:
       traefik.domain: ${REDMINE_DOMAIN}
       traefik.acme: true
       traefik.port: 80
-    {{- if ne .Values.host_label ""}}
+      {{- if ne .Values.host_label ""}}
       io.rancher.scheduler.affinity:host_label: ${host_label}
-    {{- end}}
+      {{- end}}
     environment:
     - REDMINE_HOST=${REDMINE_HOST}
     - REDMINE_DOMAIN=${REDMINE_DOMAIN}
@@ -29,9 +29,9 @@ services:
     - DB_ADAPTER=${DB_ADAPTER}
     - DB_HOST=${DB_HOST}
     {{- if ne .Values.DB_PORT ""}}
-      {{- if .Values.DB_ADAPTOR "mysql2"}}
+      {{- if eq .Values.DB_ADAPTOR "mysql2"}}
     - DB_PORT=3306
-      {{- else if .Values.db_adaptor "postgresql"}}
+      {{- else if eq .Values.db_adaptor "postgresql"}}
     - DB_PORT=5432
       {{- end}}
     {{- else}}
@@ -72,8 +72,8 @@ services:
       - ${db_link}:db
     tty: true
 {{- else}}
- {{- if .Values.DB_HOST "db"}}
-  {{- if .Values.DB_ADAPTOR "mysql2"}}
+ {{- if eq .Values.DB_HOST "db"}}
+  {{- if eq .Values.DB_ADAPTOR "mysql2"}}
   db:
     restart: always
     image: mariadb
@@ -90,7 +90,7 @@ services:
     - MYSQL_PASSWORD=${DB_PASS}
     - MYSQL_ROOT_PASSWORD=${DB_PASS}
     - MYSQL_DATABASE=${DB_NAME}
-  {{- else if .Values.db_adaptor "postgresql"}}
+  {{- else if eq.Values.db_adaptor "postgresql"}}
   db:
     restart: always
     image: postgres:9.6-alpine
@@ -121,7 +121,7 @@ volumes:
   redmine-log-datavolume:
     driver: ${VOLUME_DRIVER}
     per_container: true
- {{- if .Values.DB_HOST "db"}}
+ {{- if eq .Values.DB_HOST "db"}}
   redmine-db-datavolume:
     driver: ${VOLUME_DRIVER}
     per_container: true
