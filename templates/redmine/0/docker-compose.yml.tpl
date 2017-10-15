@@ -122,6 +122,10 @@ services:
     - POSTGRES_DB=${DB_NAME}
     - PGDATA='/var/lib/postgresql/data'
   {{- end}}
+ {{- else }}
+  db:
+    restart: always
+    image: busybox
  {{- end}}
 {{- end}}
   memcached:
