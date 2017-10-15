@@ -80,7 +80,6 @@ services:
     volumes:
     - redmine-db-datavolume:/var/lib/mysql
     labels:
-      io.rancher.sidekicks: redmine-datavolume
       io.rancher.container.pull_image: always
     {{- if ne .Values.host_label ""}}
       io.rancher.scheduler.affinity:host_label: ${host_label}
@@ -97,7 +96,6 @@ services:
     volumes:
     - redmine-db-datavolume:/var/lib/postgresql/data
     labels:
-      io.rancher.sidekicks: redmine-datavolume
       io.rancher.container.pull_image: always
     {{- if ne .Values.host_label ""}}
       io.rancher.scheduler.affinity:host_label: ${host_label}
