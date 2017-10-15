@@ -76,7 +76,7 @@ services:
   {{- if eq .Values.DB_ADAPTER "mysql2"}}
   db:
     restart: always
-    image: mariadb
+    image: mariadb:10
     volumes:
     - redmine-db-datavolume:/var/lib/mysql
     labels:
@@ -93,6 +93,22 @@ services:
   db:
     restart: always
     image: postgres:9.6-alpine
+    volumes:
+    - redmine-db-datavolume:/var/lib/postgresql/data
+    labels:
+      io.rancher.container.pull_image: always
+    {{- if ne .Values.host_label ""}}
+      io.rancher.scheduler.affinity:host_label: ${host_label}
+    {{- end}}
+    environment:
+    - POSTGRES_USER=${DB_USER}
+    - POSTGRES_PASSWORD=${DB_PASS}
+    - POSTGRES_DB=${DB_NAME}
+    - PGDATA='/var/lib/postgresql/data'
+  {{- else }}
+  db:
+    restart: always
+    image: postgres:10-alpine
     volumes:
     - redmine-db-datavolume:/var/lib/postgresql/data
     labels:
