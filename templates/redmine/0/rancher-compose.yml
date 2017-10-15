@@ -81,7 +81,7 @@ catalog:
     description: |
       DB external service link
       cluster.
-    label: "External stack/service"
+    label: "External DB stack/service"
     default: ""
     required: false
     type: "service"

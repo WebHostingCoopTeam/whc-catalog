@@ -67,13 +67,13 @@ services:
     volumes:
     - redmine-datavolume:/home/redmine/data
     - redmine-log-datavolume:/var/log/redmine
-{{- if ne .Values.db_link ""}}
+{{- if ne .Values.DB_LINK ""}}
     external_links:
-      - ${db_link}:db
+      - ${DB_LINK}:db
     tty: true
 {{- else}}
  {{- if eq .Values.DB_HOST "db"}}
-  {{- if eq .Values.DB_ADAPTOR "mysql2"}}
+  {{- if eq .Values.DB_ADAPTER "mysql2"}}
   db:
     restart: always
     image: mariadb
@@ -89,7 +89,7 @@ services:
     - MYSQL_PASSWORD=${DB_PASS}
     - MYSQL_ROOT_PASSWORD=${DB_PASS}
     - MYSQL_DATABASE=${DB_NAME}
-  {{- else if eq.Values.db_adaptor "postgresql"}}
+  {{- else if eq .Values.DB_ADAPTER "postgresql"}}
   db:
     restart: always
     image: postgres:9.6-alpine
