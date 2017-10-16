@@ -75,9 +75,9 @@ services:
     - redmine-db-datavolume:/var/lib/mysql
     labels:
       io.rancher.container.pull_image: always
-    {{- if ne .Values.HOST_LABEL ""}}
+      {{- if ne .Values.HOST_LABEL ""}}
       io.rancher.scheduler.affinity:host_label: ${HOST_LABEL}
-    {{- end}}
+      {{- end}}
     environment:
     - MYSQL_USER=${DB_USER}
     - MYSQL_PASSWORD=${DB_PASS}
@@ -91,9 +91,9 @@ services:
     - redmine-db-datavolume:/var/lib/postgresql/data
     labels:
       io.rancher.container.pull_image: always
-    {{- if ne .Values.HOST_LABEL ""}}
+      {{- if ne .Values.HOST_LABEL ""}}
       io.rancher.scheduler.affinity:host_label: ${HOST_LABEL}
-    {{- end}}
+      {{- end}}
     environment:
     - POSTGRES_USER=${DB_USER}
     - POSTGRES_PASSWORD=${DB_PASS}
