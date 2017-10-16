@@ -11,8 +11,9 @@ services:
       traefik.domain: ${REDMINE_DOMAIN}
       traefik.acme: true
       traefik.port: 80
+      io.rancher.sidekicks: memcached
       {{- if eq .Values.DB_HOST "db"}}
-      io.rancher.sidekicks: db
+        ,db
       {{- end}}
       {{- if ne .Values.HOST_LABEL ""}}
       io.rancher.scheduler.affinity:host_label: ${HOST_LABEL}
