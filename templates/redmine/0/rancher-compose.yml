@@ -265,6 +265,14 @@ catalog:
     required: true
     default: "67108864"
     type: "int"
+  - variable: "HOST_LABEL"
+    label: "Host Label to put redminei on"
+    description: |
+      Host label to use as redmine 'value' tag.
+      Example: 'redmine=true'
+    required: false
+    default: ""
+    type: "string"
 
 services:
   redmine:
