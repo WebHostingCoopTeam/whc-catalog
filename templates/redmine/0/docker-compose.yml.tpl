@@ -99,6 +99,7 @@ services:
     - POSTGRES_PASSWORD=${DB_PASS}
     - POSTGRES_DB=${DB_NAME}
     - PGDATA='/var/lib/postgresql/data'
+  {{- end}}
 {{- end}}
   memcached:
     restart: always
@@ -111,7 +112,7 @@ volumes:
   redmine-log-datavolume:
     driver: ${VOLUME_DRIVER}
     per_container: true
- {{- if eq .Values.DB_HOST "db"}}
+  {{- if eq .Values.DB_HOST "db"}}
   redmine-db-datavolume:
     driver: ${VOLUME_DRIVER}
     per_container: true
