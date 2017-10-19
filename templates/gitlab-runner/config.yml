@@ -1,7 +1,7 @@
 name: Gitlab Runner 
 description: |
   Gitlab Runner
-version: 0.0.4
+version: 0.0.5
 category: CI
 maintainer: github.com/joshuacox
 license: GPL v3
