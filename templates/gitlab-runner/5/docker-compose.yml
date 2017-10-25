@@ -1,0 +1,21 @@
+gitlabrunner:
+  image: gitlab/gitlab-runner:ubuntu
+  privileged: true
+  labels:
+    io.rancher.container.hostname_override: container_name
+    io.rancher.scheduler.affinity:host_label: ${host_label}
+    io.rancher.sidekicks: gitlabrunner-datavolume
+    io.rancher.container.pull_image: always
+  volumes_from:
+    - gitlabrunner-datavolume
+gitlabrunner-datavolume:
+  volume_driver: ${VOLUME_DRIVER}
+  volumes:
+    - ${DATA_VOLUME_NAME}:/home/gitlab-runner
+    - ${CONFIG_VOLUME_NAME}:/etc/gitlab-runner
+  image: busybox:latest
+  labels:
+    io.rancher.scheduler.affinity:host_label: ${host_label}
+    io.rancher.container.start_once: true
+    io.rancher.container.pull_image: always
+  command: /bin/true
