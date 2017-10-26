@@ -1,0 +1,20 @@
+.catalog:
+  name: "K8s GitLab Runner"
+  version: "0.0.0"
+  description: "Kubernetes GitLab CI Runner"
+  questions:
+    - variable: "GITLAB_URL"
+      label: "URL to contact the gitlab"
+      required: true
+      default: "https://gitlab.example.com/"
+      type: "string"
+    - variable: "GITLAB_TOKEN"
+      label: "Registration Token can be found at https://gitlab.example.com/admin/runners"
+      required: true
+      default: ""
+      type: "string"
+    - variable: "NAMESPACE"
+      label: "namespace"
+      required: true
+      default: "default"
+      type: "string"

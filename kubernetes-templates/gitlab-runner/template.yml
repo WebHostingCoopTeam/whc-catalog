@@ -1,0 +1,3 @@
+name: Gitlab Runner 
+labels:
+  io.rancher.certified: rancher
