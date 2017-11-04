@@ -14,7 +14,7 @@ services:
           ,traefik-acme
         {{- end}}
       io.rancher.container.hostname_override: container_name
-    image: rawmind/alpine-traefik:1.4.1-2
+    image: ${traefik_tag}
     environment:
     - CONF_INTERVAL=${refresh_interval}
     - TRAEFIK_HTTP_PORT=${http_port}

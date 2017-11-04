@@ -12,7 +12,7 @@
       description: |
         Enable https working mode. If you activate, you need to fill SSL key and SSL crt in order to work.
         Traefik tag to use
-      default: rawmind/alpine-traefik:1.4.1-2
+      default: rawmind/alpine-traefik:1.3.6
       required: true
       type: enum
       options:
