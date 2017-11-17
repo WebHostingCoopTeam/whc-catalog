@@ -1,0 +1,52 @@
+version: '2'
+catalog:
+  name: "ZoneMinder"
+  version: "v0.0.1"
+  description: "A full-featured, open source, state-of-the-art video surveillance software system."
+  uuid: zoneminder-0
+  minimum_rancher_version: v0.51.0
+  questions:
+    - variable: "ZONEMINDER_HOST"
+      description: "Hostname to use for the zoneminder server"
+      label: "zoneminder Hostname"
+      required: true
+      default: "zoneminder"
+      type: "string"
+    - variable: "ZONEMINDER_DOMAIN"
+      description: "Domain to use for the zoneminder server"
+      label: "zoneminder Domain"
+      required: true
+      default: "local"
+      type: "string"
+    - variable: host_label
+      label: "Host Label to zoneminder Tags"
+      description: |
+        Host label to use as zoneminder 'value' tag.
+        Example: 'zoneminder=true'
+      required: false
+      default: ""
+      type: "string"
+    - variable: "VOLUME_DRIVER"
+      description: "The VOLUME driver to associate with this server"
+      label: "VOLUME Driver"
+      required: true
+      default: "rancher-nfs"
+      type: enum
+      options:
+        - local
+        - rancher-nfs
+        - rancher-efs
+        - rancher-ebs
+
+services:
+  zoneminder:
+    scale: 1
+    retain_ip: true
+    health_check:
+      healthy_threshold: 2
+      response_timeout: 5000
+      port: 80
+      unhealthy_threshold: 3
+      interval: 5000
+      strategy: recreate
+      request_line: GET / # HTTP/1.0
